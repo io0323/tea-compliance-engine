@@ -1,0 +1,104 @@
+### TeaCompliance Engine API テスト用リクエスト
+
+### 1. 全茶葉ロット取得
+GET http://localhost:8080/api/tea-lots
+Accept: application/json
+
+###
+
+### 2. 茶葉ロット登録
+POST http://localhost:8080/api/tea-lots
+Content-Type: application/json
+
+{
+  "lotCode": "TL-2024-006",
+  "origin": "福岡県",
+  "variety": "さえみどり",
+  "moisture": 8.2,
+  "pesticideLevel": 0.25,
+  "aromaScore": 78,
+  "producedAt": "2024-05-28"
+}
+
+###
+
+### 3. IDで茶葉ロット取得
+GET http://localhost:8080/api/tea-lots/1
+Accept: application/json
+
+###
+
+### 4. ロットコードで茶葉ロット取得
+GET http://localhost:8080/api/tea-lots/by-code/TL-2024-001
+Accept: application/json
+
+###
+
+### 5. 産地で茶葉ロット検索
+GET http://localhost:8080/api/tea-lots/by-origin?origin=静岡県
+Accept: application/json
+
+###
+
+### 6. 品種で茶葉ロット検索
+GET http://localhost:8080/api/tea-lots/by-variety?variety=やぶきた
+Accept: application/json
+
+###
+
+### 7. コンプライアンスチェック実行（茶葉ロットID: 1）
+POST http://localhost:8080/api/compliance/check/1
+Accept: application/json
+
+###
+
+### 8. コンプライアンスチェック実行（茶葉ロットID: 2）
+POST http://localhost:8080/api/compliance/check/2
+Accept: application/json
+
+###
+
+### 9. コンプライアンスチェック実行（茶葉ロットID: 4 - 水分量超過）
+POST http://localhost:8080/api/compliance/check/4
+Accept: application/json
+
+###
+
+### 10. 評価結果取得（茶葉ロットID: 1）
+GET http://localhost:8080/api/compliance/results/1
+Accept: application/json
+
+###
+
+### 11. 評価結果取得（茶葉ロットID: 4）
+GET http://localhost:8080/api/compliance/results/4
+Accept: application/json
+
+###
+
+### 12. 全コンプライアンスルール確認（H2コンソール用）
+# http://localhost:8080/h2-console
+# JDBC URL: jdbc:h2:mem:teacompliance
+# ユーザー名: sa
+# パスワード: （空）
+
+### テスト用SQLクエリ
+/*
+-- 茶葉ロット一覧
+SELECT * FROM tea_lots;
+
+-- コンプライアンスルール一覧
+SELECT * FROM compliance_rules ORDER BY severity DESC, rule_type ASC;
+
+-- 評価結果一覧
+SELECT cr.*, tl.lot_code 
+FROM compliance_results cr 
+JOIN tea_lots tl ON cr.tea_lot_id = tl.id 
+ORDER BY cr.tea_lot_id, cr.severity DESC;
+
+-- 出荷不可のロット確認
+SELECT DISTINCT tl.* 
+FROM tea_lots tl 
+JOIN compliance_results cr ON tl.id = cr.tea_lot_id 
+WHERE cr.severity = 'BLOCK' AND cr.result = 'FAIL';
+*/
