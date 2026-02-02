@@ -3,6 +3,13 @@ package com.teacompliance.controller;
 import com.teacompliance.domain.TeaLot;
 import com.teacompliance.dto.TeaLotRequest;
 import com.teacompliance.service.TeaLotService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tea-lots")
+@Tag(name = "茶葉ロット管理", description = "茶葉ロットの登録・検索API")
 public class TeaLotController {
     
     private static final Logger log = LoggerFactory.getLogger(TeaLotController.class);
@@ -26,7 +34,16 @@ public class TeaLotController {
     }
     
     @PostMapping
-    public ResponseEntity<TeaLot> registerTeaLot(@Valid @RequestBody TeaLotRequest request) {
+    @Operation(summary = "茶葉ロット登録", description = "新しい茶葉ロットを登録する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "登録成功", 
+                    content = @Content(schema = @Schema(implementation = TeaLot.class))),
+        @ApiResponse(responseCode = "400", description = "バリデーションエラー"),
+        @ApiResponse(responseCode = "409", description = "ロットコード重複")
+    })
+    public ResponseEntity<TeaLot> registerTeaLot(
+            @Parameter(description = "登録する茶葉ロット情報", required = true)
+            @Valid @RequestBody TeaLotRequest request) {
         log.info("茶葉ロット登録リクエスト: {}", request.getLotCode());
         
         try {
@@ -39,33 +56,63 @@ public class TeaLotController {
     }
     
     @GetMapping
+    @Operation(summary = "全茶葉ロット取得", description = "登録されている全ての茶葉ロットを取得する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "取得成功")
+    })
     public ResponseEntity<List<TeaLot>> getAllTeaLots() {
         List<TeaLot> teaLots = teaLotService.getAllTeaLots();
         return ResponseEntity.ok(teaLots);
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<TeaLot> getTeaLotById(@PathVariable Long id) {
+    @Operation(summary = "IDで茶葉ロット取得", description = "指定されたIDの茶葉ロットを取得する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "取得成功"),
+        @ApiResponse(responseCode = "404", description = "茶葉ロットが存在しない")
+    })
+    public ResponseEntity<TeaLot> getTeaLotById(
+            @Parameter(description = "茶葉ロットID", required = true)
+            @PathVariable Long id) {
         Optional<TeaLot> teaLot = teaLotService.getTeaLotById(id);
         return teaLot.map(ResponseEntity::ok)
                    .orElse(ResponseEntity.notFound().build());
     }
     
     @GetMapping("/by-code/{lotCode}")
-    public ResponseEntity<TeaLot> getTeaLotByLotCode(@PathVariable String lotCode) {
+    @Operation(summary = "ロットコードで茶葉ロット取得", description = "指定されたロットコードの茶葉ロットを取得する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "取得成功"),
+        @ApiResponse(responseCode = "404", description = "茶葉ロットが存在しない")
+    })
+    public ResponseEntity<TeaLot> getTeaLotByLotCode(
+            @Parameter(description = "ロットコード", required = true)
+            @PathVariable String lotCode) {
         Optional<TeaLot> teaLot = teaLotService.getTeaLotByLotCode(lotCode);
         return teaLot.map(ResponseEntity::ok)
                    .orElse(ResponseEntity.notFound().build());
     }
     
     @GetMapping("/by-origin")
-    public ResponseEntity<List<TeaLot>> getTeaLotsByOrigin(@RequestParam String origin) {
+    @Operation(summary = "産地で茶葉ロット検索", description = "指定された産地の茶葉ロットを検索する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "検索成功")
+    })
+    public ResponseEntity<List<TeaLot>> getTeaLotsByOrigin(
+            @Parameter(description = "産地", required = true)
+            @RequestParam String origin) {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByOrigin(origin);
         return ResponseEntity.ok(teaLots);
     }
     
     @GetMapping("/by-variety")
-    public ResponseEntity<List<TeaLot>> getTeaLotsByVariety(@RequestParam String variety) {
+    @Operation(summary = "品種で茶葉ロット検索", description = "指定された品種の茶葉ロットを検索する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "検索成功")
+    })
+    public ResponseEntity<List<TeaLot>> getTeaLotsByVariety(
+            @Parameter(description = "品種", required = true)
+            @RequestParam String variety) {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByVariety(variety);
         return ResponseEntity.ok(teaLots);
     }
