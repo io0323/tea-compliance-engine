@@ -22,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class TeaLotServiceTest {
@@ -211,5 +212,29 @@ class TeaLotServiceTest {
         // Then
         assertThat(result).isEmpty();
         verify(teaLotRepository).findByOrigin("存在しない産地");
+    }
+    
+    @Test
+    @DisplayName("重複する茶葉ロット登録時に適切に例外がスローされること")
+    void testRegisterTeaLot_DuplicateEntryHandling() {
+        // Given - 最初の登録は成功
+        when(teaLotRepository.existsByLotCode("TL-2024-001")).thenReturn(false);
+        when(teaLotRepository.save(any(TeaLot.class))).thenReturn(existingTeaLot);
+        
+        // 最初の登録を実行
+        TeaLot firstResult = teaLotService.registerTeaLot(validRequest);
+        assertThat(firstResult).isNotNull();
+        
+        // 2回目の登録は重複として失敗
+        when(teaLotRepository.existsByLotCode("TL-2024-001")).thenReturn(true);
+        
+        // When & Then - 2回目の登録で例外がスローされる
+        assertThatThrownBy(() -> teaLotService.registerTeaLot(validRequest))
+            .isInstanceOf(DuplicateTeaLotException.class)
+            .hasMessageContaining("TL-2024-001");
+        
+        // verify - existsByLotCodeが2回呼ばれ、saveが1回だけ呼ばれる
+        verify(teaLotRepository, times(2)).existsByLotCode("TL-2024-001");
+        verify(teaLotRepository, times(1)).save(any(TeaLot.class));
     }
 }
