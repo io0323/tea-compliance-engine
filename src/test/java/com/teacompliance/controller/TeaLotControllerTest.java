@@ -28,7 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = TeaLotController.class)
 @TestPropertySource(properties = {
     "spring.jpa.hibernate.ddl-auto=none",
-    "spring.cache.type=none"
+    "spring.cache.type=none",
+    "spring.main.allow-bean-definition-overriding=true"
 })
 class TeaLotControllerTest {
     
