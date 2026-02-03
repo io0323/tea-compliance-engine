@@ -10,12 +10,12 @@ TeaCompliance Engine,com.teacompliance.dto,TeaLotRequest,0,52,0,0,0,15,0,15,0,15
 TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse,45,0,0,0,13,0,13,0,13,0
 TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse.RuleResult,52,0,0,0,15,0,15,0,15,0
 TeaCompliance Engine,com.teacompliance.exception,TeaLotNotFoundException,12,0,0,0,4,0,2,0,2,0
-TeaCompliance Engine,com.teacompliance.exception,GlobalExceptionHandler,169,116,0,0,43,24,8,6,8,6
-TeaCompliance Engine,com.teacompliance.exception,TeaComplianceException,26,7,0,0,10,3,4,1,4,1
+TeaCompliance Engine,com.teacompliance.exception,GlobalExceptionHandler,147,138,0,0,37,30,7,7,7,7
+TeaCompliance Engine,com.teacompliance.exception,TeaComplianceException,23,10,0,0,9,4,3,2,3,2
 TeaCompliance Engine,com.teacompliance.exception,DuplicateTeaLotException,0,6,0,0,0,2,0,1,0,1
 TeaCompliance Engine,com.teacompliance.exception,ComplianceRuleNotFoundException,6,0,0,0,2,0,1,0,1,0
 TeaCompliance Engine,com.teacompliance.exception,ComplianceEvaluationException,13,0,0,0,4,0,2,0,2,0
-TeaCompliance Engine,com.teacompliance.domain,TeaLot,100,47,12,0,20,13,14,13,8,13
+TeaCompliance Engine,com.teacompliance.domain,TeaLot,88,59,12,0,16,17,10,17,4,17
 TeaCompliance Engine,com.teacompliance.domain,ComplianceRule.RuleType,0,21,0,0,0,4,0,1,0,1
 TeaCompliance Engine,com.teacompliance.domain,ComplianceRule.Severity,0,21,0,0,0,4,0,1,0,1
 TeaCompliance Engine,com.teacompliance.domain,ComplianceRule,43,33,0,0,15,9,7,9,7,9
@@ -29,5 +29,5 @@ TeaCompliance Engine,com.teacompliance.service.evaluation,PesticideEvaluationStr
 TeaCompliance Engine,com.teacompliance.service.evaluation,MoistureEvaluationStrategy,99,3,15,0,14,1,12,1,3,1
 TeaCompliance Engine,com.teacompliance.service.evaluation,RuleEvaluationStrategy.EvaluationResult,21,0,0,0,8,0,4,0,4,0
 TeaCompliance Engine,com.teacompliance.service.evaluation,AromaEvaluationStrategy,103,3,15,0,14,1,12,1,3,1
-TeaCompliance Engine,com.teacompliance.controller,TeaLotController,73,10,0,0,18,4,6,2,6,2
+TeaCompliance Engine,com.teacompliance.controller,TeaLotController,58,25,0,0,15,7,5,3,5,3
 TeaCompliance Engine,com.teacompliance.controller,ComplianceController,58,10,0,0,16,4,2,2,2,2

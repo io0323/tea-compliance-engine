@@ -45,11 +45,11 @@ public class TeaLotController {
     public ResponseEntity&lt;TeaLot&gt; registerTeaLot(
             @Parameter(description = &quot;登録する茶葉ロット情報&quot;, required = true)
             @Valid @RequestBody TeaLotRequest request) {
-<span class="nc" id="L48">        log.info(&quot;茶葉ロット登録リクエスト: {}&quot;, request.getLotCode());</span>
+<span class="fc" id="L48">        log.info(&quot;茶葉ロット登録リクエスト: {}&quot;, request.getLotCode());</span>
         
         try {
-<span class="nc" id="L51">            TeaLot teaLot = teaLotService.registerTeaLot(request);</span>
-<span class="nc" id="L52">            return ResponseEntity.status(HttpStatus.CREATED).body(teaLot);</span>
+<span class="fc" id="L51">            TeaLot teaLot = teaLotService.registerTeaLot(request);</span>
+<span class="fc" id="L52">            return ResponseEntity.status(HttpStatus.CREATED).body(teaLot);</span>
 <span class="nc" id="L53">        } catch (IllegalArgumentException e) {</span>
 <span class="nc" id="L54">            log.warn(&quot;茶葉ロット登録失敗: {}&quot;, e.getMessage());</span>
 <span class="nc" id="L55">            return ResponseEntity.badRequest().build();</span>
