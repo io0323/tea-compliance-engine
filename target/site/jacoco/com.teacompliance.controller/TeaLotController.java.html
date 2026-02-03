@@ -62,8 +62,8 @@ public class TeaLotController {
         @ApiResponse(responseCode = &quot;200&quot;, description = &quot;取得成功&quot;)
     })
     public ResponseEntity&lt;List&lt;TeaLot&gt;&gt; getAllTeaLots() {
-<span class="nc" id="L65">        List&lt;TeaLot&gt; teaLots = teaLotService.getAllTeaLots();</span>
-<span class="nc" id="L66">        return ResponseEntity.ok(teaLots);</span>
+<span class="fc" id="L65">        List&lt;TeaLot&gt; teaLots = teaLotService.getAllTeaLots();</span>
+<span class="fc" id="L66">        return ResponseEntity.ok(teaLots);</span>
     }
     
     @GetMapping(value = &quot;/{id}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -75,9 +75,9 @@ public class TeaLotController {
     public ResponseEntity&lt;TeaLot&gt; getTeaLotById(
             @Parameter(description = &quot;茶葉ロットID&quot;, required = true)
             @PathVariable Long id) {
-<span class="nc" id="L78">        Optional&lt;TeaLot&gt; teaLot = teaLotService.getTeaLotById(id);</span>
-<span class="nc" id="L79">        return teaLot.map(ResponseEntity::ok)</span>
-<span class="nc" id="L80">                   .orElse(ResponseEntity.notFound().build());</span>
+<span class="fc" id="L78">        Optional&lt;TeaLot&gt; teaLot = teaLotService.getTeaLotById(id);</span>
+<span class="fc" id="L79">        return teaLot.map(ResponseEntity::ok)</span>
+<span class="fc" id="L80">                   .orElse(ResponseEntity.notFound().build());</span>
     }
     
     @GetMapping(value = &quot;/by-code/{lotCode}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -89,9 +89,9 @@ public class TeaLotController {
     public ResponseEntity&lt;TeaLot&gt; getTeaLotByLotCode(
             @Parameter(description = &quot;ロットコード&quot;, required = true)
             @PathVariable String lotCode) {
-<span class="nc" id="L92">        Optional&lt;TeaLot&gt; teaLot = teaLotService.getTeaLotByLotCode(lotCode);</span>
-<span class="nc" id="L93">        return teaLot.map(ResponseEntity::ok)</span>
-<span class="nc" id="L94">                   .orElse(ResponseEntity.notFound().build());</span>
+<span class="fc" id="L92">        Optional&lt;TeaLot&gt; teaLot = teaLotService.getTeaLotByLotCode(lotCode);</span>
+<span class="fc" id="L93">        return teaLot.map(ResponseEntity::ok)</span>
+<span class="fc" id="L94">                   .orElse(ResponseEntity.notFound().build());</span>
     }
     
     @GetMapping(value = &quot;/by-origin&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -102,8 +102,8 @@ public class TeaLotController {
     public ResponseEntity&lt;List&lt;TeaLot&gt;&gt; getTeaLotsByOrigin(
             @Parameter(description = &quot;産地&quot;, required = true)
             @RequestParam String origin) {
-<span class="nc" id="L105">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByOrigin(origin);</span>
-<span class="nc" id="L106">        return ResponseEntity.ok(teaLots);</span>
+<span class="fc" id="L105">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByOrigin(origin);</span>
+<span class="fc" id="L106">        return ResponseEntity.ok(teaLots);</span>
     }
     
     @GetMapping(value = &quot;/by-variety&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -114,8 +114,8 @@ public class TeaLotController {
     public ResponseEntity&lt;List&lt;TeaLot&gt;&gt; getTeaLotsByVariety(
             @Parameter(description = &quot;品種&quot;, required = true)
             @RequestParam String variety) {
-<span class="nc" id="L117">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByVariety(variety);</span>
-<span class="nc" id="L118">        return ResponseEntity.ok(teaLots);</span>
+<span class="fc" id="L117">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByVariety(variety);</span>
+<span class="fc" id="L118">        return ResponseEntity.ok(teaLots);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

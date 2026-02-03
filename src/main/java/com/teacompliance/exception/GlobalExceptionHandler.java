@@ -49,8 +49,8 @@ public class GlobalExceptionHandler {
         
         Map<String, Object> body = createErrorResponse(
             HttpStatus.CONFLICT,
-            ex.getErrorCode(),
-            "茶葉ロットが既に存在します: " + ex.getMessage(),
+            "TC_004",
+            "Duplicate tea lot: " + ex.getMessage(),
             request.getDescription(false)
         );
         
@@ -114,7 +114,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> body = createErrorResponse(
             HttpStatus.UNSUPPORTED_MEDIA_TYPE,
             "TC_002",
-            "Content-Type not supported: " + ex.getMessage(),
+            "Content-Type not supported. Please use application/json",
             request.getDescription(false)
         );
         

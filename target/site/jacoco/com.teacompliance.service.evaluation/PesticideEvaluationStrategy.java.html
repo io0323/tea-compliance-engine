@@ -14,26 +14,26 @@ import org.springframework.stereotype.Component;
     
     @Override
     public EvaluationResult evaluate(TeaLot teaLot, ComplianceRule rule) {
-<span class="nc" id="L17">        Double actualPesticide = teaLot.getPesticideLevel();</span>
-<span class="nc" id="L18">        Double threshold = rule.getThreshold();</span>
-<span class="nc" id="L19">        ComplianceRule.ComparisonOperator operator = rule.getOperator();</span>
+<span class="fc" id="L17">        Double actualPesticide = teaLot.getPesticideLevel();</span>
+<span class="fc" id="L18">        Double threshold = rule.getThreshold();</span>
+<span class="fc" id="L19">        ComplianceRule.ComparisonOperator operator = rule.getOperator();</span>
         
-<span class="nc" id="L21">        boolean passed = compareValues(actualPesticide, threshold, operator);</span>
+<span class="fc" id="L21">        boolean passed = compareValues(actualPesticide, threshold, operator);</span>
         
-<span class="nc" id="L23">        String message = String.format(</span>
+<span class="fc" id="L23">        String message = String.format(</span>
             &quot;残留農薬チェック: 実測値 %.2f ppm %s 基準値 %.2f ppm - %s&quot;,
             actualPesticide,
-<span class="nc" id="L26">            operator.getSymbol(),</span>
+<span class="fc" id="L26">            operator.getSymbol(),</span>
             threshold,
-<span class="nc bnc" id="L28" title="All 2 branches missed.">            passed ? &quot;合格&quot; : &quot;不合格&quot;</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            passed ? &quot;合格&quot; : &quot;不合格&quot;</span>
         );
         
-<span class="nc" id="L31">        return new EvaluationResult(passed, message, actualPesticide);</span>
+<span class="fc" id="L31">        return new EvaluationResult(passed, message, actualPesticide);</span>
     }
     
     @Override
     public ComplianceRule.RuleType getSupportedRuleType() {
-<span class="nc" id="L36">        return ComplianceRule.RuleType.PESTICIDE;</span>
+<span class="fc" id="L36">        return ComplianceRule.RuleType.PESTICIDE;</span>
     }
     
     /**
@@ -45,11 +45,11 @@ import org.springframework.stereotype.Component;
      * @return 比較結果
      */
     private boolean compareValues(Double actual, Double threshold, ComplianceRule.ComparisonOperator operator) {
-<span class="nc bnc" id="L48" title="All 5 branches missed.">        return switch (operator) {</span>
+<span class="pc bpc" id="L48" title="4 of 5 branches missed.">        return switch (operator) {</span>
 <span class="nc bnc" id="L49" title="All 2 branches missed.">            case GREATER_THAN -&gt; actual &gt; threshold;</span>
 <span class="nc bnc" id="L50" title="All 2 branches missed.">            case LESS_THAN -&gt; actual &lt; threshold;</span>
 <span class="nc bnc" id="L51" title="All 2 branches missed.">            case GREATER_THAN_OR_EQUAL -&gt; actual &gt;= threshold;</span>
-<span class="nc bnc" id="L52" title="All 2 branches missed.">            case LESS_THAN_OR_EQUAL -&gt; actual &lt;= threshold;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            case LESS_THAN_OR_EQUAL -&gt; actual &lt;= threshold;</span>
         };
     }
 }

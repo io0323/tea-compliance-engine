@@ -42,37 +42,37 @@ public class ComplianceResult {
     // 全項目コンストラクタ
     public ComplianceResult(Long id, Long teaLotId, String ruleCode, 
                           EvaluationResult result, ComplianceRule.Severity severity, 
-<span class="nc" id="L45">                          String message, LocalDateTime evaluatedAt) {</span>
-<span class="nc" id="L46">        this.id = id;</span>
-<span class="nc" id="L47">        this.teaLotId = teaLotId;</span>
-<span class="nc" id="L48">        this.ruleCode = ruleCode;</span>
-<span class="nc" id="L49">        this.result = result;</span>
-<span class="nc" id="L50">        this.severity = severity;</span>
-<span class="nc" id="L51">        this.message = message;</span>
-<span class="nc" id="L52">        this.evaluatedAt = evaluatedAt;</span>
-<span class="nc" id="L53">    }</span>
+<span class="fc" id="L45">                          String message, LocalDateTime evaluatedAt) {</span>
+<span class="fc" id="L46">        this.id = id;</span>
+<span class="fc" id="L47">        this.teaLotId = teaLotId;</span>
+<span class="fc" id="L48">        this.ruleCode = ruleCode;</span>
+<span class="fc" id="L49">        this.result = result;</span>
+<span class="fc" id="L50">        this.severity = severity;</span>
+<span class="fc" id="L51">        this.message = message;</span>
+<span class="fc" id="L52">        this.evaluatedAt = evaluatedAt;</span>
+<span class="fc" id="L53">    }</span>
     
     // GetterとSetter
-<span class="nc" id="L56">    public Long getId() { return id; }</span>
-<span class="nc" id="L57">    public void setId(Long id) { this.id = id; }</span>
+<span class="fc" id="L56">    public Long getId() { return id; }</span>
+<span class="fc" id="L57">    public void setId(Long id) { this.id = id; }</span>
     
-<span class="nc" id="L59">    public Long getTeaLotId() { return teaLotId; }</span>
-<span class="nc" id="L60">    public void setTeaLotId(Long teaLotId) { this.teaLotId = teaLotId; }</span>
+<span class="fc" id="L59">    public Long getTeaLotId() { return teaLotId; }</span>
+<span class="fc" id="L60">    public void setTeaLotId(Long teaLotId) { this.teaLotId = teaLotId; }</span>
     
-<span class="nc" id="L62">    public String getRuleCode() { return ruleCode; }</span>
-<span class="nc" id="L63">    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }</span>
+<span class="fc" id="L62">    public String getRuleCode() { return ruleCode; }</span>
+<span class="fc" id="L63">    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }</span>
     
-<span class="nc" id="L65">    public EvaluationResult getResult() { return result; }</span>
-<span class="nc" id="L66">    public void setResult(EvaluationResult result) { this.result = result; }</span>
+<span class="fc" id="L65">    public EvaluationResult getResult() { return result; }</span>
+<span class="fc" id="L66">    public void setResult(EvaluationResult result) { this.result = result; }</span>
     
-<span class="nc" id="L68">    public ComplianceRule.Severity getSeverity() { return severity; }</span>
-<span class="nc" id="L69">    public void setSeverity(ComplianceRule.Severity severity) { this.severity = severity; }</span>
+<span class="fc" id="L68">    public ComplianceRule.Severity getSeverity() { return severity; }</span>
+<span class="fc" id="L69">    public void setSeverity(ComplianceRule.Severity severity) { this.severity = severity; }</span>
     
-<span class="nc" id="L71">    public String getMessage() { return message; }</span>
-<span class="nc" id="L72">    public void setMessage(String message) { this.message = message; }</span>
+<span class="fc" id="L71">    public String getMessage() { return message; }</span>
+<span class="fc" id="L72">    public void setMessage(String message) { this.message = message; }</span>
     
-<span class="nc" id="L74">    public LocalDateTime getEvaluatedAt() { return evaluatedAt; }</span>
-<span class="nc" id="L75">    public void setEvaluatedAt(LocalDateTime evaluatedAt) { this.evaluatedAt = evaluatedAt; }</span>
+<span class="fc" id="L74">    public LocalDateTime getEvaluatedAt() { return evaluatedAt; }</span>
+<span class="fc" id="L75">    public void setEvaluatedAt(LocalDateTime evaluatedAt) { this.evaluatedAt = evaluatedAt; }</span>
     
     /**
      * 評価結果を定義する列挙型

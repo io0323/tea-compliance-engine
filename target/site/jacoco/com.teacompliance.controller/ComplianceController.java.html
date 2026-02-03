@@ -43,15 +43,15 @@ public class ComplianceController {
     public ResponseEntity&lt;ComplianceCheckResponse&gt; checkCompliance(
             @Parameter(description = &quot;茶葉ロットID&quot;, required = true)
             @PathVariable Long teaLotId) {
-<span class="nc" id="L46">        log.info(&quot;コンプライアンスチェック開始: teaLotId={}&quot;, teaLotId);</span>
+<span class="fc" id="L46">        log.info(&quot;コンプライアンスチェック開始: teaLotId={}&quot;, teaLotId);</span>
         
         try {
-<span class="nc" id="L49">            ComplianceCheckResponse response = complianceService.checkCompliance(teaLotId);</span>
-<span class="nc" id="L50">            log.info(&quot;コンプライアンスチェック完了: teaLotId={}, shippable={}&quot;, teaLotId, response.isShippable());</span>
-<span class="nc" id="L51">            return ResponseEntity.ok(response);</span>
-<span class="nc" id="L52">        } catch (IllegalArgumentException e) {</span>
-<span class="nc" id="L53">            log.warn(&quot;コンプライアンスチェック失敗: {}&quot;, e.getMessage());</span>
-<span class="nc" id="L54">            return ResponseEntity.notFound().build();</span>
+<span class="fc" id="L49">            ComplianceCheckResponse response = complianceService.checkCompliance(teaLotId);</span>
+<span class="fc" id="L50">            log.info(&quot;コンプライアンスチェック完了: teaLotId={}, shippable={}&quot;, teaLotId, response.isShippable());</span>
+<span class="fc" id="L51">            return ResponseEntity.ok(response);</span>
+<span class="fc" id="L52">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L53">            log.warn(&quot;コンプライアンスチェック失敗: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L54">            return ResponseEntity.notFound().build();</span>
 <span class="nc" id="L55">        } catch (Exception e) {</span>
 <span class="nc" id="L56">            log.error(&quot;コンプライアンスチェック中にエラー発生: teaLotId={}&quot;, teaLotId, e);</span>
 <span class="nc" id="L57">            return ResponseEntity.internalServerError().build();</span>
@@ -67,11 +67,11 @@ public class ComplianceController {
     public ResponseEntity&lt;List&lt;ComplianceResult&gt;&gt; getComplianceResults(
             @Parameter(description = &quot;茶葉ロットID&quot;, required = true)
             @PathVariable Long teaLotId) {
-<span class="nc" id="L70">        log.debug(&quot;評価結果取得: teaLotId={}&quot;, teaLotId);</span>
+<span class="fc" id="L70">        log.debug(&quot;評価結果取得: teaLotId={}&quot;, teaLotId);</span>
         
         try {
-<span class="nc" id="L73">            List&lt;ComplianceResult&gt; results = complianceService.getComplianceResults(teaLotId);</span>
-<span class="nc" id="L74">            return ResponseEntity.ok(results);</span>
+<span class="fc" id="L73">            List&lt;ComplianceResult&gt; results = complianceService.getComplianceResults(teaLotId);</span>
+<span class="fc" id="L74">            return ResponseEntity.ok(results);</span>
 <span class="nc" id="L75">        } catch (Exception e) {</span>
 <span class="nc" id="L76">            log.error(&quot;評価結果取得中にエラー発生: teaLotId={}&quot;, teaLotId, e);</span>
 <span class="nc" id="L77">            return ResponseEntity.internalServerError().build();</span>

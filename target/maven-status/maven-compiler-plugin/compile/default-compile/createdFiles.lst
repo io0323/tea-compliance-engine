@@ -1,4 +1,5 @@
 com/teacompliance/config/DataInitializer.class
+com/teacompliance/constants/ComplianceConstants.class
 com/teacompliance/domain/ComplianceRule.class
 com/teacompliance/config/CacheConfig.class
 com/teacompliance/service/evaluation/RuleEvaluationStrategy.class

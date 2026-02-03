@@ -49,8 +49,8 @@ import java.util.stream.Collectors;
         
 <span class="fc" id="L50">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.CONFLICT,
-<span class="fc" id="L52">            ex.getErrorCode(),</span>
-<span class="fc" id="L53">            &quot;茶葉ロットが既に存在します: &quot; + ex.getMessage(),</span>
+            &quot;TC_004&quot;,
+<span class="fc" id="L53">            &quot;Duplicate tea lot: &quot; + ex.getMessage(),</span>
 <span class="fc" id="L54">            request.getDescription(false)</span>
         );
         
@@ -109,16 +109,16 @@ import java.util.stream.Collectors;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleMediaTypeError(
             HttpMediaTypeNotSupportedException ex, WebRequest request) {
         
-<span class="nc" id="L112">        log.warn(&quot;サポートされていないContent-Type: {}&quot;, ex.getMessage());</span>
+<span class="fc" id="L112">        log.warn(&quot;サポートされていないContent-Type: {}&quot;, ex.getMessage());</span>
         
-<span class="nc" id="L114">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L114">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.UNSUPPORTED_MEDIA_TYPE,
             &quot;TC_002&quot;,
-<span class="nc" id="L117">            &quot;Content-Type not supported: &quot; + ex.getMessage(),</span>
-<span class="nc" id="L118">            request.getDescription(false)</span>
+            &quot;Content-Type not supported. Please use application/json&quot;,
+<span class="fc" id="L118">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L121">        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);</span>
+<span class="fc" id="L121">        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);</span>
     }
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -174,16 +174,16 @@ import java.util.stream.Collectors;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleGlobalException(
             Exception ex, WebRequest request) {
         
-<span class="nc" id="L177">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
+<span class="fc" id="L177">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
         
-<span class="nc" id="L179">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L179">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.INTERNAL_SERVER_ERROR,
             &quot;TC_999&quot;,
             &quot;予期せぬエラーが発生しました&quot;,
-<span class="nc" id="L183">            request.getDescription(false)</span>
+<span class="fc" id="L183">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L186">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
+<span class="fc" id="L186">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
     }
     
     private Map&lt;String, Object&gt; createErrorResponse(
