@@ -1,39 +1,49 @@
 package com.teacompliance.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.teacompliance.validation.ValidLotCode;
+import com.teacompliance.validation.ValidPesticideLevel;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class TeaLotRequest {
     
     @NotBlank(message = "ロットコードは必須です")
+    @ValidLotCode
     private String lotCode;
     
     @NotBlank(message = "産地は必須です")
+    @Size(min = 1, max = 50, message = "産地は1文字以上50文字以下である必要があります")
     private String origin;
     
     @NotBlank(message = "品種は必須です")
+    @Size(min = 1, max = 50, message = "品種は1文字以上50文字以下である必要があります")
     private String variety;
     
     @NotNull(message = "水分量は必須です")
-    @Min(value = 0, message = "水分量は0以上である必要があります")
-    @Max(value = 100, message = "水分量は100以下である必要があります")
+    @DecimalMin(value = "0.0", message = "水分量は0%以上である必要があります")
+    @DecimalMax(value = "100.0", message = "水分量は100%以下である必要があります")
     private Double moisture;
     
     @NotNull(message = "農薬レベルは必須です")
-    @Min(value = 0, message = "農薬レベルは0以上である必要があります")
+    @ValidPesticideLevel(max = 10.0)
     private Double pesticideLevel;
     
     @NotNull(message = "香りスコアは必須です")
-    @Min(value = 0, message = "香りスコアは0以上である必要があります")
-    @Max(value = 100, message = "香りスコアは100以下である必要があります")
+    @Min(value = 0, message = "香りスコアは0点以上である必要があります")
+    @Max(value = 100, message = "香りスコアは100点以下である必要があります")
     private Integer aromaScore;
     
     @NotNull(message = "生産日は必須です")
+    @PastOrPresent(message = "生産日は今日以前である必要があります")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate producedAt;
     
