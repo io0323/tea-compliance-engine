@@ -125,12 +125,21 @@ public class GlobalExceptionHandler {
         
         log.warn("バリデーションエラー: {}", ex.getMessage());
         
+        // 詳細なフィールドエラーを収集
+        Map<String, String> fieldErrors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> 
+            fieldErrors.put(error.getField(), error.getDefaultMessage())
+        );
+        
         Map<String, Object> body = createErrorResponse(
             HttpStatus.BAD_REQUEST,
             "TC_003",
-            "Validation failed: " + ex.getMessage(),
+            "Validation failed",
             request.getDescription(false)
         );
+        
+        // フィールドエラーを追加
+        body.put("errors", fieldErrors);
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
