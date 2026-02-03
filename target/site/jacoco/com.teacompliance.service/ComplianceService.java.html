@@ -34,66 +34,66 @@ public class ComplianceService {
 <span class="fc" id="L34">    }</span>
     
     public ComplianceCheckResponse checkCompliance(Long teaLotId) {
-<span class="nc" id="L37">        TeaLot teaLot = teaLotService.getTeaLotById(teaLotId)</span>
-<span class="nc" id="L38">            .orElseThrow(() -&gt; new IllegalArgumentException(&quot;茶葉ロットが見つかりません: &quot; + teaLotId));</span>
+<span class="fc" id="L37">        TeaLot teaLot = teaLotService.getTeaLotById(teaLotId)</span>
+<span class="fc" id="L38">            .orElseThrow(() -&gt; new IllegalArgumentException(&quot;茶葉ロットが見つかりません: &quot; + teaLotId));</span>
         
-<span class="nc" id="L40">        List&lt;ComplianceResult&gt; results = evaluationEngine.evaluateTeaLot(teaLot);</span>
+<span class="fc" id="L40">        List&lt;ComplianceResult&gt; results = evaluationEngine.evaluateTeaLot(teaLot);</span>
         
-<span class="nc" id="L42">        ComplianceCheckResponse response = new ComplianceCheckResponse();</span>
-<span class="nc" id="L43">        response.setTeaLotId(teaLotId);</span>
-<span class="nc" id="L44">        response.setLotCode(teaLot.getLotCode());</span>
-<span class="nc" id="L45">        response.setShippable(evaluationEngine.isShippable(teaLotId));</span>
-<span class="nc" id="L46">        response.setResults(convertToRuleResults(results));</span>
-<span class="nc" id="L47">        response.setSummary(createEvaluationSummary(results));</span>
-<span class="nc" id="L48">        response.setCheckedAt(java.time.LocalDateTime.now());</span>
+<span class="fc" id="L42">        ComplianceCheckResponse response = new ComplianceCheckResponse();</span>
+<span class="fc" id="L43">        response.setTeaLotId(teaLotId);</span>
+<span class="fc" id="L44">        response.setLotCode(teaLot.getLotCode());</span>
+<span class="fc" id="L45">        response.setShippable(evaluationEngine.isShippable(teaLotId));</span>
+<span class="fc" id="L46">        response.setResults(convertToRuleResults(results));</span>
+<span class="fc" id="L47">        response.setSummary(createEvaluationSummary(results));</span>
+<span class="fc" id="L48">        response.setCheckedAt(java.time.LocalDateTime.now());</span>
         
-<span class="nc" id="L50">        return response;</span>
+<span class="fc" id="L50">        return response;</span>
     }
     
     public List&lt;ComplianceResult&gt; getComplianceResults(Long teaLotId) {
-<span class="nc" id="L54">        return resultRepository.findByTeaLotId(teaLotId);</span>
+<span class="fc" id="L54">        return resultRepository.findByTeaLotId(teaLotId);</span>
     }
     
     private List&lt;ComplianceCheckResponse.RuleResult&gt; convertToRuleResults(List&lt;ComplianceResult&gt; results) {
-<span class="nc" id="L58">        Map&lt;String, com.teacompliance.domain.ComplianceRule&gt; ruleMap = ruleRepository.findAll().stream()</span>
-<span class="nc" id="L59">            .collect(Collectors.toMap(com.teacompliance.domain.ComplianceRule::getRuleCode, rule -&gt; rule));</span>
+<span class="fc" id="L58">        Map&lt;String, com.teacompliance.domain.ComplianceRule&gt; ruleMap = ruleRepository.findAll().stream()</span>
+<span class="fc" id="L59">            .collect(Collectors.toMap(com.teacompliance.domain.ComplianceRule::getRuleCode, rule -&gt; rule));</span>
         
-<span class="nc" id="L61">        return results.stream().map(result -&gt; {</span>
-<span class="nc" id="L62">            ComplianceCheckResponse.RuleResult ruleResult = new ComplianceCheckResponse.RuleResult();</span>
-<span class="nc" id="L63">            ruleResult.setRuleCode(result.getRuleCode());</span>
+<span class="fc" id="L61">        return results.stream().map(result -&gt; {</span>
+<span class="fc" id="L62">            ComplianceCheckResponse.RuleResult ruleResult = new ComplianceCheckResponse.RuleResult();</span>
+<span class="fc" id="L63">            ruleResult.setRuleCode(result.getRuleCode());</span>
             
-<span class="nc" id="L65">            com.teacompliance.domain.ComplianceRule rule = ruleMap.get(result.getRuleCode());</span>
-<span class="nc bnc" id="L66" title="All 2 branches missed.">            if (rule != null) {</span>
-<span class="nc" id="L67">                ruleResult.setDescription(rule.getDescription());</span>
-<span class="nc" id="L68">                ruleResult.setRuleType(rule.getRuleType());</span>
+<span class="fc" id="L65">            com.teacompliance.domain.ComplianceRule rule = ruleMap.get(result.getRuleCode());</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            if (rule != null) {</span>
+<span class="fc" id="L67">                ruleResult.setDescription(rule.getDescription());</span>
+<span class="fc" id="L68">                ruleResult.setRuleType(rule.getRuleType());</span>
             }
             
-<span class="nc" id="L71">            ruleResult.setResult(result.getResult());</span>
-<span class="nc" id="L72">            ruleResult.setSeverity(result.getSeverity());</span>
-<span class="nc" id="L73">            ruleResult.setMessage(result.getMessage());</span>
-<span class="nc" id="L74">            ruleResult.setEvaluatedAt(result.getEvaluatedAt());</span>
+<span class="fc" id="L71">            ruleResult.setResult(result.getResult());</span>
+<span class="fc" id="L72">            ruleResult.setSeverity(result.getSeverity());</span>
+<span class="fc" id="L73">            ruleResult.setMessage(result.getMessage());</span>
+<span class="fc" id="L74">            ruleResult.setEvaluatedAt(result.getEvaluatedAt());</span>
             
-<span class="nc" id="L76">            return ruleResult;</span>
-<span class="nc" id="L77">        }).collect(Collectors.toList());</span>
+<span class="fc" id="L76">            return ruleResult;</span>
+<span class="fc" id="L77">        }).collect(Collectors.toList());</span>
     }
     
     private ComplianceCheckResponse.EvaluationSummary createEvaluationSummary(List&lt;ComplianceResult&gt; results) {
-<span class="nc" id="L81">        ComplianceCheckResponse.EvaluationSummary summary = new ComplianceCheckResponse.EvaluationSummary();</span>
+<span class="fc" id="L81">        ComplianceCheckResponse.EvaluationSummary summary = new ComplianceCheckResponse.EvaluationSummary();</span>
         
-<span class="nc" id="L83">        summary.setTotalRules(results.size());</span>
-<span class="nc" id="L84">        summary.setPassedRules((int) results.stream()</span>
-<span class="nc bnc" id="L85" title="All 2 branches missed.">            .filter(r -&gt; r.getResult() == ComplianceResult.EvaluationResult.PASS).count());</span>
-<span class="nc" id="L86">        summary.setFailedRules((int) results.stream()</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">            .filter(r -&gt; r.getResult() == ComplianceResult.EvaluationResult.FAIL).count());</span>
-<span class="nc" id="L88">        summary.setBlockFailures((int) results.stream()</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">            .filter(r -&gt; r.getSeverity() == com.teacompliance.domain.ComplianceRule.Severity.BLOCK </span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">                &amp;&amp; r.getResult() == ComplianceResult.EvaluationResult.FAIL).count());</span>
-<span class="nc" id="L91">        summary.setWarnings((int) results.stream()</span>
-<span class="nc bnc" id="L92" title="All 2 branches missed.">            .filter(r -&gt; r.getSeverity() == com.teacompliance.domain.ComplianceRule.Severity.WARNING).count());</span>
-<span class="nc" id="L93">        summary.setInfos((int) results.stream()</span>
-<span class="nc bnc" id="L94" title="All 2 branches missed.">            .filter(r -&gt; r.getSeverity() == com.teacompliance.domain.ComplianceRule.Severity.INFO).count());</span>
+<span class="fc" id="L83">        summary.setTotalRules(results.size());</span>
+<span class="fc" id="L84">        summary.setPassedRules((int) results.stream()</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">            .filter(r -&gt; r.getResult() == ComplianceResult.EvaluationResult.PASS).count());</span>
+<span class="fc" id="L86">        summary.setFailedRules((int) results.stream()</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">            .filter(r -&gt; r.getResult() == ComplianceResult.EvaluationResult.FAIL).count());</span>
+<span class="fc" id="L88">        summary.setBlockFailures((int) results.stream()</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            .filter(r -&gt; r.getSeverity() == com.teacompliance.domain.ComplianceRule.Severity.BLOCK </span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">                &amp;&amp; r.getResult() == ComplianceResult.EvaluationResult.FAIL).count());</span>
+<span class="fc" id="L91">        summary.setWarnings((int) results.stream()</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            .filter(r -&gt; r.getSeverity() == com.teacompliance.domain.ComplianceRule.Severity.WARNING).count());</span>
+<span class="fc" id="L93">        summary.setInfos((int) results.stream()</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            .filter(r -&gt; r.getSeverity() == com.teacompliance.domain.ComplianceRule.Severity.INFO).count());</span>
         
-<span class="nc" id="L96">        return summary;</span>
+<span class="fc" id="L96">        return summary;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

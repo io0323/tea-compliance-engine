@@ -41,19 +41,19 @@ public class ComplianceRule {
     
     // 全項目コンストラクタ
     public ComplianceRule(Long id, String ruleCode, String description, 
-<span class="nc" id="L44">                         RuleType ruleType, Double threshold, ComparisonOperator operator, Severity severity) {</span>
-<span class="nc" id="L45">        this.id = id;</span>
-<span class="nc" id="L46">        this.ruleCode = ruleCode;</span>
-<span class="nc" id="L47">        this.description = description;</span>
-<span class="nc" id="L48">        this.ruleType = ruleType;</span>
-<span class="nc" id="L49">        this.threshold = threshold;</span>
-<span class="nc" id="L50">        this.operator = operator;</span>
-<span class="nc" id="L51">        this.severity = severity;</span>
-<span class="nc" id="L52">    }</span>
+<span class="fc" id="L44">                         RuleType ruleType, Double threshold, ComparisonOperator operator, Severity severity) {</span>
+<span class="fc" id="L45">        this.id = id;</span>
+<span class="fc" id="L46">        this.ruleCode = ruleCode;</span>
+<span class="fc" id="L47">        this.description = description;</span>
+<span class="fc" id="L48">        this.ruleType = ruleType;</span>
+<span class="fc" id="L49">        this.threshold = threshold;</span>
+<span class="fc" id="L50">        this.operator = operator;</span>
+<span class="fc" id="L51">        this.severity = severity;</span>
+<span class="fc" id="L52">    }</span>
     
     // GetterとSetter
-<span class="nc" id="L55">    public Long getId() { return id; }</span>
-<span class="nc" id="L56">    public void setId(Long id) { this.id = id; }</span>
+<span class="fc" id="L55">    public Long getId() { return id; }</span>
+<span class="fc" id="L56">    public void setId(Long id) { this.id = id; }</span>
     
 <span class="fc" id="L58">    public String getRuleCode() { return ruleCode; }</span>
 <span class="fc" id="L59">    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }</span>
@@ -61,16 +61,16 @@ public class ComplianceRule {
 <span class="fc" id="L61">    public String getDescription() { return description; }</span>
 <span class="fc" id="L62">    public void setDescription(String description) { this.description = description; }</span>
     
-<span class="nc" id="L64">    public RuleType getRuleType() { return ruleType; }</span>
+<span class="fc" id="L64">    public RuleType getRuleType() { return ruleType; }</span>
 <span class="fc" id="L65">    public void setRuleType(RuleType ruleType) { this.ruleType = ruleType; }</span>
     
-<span class="nc" id="L67">    public Double getThreshold() { return threshold; }</span>
+<span class="fc" id="L67">    public Double getThreshold() { return threshold; }</span>
 <span class="fc" id="L68">    public void setThreshold(Double threshold) { this.threshold = threshold; }</span>
     
-<span class="nc" id="L70">    public ComparisonOperator getOperator() { return operator; }</span>
+<span class="fc" id="L70">    public ComparisonOperator getOperator() { return operator; }</span>
 <span class="fc" id="L71">    public void setOperator(ComparisonOperator operator) { this.operator = operator; }</span>
     
-<span class="nc" id="L73">    public Severity getSeverity() { return severity; }</span>
+<span class="fc" id="L73">    public Severity getSeverity() { return severity; }</span>
 <span class="fc" id="L74">    public void setSeverity(Severity severity) { this.severity = severity; }</span>
     
     /**
@@ -98,7 +98,7 @@ public class ComplianceRule {
 <span class="fc" id="L98">        }</span>
         
         public String getSymbol() {
-<span class="nc" id="L101">            return symbol;</span>
+<span class="fc" id="L101">            return symbol;</span>
         }
     }
     

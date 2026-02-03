@@ -109,49 +109,49 @@ import java.util.stream.Collectors;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleMediaTypeError(
             HttpMediaTypeNotSupportedException ex, WebRequest request) {
         
-<span class="nc" id="L112">        log.warn(&quot;サポートされていないContent-Type: {}&quot;, ex.getMessage());</span>
+<span class="fc" id="L112">        log.warn(&quot;サポートされていないContent-Type: {}&quot;, ex.getMessage());</span>
         
-<span class="nc" id="L114">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L114">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.UNSUPPORTED_MEDIA_TYPE,
             &quot;TC_002&quot;,
             &quot;Content-Type not supported. Please use application/json&quot;,
-<span class="nc" id="L118">            request.getDescription(false)</span>
+<span class="fc" id="L118">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L121">        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);</span>
+<span class="fc" id="L121">        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);</span>
     }
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleValidationError(
             MethodArgumentNotValidException ex, WebRequest request) {
         
-<span class="nc" id="L128">        log.warn(&quot;バリデーションエラー: {}&quot;, ex.getMessage());</span>
+<span class="fc" id="L128">        log.warn(&quot;バリデーションエラー: {}&quot;, ex.getMessage());</span>
         
         // 詳細なフィールドエラーを収集
-<span class="nc" id="L131">        Map&lt;String, String&gt; fieldErrors = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L132">        ex.getBindingResult().getFieldErrors().forEach(error -&gt; </span>
-<span class="nc" id="L133">            fieldErrors.put(error.getField(), error.getDefaultMessage())</span>
+<span class="fc" id="L131">        Map&lt;String, String&gt; fieldErrors = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L132">        ex.getBindingResult().getFieldErrors().forEach(error -&gt; </span>
+<span class="fc" id="L133">            fieldErrors.put(error.getField(), error.getDefaultMessage())</span>
         );
         
         // リスト形式のエラーメッセージも生成
-<span class="nc" id="L137">        List&lt;String&gt; errorMessages = ex.getBindingResult().getFieldErrors()</span>
-<span class="nc" id="L138">            .stream()</span>
-<span class="nc" id="L139">            .map(error -&gt; error.getField() + &quot;: &quot; + error.getDefaultMessage())</span>
-<span class="nc" id="L140">            .collect(Collectors.toList());</span>
+<span class="fc" id="L137">        List&lt;String&gt; errorMessages = ex.getBindingResult().getFieldErrors()</span>
+<span class="fc" id="L138">            .stream()</span>
+<span class="fc" id="L139">            .map(error -&gt; error.getField() + &quot;: &quot; + error.getDefaultMessage())</span>
+<span class="fc" id="L140">            .collect(Collectors.toList());</span>
         
-<span class="nc" id="L142">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L142">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.BAD_REQUEST,
             &quot;TC_003&quot;,
             &quot;Validation failed&quot;,
-<span class="nc" id="L146">            request.getDescription(false)</span>
+<span class="fc" id="L146">            request.getDescription(false)</span>
         );
         
         // フィールドエラーとエラーメッセージリストを追加
-<span class="nc" id="L150">        body.put(&quot;fieldErrors&quot;, fieldErrors);</span>
-<span class="nc" id="L151">        body.put(&quot;errorMessages&quot;, errorMessages);</span>
-<span class="nc" id="L152">        body.put(&quot;errorCount&quot;, errorMessages.size());</span>
+<span class="fc" id="L150">        body.put(&quot;fieldErrors&quot;, fieldErrors);</span>
+<span class="fc" id="L151">        body.put(&quot;errorMessages&quot;, errorMessages);</span>
+<span class="fc" id="L152">        body.put(&quot;errorCount&quot;, errorMessages.size());</span>
         
-<span class="nc" id="L154">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
+<span class="fc" id="L154">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
     }
     
     @ExceptionHandler(IllegalArgumentException.class)
@@ -174,16 +174,16 @@ import java.util.stream.Collectors;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleGlobalException(
             Exception ex, WebRequest request) {
         
-<span class="nc" id="L177">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
+<span class="fc" id="L177">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
         
-<span class="nc" id="L179">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L179">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.INTERNAL_SERVER_ERROR,
             &quot;TC_999&quot;,
             &quot;予期せぬエラーが発生しました&quot;,
-<span class="nc" id="L183">            request.getDescription(false)</span>
+<span class="fc" id="L183">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L186">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
+<span class="fc" id="L186">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
     }
     
     private Map&lt;String, Object&gt; createErrorResponse(
