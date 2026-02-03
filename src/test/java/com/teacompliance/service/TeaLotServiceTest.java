@@ -61,7 +61,7 @@ class TeaLotServiceTest {
     @DisplayName("新しい茶葉ロットが正常に登録されること")
     void testRegisterTeaLot_Success() {
         // Given
-        when(teaLotRepository.findByLotCode("TL-2024-001")).thenReturn(Optional.empty());
+        when(teaLotRepository.existsByLotCode("TL-2024-001")).thenReturn(false);
         when(teaLotRepository.save(any(TeaLot.class))).thenReturn(existingTeaLot);
         
         // When
@@ -73,7 +73,7 @@ class TeaLotServiceTest {
         assertThat(result.getOrigin()).isEqualTo("静岡県");
         assertThat(result.getVariety()).isEqualTo("やぶきた");
         
-        verify(teaLotRepository).findByLotCode("TL-2024-001");
+        verify(teaLotRepository).existsByLotCode("TL-2024-001");
         verify(teaLotRepository).save(any(TeaLot.class));
     }
     
@@ -81,14 +81,14 @@ class TeaLotServiceTest {
     @DisplayName("重複するロットコードの場合に例外がスローされること")
     void testRegisterTeaLot_DuplicateLotCode() {
         // Given
-        when(teaLotRepository.findByLotCode("TL-2024-001")).thenReturn(Optional.of(existingTeaLot));
+        when(teaLotRepository.existsByLotCode("TL-2024-001")).thenReturn(true);
         
         // When & Then
         assertThatThrownBy(() -> teaLotService.registerTeaLot(validRequest))
             .isInstanceOf(DuplicateTeaLotException.class)
             .hasMessageContaining("TL-2024-001");
         
-        verify(teaLotRepository).findByLotCode("TL-2024-001");
+        verify(teaLotRepository).existsByLotCode("TL-2024-001");
         verify(teaLotRepository, never()).save(any(TeaLot.class));
     }
     

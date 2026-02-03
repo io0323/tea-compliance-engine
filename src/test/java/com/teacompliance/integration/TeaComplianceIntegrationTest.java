@@ -100,7 +100,8 @@ class TeaComplianceIntegrationTest {
                 .andExpect(jsonPath("$[0].variety").value("やぶきた"));
         
         // 7. コンプライアンスチェック実行
-        mockMvc.perform(post("/api/compliance/check/" + teaLotId))
+        mockMvc.perform(post("/api/compliance/check/" + teaLotId)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.teaLotId").value(teaLotId))
                 .andExpect(jsonPath("$.lotCode").value("TL-2024-001"))
@@ -210,7 +211,8 @@ class TeaComplianceIntegrationTest {
                 .andExpect(status().isNotFound());
         
         // 存在しない茶葉ロットIDでコンプライアンスチェック
-        mockMvc.perform(post("/api/compliance/check/999"))
+        mockMvc.perform(post("/api/compliance/check/999")
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
         
         // 存在しない茶葉ロットIDで評価結果取得

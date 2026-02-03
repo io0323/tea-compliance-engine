@@ -12,6 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +32,7 @@ public class ComplianceController {
         this.complianceService = complianceService;
     }
     
-    @PostMapping("/check/{teaLotId}")
+    @PostMapping(value = "/check/{teaLotId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "コンプライアンスチェック実行", description = "指定された茶葉ロットに対して全ルールを評価する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "評価成功", 
@@ -56,7 +58,7 @@ public class ComplianceController {
         }
     }
     
-    @GetMapping("/results/{teaLotId}")
+    @GetMapping(value = "/results/{teaLotId}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "評価結果取得", description = "指定された茶葉ロットの評価結果一覧を取得する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "取得成功"),

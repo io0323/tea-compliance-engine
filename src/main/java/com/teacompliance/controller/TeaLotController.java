@@ -14,6 +14,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class TeaLotController {
         this.teaLotService = teaLotService;
     }
     
-    @PostMapping
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "茶葉ロット登録", description = "新しい茶葉ロットを登録する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "登録成功", 
@@ -55,7 +56,7 @@ public class TeaLotController {
         }
     }
     
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "全茶葉ロット取得", description = "登録されている全ての茶葉ロットを取得する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "取得成功")
@@ -65,7 +66,7 @@ public class TeaLotController {
         return ResponseEntity.ok(teaLots);
     }
     
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "IDで茶葉ロット取得", description = "指定されたIDの茶葉ロットを取得する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "取得成功"),
@@ -79,7 +80,7 @@ public class TeaLotController {
                    .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping("/by-code/{lotCode}")
+    @GetMapping(value = "/by-code/{lotCode}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "ロットコードで茶葉ロット取得", description = "指定されたロットコードの茶葉ロットを取得する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "取得成功"),
@@ -93,7 +94,7 @@ public class TeaLotController {
                    .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping("/by-origin")
+    @GetMapping(value = "/by-origin", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "産地で茶葉ロット検索", description = "指定された産地の茶葉ロットを検索する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "検索成功")
@@ -105,7 +106,7 @@ public class TeaLotController {
         return ResponseEntity.ok(teaLots);
     }
     
-    @GetMapping("/by-variety")
+    @GetMapping(value = "/by-variety", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "品種で茶葉ロット検索", description = "指定された品種の茶葉ロットを検索する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "検索成功")

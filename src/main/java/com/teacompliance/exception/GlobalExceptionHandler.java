@@ -4,6 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -45,7 +48,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> body = createErrorResponse(
             HttpStatus.CONFLICT,
             ex.getErrorCode(),
-            ex.getMessage(),
+            "茶葉ロットが既に存在します: " + ex.getMessage(),
             request.getDescription(false)
         );
         
@@ -82,6 +85,54 @@ public class GlobalExceptionHandler {
         );
         
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
+    }
+    
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> handleJsonParseError(
+            HttpMessageNotReadableException ex, WebRequest request) {
+        
+        log.warn("不正なJSON形式: {}", ex.getMessage());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.BAD_REQUEST,
+            "TC_001",
+            "Invalid JSON: " + ex.getMessage(),
+            request.getDescription(false)
+        );
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<Map<String, Object>> handleMediaTypeError(
+            HttpMediaTypeNotSupportedException ex, WebRequest request) {
+        
+        log.warn("サポートされていないContent-Type: {}", ex.getMessage());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
+            "TC_002",
+            "Content-Type not supported: " + ex.getMessage(),
+            request.getDescription(false)
+        );
+        
+        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handleValidationError(
+            MethodArgumentNotValidException ex, WebRequest request) {
+        
+        log.warn("バリデーションエラー: {}", ex.getMessage());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.BAD_REQUEST,
+            "TC_003",
+            "Validation failed: " + ex.getMessage(),
+            request.getDescription(false)
+        );
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
     
     @ExceptionHandler(IllegalArgumentException.class)

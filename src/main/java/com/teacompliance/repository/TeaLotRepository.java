@@ -24,6 +24,14 @@ public interface TeaLotRepository extends JpaRepository<TeaLot, Long> {
     Optional<TeaLot> findByLotCode(String lotCode);
     
     /**
+     * ロットコードの存在確認
+     * 
+     * @param lotCode ロットコード
+     * @return 存在する場合はtrue
+     */
+    boolean existsByLotCode(String lotCode);
+    
+    /**
      * 産地で検索
      * 
      * @param origin 産地
