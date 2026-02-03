@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.teacompliance.integration.TeaComplianceIntegrationTest" time="12.834" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.teacompliance.integration.TeaComplianceIntegrationTest" time="21.311" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="JP"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/24.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260203101125137_3.jar /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire 2026-02-03T10-11-24_961-jvmRun1 surefire-20260203101125137_1tmp surefire_0-20260203101125137_2tmp"/>
+    <property name="sun.java.command" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260203134838736_3.jar /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire 2026-02-03T13-48-38_491-jvmRun1 surefire-20260203134838736_1tmp surefire_0-20260203134838736_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="TeaComplianceIntegrationTest#testValidationErrors"/>
@@ -34,7 +34,7 @@
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260203101125137_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260203134838736_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="24.0.1"/>
@@ -54,7 +54,7 @@
     <property name="user.dir" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="62477"/>
+    <property name="PID" value="10462"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/io/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
@@ -67,9 +67,9 @@
     <property name="java.class.version" value="68.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[tea-compliance-engine] "/>
   </properties>
-  <testcase name="testValidationErrors" classname="com.teacompliance.integration.TeaComplianceIntegrationTest" time="0.926">
-    <system-out><![CDATA[10:11:27.523 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.teacompliance.integration.TeaComplianceIntegrationTest]: TeaComplianceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-10:11:27.720 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.teacompliance.TeaComplianceApplication for test class com.teacompliance.integration.TeaComplianceIntegrationTest
+  <testcase name="testValidationErrors" classname="com.teacompliance.integration.TeaComplianceIntegrationTest" time="2.859">
+    <system-out><![CDATA[13:48:44.044 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.teacompliance.integration.TeaComplianceIntegrationTest]: TeaComplianceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:48:44.470 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.teacompliance.TeaComplianceApplication for test class com.teacompliance.integration.TeaComplianceIntegrationTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -79,34 +79,34 @@
  =========|_|==============|___/=/_/_/_/
 &amp#27;[32m :: Spring Boot :: &amp#27;[39m              &amp#27;[2m (v3.2.0)&amp#27;[0;39m
 
-&amp#27;[2m2026-02-03T10:11:28.777+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.i.TeaComplianceIntegrationTest      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Starting TeaComplianceIntegrationTest using Java 24.0.1 with PID 62477 (started by io in /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine)
-&amp#27;[2m2026-02-03T10:11:28.780+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.i.TeaComplianceIntegrationTest      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m The following 1 profile is active: "test"
-&amp#27;[2m2026-02-03T10:11:31.373+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36m.s.d.r.c.RepositoryConfigurationDelegate&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-&amp#27;[2m2026-02-03T10:11:31.504+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36m.s.d.r.c.RepositoryConfigurationDelegate&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Finished Spring Data repository scanning in 121 ms. Found 3 JPA repository interfaces.
-&amp#27;[2m2026-02-03T10:11:33.029+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.hibernate.jpa.internal.util.LogHelper &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000204: Processing PersistenceUnitInfo [name: default]
-&amp#27;[2m2026-02-03T10:11:33.120+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36morg.hibernate.Version                   &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000412: Hibernate ORM core version 6.3.1.Final
-&amp#27;[2m2026-02-03T10:11:33.162+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.h.c.internal.RegionFactoryInitiator   &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000026: Second-level cache disabled
-&amp#27;[2m2026-02-03T10:11:33.515+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.o.j.p.SpringPersistenceUnitInfo     &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m No LoadTimeWeaver setup: ignoring JPA class transformer
-&amp#27;[2m2026-02-03T10:11:33.557+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mcom.zaxxer.hikari.HikariDataSource      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HikariPool-1 - Starting...
-&amp#27;[2m2026-02-03T10:11:33.917+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mcom.zaxxer.hikari.pool.HikariPool       &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:teacompliance_test user=SA
-&amp#27;[2m2026-02-03T10:11:33.920+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mcom.zaxxer.hikari.HikariDataSource      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HikariPool-1 - Start completed.
-&amp#27;[2m2026-02-03T10:11:33.958+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36morg.hibernate.orm.deprecation           &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-&amp#27;[2m2026-02-03T10:11:35.521+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.h.e.t.j.p.i.JtaPlatformInitiator      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-&amp#27;[2m2026-02-03T10:11:35.630+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mj.LocalContainerEntityManagerFactoryBean&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Initialized JPA EntityManagerFactory for persistence unit 'default'
-&amp#27;[2m2026-02-03T10:11:36.212+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.d.j.r.query.QueryEnhancerFactory    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Hibernate is in classpath; If applicable, HQL parser will be used.
-&amp#27;[2m2026-02-03T10:11:37.936+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mJpaBaseConfiguration$JpaWebConfiguration&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-&amp#27;[2m2026-02-03T10:11:38.697+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.i.TeaComplianceIntegrationTest      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Started TeaComplianceIntegrationTest in 10.76 seconds (process running for 13.382)
-&amp#27;[2m2026-02-03T10:11:38.863+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m 茶葉ロット初期データ投入開始
-&amp#27;[2m2026-02-03T10:11:38.959+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m 茶葉ロット初期データ投入完了: 5件
-&amp#27;[2m2026-02-03T10:11:38.978+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m コンプライアンスルール初期データ投入開始
-&amp#27;[2m2026-02-03T10:11:38.998+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m コンプライアンスルール初期データ投入完了: 5件
-&amp#27;[2m2026-02-03T10:11:39.003+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m 初期データ投入完了 - 茶葉ロット: 5件, ルール: 5件
-&amp#27;[2m2026-02-03T10:11:39.612+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.b.t.m.w.SpringBootMockServletContext&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Initializing Spring TestDispatcherServlet ''
-&amp#27;[2m2026-02-03T10:11:39.613+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.t.web.servlet.TestDispatcherServlet &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Initializing Servlet ''
-&amp#27;[2m2026-02-03T10:11:39.617+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.t.web.servlet.TestDispatcherServlet &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Completed initialization in 3 ms
-&amp#27;[2m2026-02-03T10:11:39.898+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.exception.GlobalExceptionHandler    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m バリデーションエラー: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.teacompliance.domain.TeaLot> com.teacompliance.controller.TeaLotController.registerTeaLot(com.teacompliance.dto.TeaLotRequest) with 11 errors: [Field error in object 'teaLotRequest' on field 'lotCode': rejected value []; codes [ValidLotCode.teaLotRequest.lotCode,ValidLotCode.lotCode,ValidLotCode.java.lang.String,ValidLotCode]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.lotCode,lotCode]; arguments []; default message [lotCode]]; default message [ロットコードの形式が正しくありません。形式: TL-YYYY-NNN]] [Field error in object 'teaLotRequest' on field 'pesticideLevel': rejected value [null]; codes [NotNull.teaLotRequest.pesticideLevel,NotNull.pesticideLevel,NotNull.java.lang.Double,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.pesticideLevel,pesticideLevel]; arguments []; default message [pesticideLevel]]; default message [農薬レベルは必須です]] [Field error in object 'teaLotRequest' on field 'aromaScore': rejected value [null]; codes [NotNull.teaLotRequest.aromaScore,NotNull.aromaScore,NotNull.java.lang.Integer,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.aromaScore,aromaScore]; arguments []; default message [aromaScore]]; default message [香りスコアは必須です]] [Field error in object 'teaLotRequest' on field 'variety': rejected value []; codes [NotBlank.teaLotRequest.variety,NotBlank.variety,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.variety,variety]; arguments []; default message [variety]]; default message [品種は必須です]] [Field error in object 'teaLotRequest' on field 'pesticideLevel': rejected value [null]; codes [ValidPesticideLevel.teaLotRequest.pesticideLevel,ValidPesticideLevel.pesticideLevel,ValidPesticideLevel.java.lang.Double,ValidPesticideLevel]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.pesticideLevel,pesticideLevel]; arguments []; default message [pesticideLevel],10.0]; default message [農薬レベルは0.0以上10.0以下である必要があります]] [Field error in object 'teaLotRequest' on field 'producedAt': rejected value [null]; codes [NotNull.teaLotRequest.producedAt,NotNull.producedAt,NotNull.java.time.LocalDate,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.producedAt,producedAt]; arguments []; default message [producedAt]]; default message [生産日は必須です]] [Field error in object 'teaLotRequest' on field 'origin': rejected value []; codes [Size.teaLotRequest.origin,Size.origin,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.origin,origin]; arguments []; default message [origin],50,1]; default message [産地は1文字以上50文字以下である必要があります]] [Field error in object 'teaLotRequest' on field 'variety': rejected value []; codes [Size.teaLotRequest.variety,Size.variety,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.variety,variety]; arguments []; default message [variety],50,1]; default message [品種は1文字以上50文字以下である必要があります]] [Field error in object 'teaLotRequest' on field 'moisture': rejected value [null]; codes [NotNull.teaLotRequest.moisture,NotNull.moisture,NotNull.java.lang.Double,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.moisture,moisture]; arguments []; default message [moisture]]; default message [水分量は必須です]] [Field error in object 'teaLotRequest' on field 'lotCode': rejected value []; codes [NotBlank.teaLotRequest.lotCode,NotBlank.lotCode,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.lotCode,lotCode]; arguments []; default message [lotCode]]; default message [ロットコードは必須です]] [Field error in object 'teaLotRequest' on field 'origin': rejected value []; codes [NotBlank.teaLotRequest.origin,NotBlank.origin,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.origin,origin]; arguments []; default message [origin]]; default message [産地は必須です]] 
-&amp#27;[2m2026-02-03T10:11:39.944+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.exception.GlobalExceptionHandler    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m バリデーションエラー: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.teacompliance.domain.TeaLot> com.teacompliance.controller.TeaLotController.registerTeaLot(com.teacompliance.dto.TeaLotRequest): [Field error in object 'teaLotRequest' on field 'lotCode': rejected value [INVALID-CODE]; codes [ValidLotCode.teaLotRequest.lotCode,ValidLotCode.lotCode,ValidLotCode.java.lang.String,ValidLotCode]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.lotCode,lotCode]; arguments []; default message [lotCode]]; default message [ロットコードの形式が正しくありません。形式: TL-YYYY-NNN]] 
-&amp#27;[2m2026-02-03T10:11:39.950+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m62477&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.exception.GlobalExceptionHandler    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m バリデーションエラー: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.teacompliance.domain.TeaLot> com.teacompliance.controller.TeaLotController.registerTeaLot(com.teacompliance.dto.TeaLotRequest): [Field error in object 'teaLotRequest' on field 'moisture': rejected value [150.0]; codes [DecimalMax.teaLotRequest.moisture,DecimalMax.moisture,DecimalMax.java.lang.Double,DecimalMax]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.moisture,moisture]; arguments []; default message [moisture],true,100.0]; default message [水分量は100%以下である必要があります]] 
+&amp#27;[2m2026-02-03T13:48:46.361+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.i.TeaComplianceIntegrationTest      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Starting TeaComplianceIntegrationTest using Java 24.0.1 with PID 10462 (started by io in /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine)
+&amp#27;[2m2026-02-03T13:48:46.365+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.i.TeaComplianceIntegrationTest      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m The following 1 profile is active: "test"
+&amp#27;[2m2026-02-03T13:48:50.029+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36m.s.d.r.c.RepositoryConfigurationDelegate&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+&amp#27;[2m2026-02-03T13:48:50.337+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36m.s.d.r.c.RepositoryConfigurationDelegate&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Finished Spring Data repository scanning in 281 ms. Found 3 JPA repository interfaces.
+&amp#27;[2m2026-02-03T13:48:52.623+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.hibernate.jpa.internal.util.LogHelper &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000204: Processing PersistenceUnitInfo [name: default]
+&amp#27;[2m2026-02-03T13:48:52.762+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36morg.hibernate.Version                   &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000412: Hibernate ORM core version 6.3.1.Final
+&amp#27;[2m2026-02-03T13:48:52.843+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.h.c.internal.RegionFactoryInitiator   &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000026: Second-level cache disabled
+&amp#27;[2m2026-02-03T13:48:53.461+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.o.j.p.SpringPersistenceUnitInfo     &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m No LoadTimeWeaver setup: ignoring JPA class transformer
+&amp#27;[2m2026-02-03T13:48:53.530+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mcom.zaxxer.hikari.HikariDataSource      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HikariPool-1 - Starting...
+&amp#27;[2m2026-02-03T13:48:54.228+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mcom.zaxxer.hikari.pool.HikariPool       &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:teacompliance_test user=SA
+&amp#27;[2m2026-02-03T13:48:54.235+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mcom.zaxxer.hikari.HikariDataSource      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HikariPool-1 - Start completed.
+&amp#27;[2m2026-02-03T13:48:54.312+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36morg.hibernate.orm.deprecation           &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+&amp#27;[2m2026-02-03T13:48:56.480+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.h.e.t.j.p.i.JtaPlatformInitiator      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+&amp#27;[2m2026-02-03T13:48:56.632+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mj.LocalContainerEntityManagerFactoryBean&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Initialized JPA EntityManagerFactory for persistence unit 'default'
+&amp#27;[2m2026-02-03T13:48:57.678+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.d.j.r.query.QueryEnhancerFactory    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Hibernate is in classpath; If applicable, HQL parser will be used.
+&amp#27;[2m2026-02-03T13:49:00.148+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mJpaBaseConfiguration$JpaWebConfiguration&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+&amp#27;[2m2026-02-03T13:49:01.305+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.i.TeaComplianceIntegrationTest      &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Started TeaComplianceIntegrationTest in 16.391 seconds (process running for 20.93)
+&amp#27;[2m2026-02-03T13:49:01.532+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m 茶葉ロット初期データ投入開始
+&amp#27;[2m2026-02-03T13:49:01.668+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m 茶葉ロット初期データ投入完了: 5件
+&amp#27;[2m2026-02-03T13:49:01.699+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m コンプライアンスルール初期データ投入開始
+&amp#27;[2m2026-02-03T13:49:01.729+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m コンプライアンスルール初期データ投入完了: 5件
+&amp#27;[2m2026-02-03T13:49:01.736+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.teacompliance.config.DataInitializer  &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m 初期データ投入完了 - 茶葉ロット: 5件, ルール: 5件
+&amp#27;[2m2026-02-03T13:49:03.844+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.b.t.m.w.SpringBootMockServletContext&amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Initializing Spring TestDispatcherServlet ''
+&amp#27;[2m2026-02-03T13:49:03.846+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.t.web.servlet.TestDispatcherServlet &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Initializing Servlet ''
+&amp#27;[2m2026-02-03T13:49:03.854+09:00&amp#27;[0;39m &amp#27;[32m INFO&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mo.s.t.web.servlet.TestDispatcherServlet &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m Completed initialization in 5 ms
+&amp#27;[2m2026-02-03T13:49:04.603+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.exception.GlobalExceptionHandler    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m バリデーションエラー: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.teacompliance.domain.TeaLot> com.teacompliance.controller.TeaLotController.registerTeaLot(com.teacompliance.dto.TeaLotRequest) with 11 errors: [Field error in object 'teaLotRequest' on field 'lotCode': rejected value []; codes [NotBlank.teaLotRequest.lotCode,NotBlank.lotCode,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.lotCode,lotCode]; arguments []; default message [lotCode]]; default message [ロットコードは必須です]] [Field error in object 'teaLotRequest' on field 'origin': rejected value []; codes [NotBlank.teaLotRequest.origin,NotBlank.origin,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.origin,origin]; arguments []; default message [origin]]; default message [産地は必須です]] [Field error in object 'teaLotRequest' on field 'aromaScore': rejected value [null]; codes [NotNull.teaLotRequest.aromaScore,NotNull.aromaScore,NotNull.java.lang.Integer,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.aromaScore,aromaScore]; arguments []; default message [aromaScore]]; default message [香りスコアは必須です]] [Field error in object 'teaLotRequest' on field 'pesticideLevel': rejected value [null]; codes [ValidPesticideLevel.teaLotRequest.pesticideLevel,ValidPesticideLevel.pesticideLevel,ValidPesticideLevel.java.lang.Double,ValidPesticideLevel]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.pesticideLevel,pesticideLevel]; arguments []; default message [pesticideLevel],10.0]; default message [農薬レベルは0.0以上10.0以下である必要があります]] [Field error in object 'teaLotRequest' on field 'moisture': rejected value [null]; codes [NotNull.teaLotRequest.moisture,NotNull.moisture,NotNull.java.lang.Double,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.moisture,moisture]; arguments []; default message [moisture]]; default message [水分量は必須です]] [Field error in object 'teaLotRequest' on field 'origin': rejected value []; codes [Size.teaLotRequest.origin,Size.origin,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.origin,origin]; arguments []; default message [origin],50,1]; default message [産地は1文字以上50文字以下である必要があります]] [Field error in object 'teaLotRequest' on field 'variety': rejected value []; codes [Size.teaLotRequest.variety,Size.variety,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.variety,variety]; arguments []; default message [variety],50,1]; default message [品種は1文字以上50文字以下である必要があります]] [Field error in object 'teaLotRequest' on field 'variety': rejected value []; codes [NotBlank.teaLotRequest.variety,NotBlank.variety,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.variety,variety]; arguments []; default message [variety]]; default message [品種は必須です]] [Field error in object 'teaLotRequest' on field 'producedAt': rejected value [null]; codes [NotNull.teaLotRequest.producedAt,NotNull.producedAt,NotNull.java.time.LocalDate,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.producedAt,producedAt]; arguments []; default message [producedAt]]; default message [生産日は必須です]] [Field error in object 'teaLotRequest' on field 'lotCode': rejected value []; codes [ValidLotCode.teaLotRequest.lotCode,ValidLotCode.lotCode,ValidLotCode.java.lang.String,ValidLotCode]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.lotCode,lotCode]; arguments []; default message [lotCode]]; default message [ロットコードの形式が正しくありません。形式: TL-YYYY-NNN]] [Field error in object 'teaLotRequest' on field 'pesticideLevel': rejected value [null]; codes [NotNull.teaLotRequest.pesticideLevel,NotNull.pesticideLevel,NotNull.java.lang.Double,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.pesticideLevel,pesticideLevel]; arguments []; default message [pesticideLevel]]; default message [農薬レベルは必須です]] 
+&amp#27;[2m2026-02-03T13:49:04.664+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.exception.GlobalExceptionHandler    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m バリデーションエラー: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.teacompliance.domain.TeaLot> com.teacompliance.controller.TeaLotController.registerTeaLot(com.teacompliance.dto.TeaLotRequest): [Field error in object 'teaLotRequest' on field 'lotCode': rejected value [INVALID-CODE]; codes [ValidLotCode.teaLotRequest.lotCode,ValidLotCode.lotCode,ValidLotCode.java.lang.String,ValidLotCode]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.lotCode,lotCode]; arguments []; default message [lotCode]]; default message [ロットコードの形式が正しくありません。形式: TL-YYYY-NNN]] 
+&amp#27;[2m2026-02-03T13:49:04.674+09:00&amp#27;[0;39m &amp#27;[33m WARN&amp#27;[0;39m &amp#27;[35m10462&amp#27;[0;39m &amp#27;[2m---&amp#27;[0;39m &amp#27;[2m[tea-compliance-engine] [           main]&amp#27;[0;39m &amp#27;[2m&amp#27;[0;39m&amp#27;[36mc.t.exception.GlobalExceptionHandler    &amp#27;[0;39m &amp#27;[2m:&amp#27;[0;39m バリデーションエラー: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.teacompliance.domain.TeaLot> com.teacompliance.controller.TeaLotController.registerTeaLot(com.teacompliance.dto.TeaLotRequest): [Field error in object 'teaLotRequest' on field 'moisture': rejected value [150.0]; codes [DecimalMax.teaLotRequest.moisture,DecimalMax.moisture,DecimalMax.java.lang.Double,DecimalMax]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teaLotRequest.moisture,moisture]; arguments []; default message [moisture],true,100.0]; default message [水分量は100%以下である必要があります]] 
 ]]></system-out>
     <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting java/sql/Date with JaCoCo 0.8.8.202204050719/5dcf34a.
 	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
@@ -1012,6 +1012,101 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
 	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
 	... 37 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:595)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:755)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
+	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
+	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:317)
+	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:235)
+	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:211)
+	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:311)
+	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:328)
+	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
+	at java.base/java.security.Security.getProviders(Security.java:533)
+	at java.base/java.security.Security.getAlgorithms(Security.java:1011)
+	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:49)
+	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
+	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:31)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+Caused by: java.io.IOException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 30 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 31 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL$ProviderService with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:604)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:578)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3035)
+	at java.base/java.lang.Class.getDeclaredPublicMethods(Class.java:2440)
+	at java.base/java.lang.System$1.getDeclaredPublicMethods(System.java:1977)
+	at java.base/java.util.ServiceLoader.findStaticProviderMethod(ServiceLoader.java:586)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:770)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
+	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
+	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:317)
+	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:235)
+	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:211)
+	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:311)
+	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:328)
+	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
+	at java.base/java.security.Security.getProviders(Security.java:533)
+	at java.base/java.security.Security.getAlgorithms(Security.java:1011)
+	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:49)
+	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
+	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:31)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
+	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+Caused by: java.io.IOException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL$ProviderService with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 35 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 36 more
 java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/security/smartcardio/SunPCSC with JaCoCo 0.8.8.202204050719/5dcf34a.
 	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
@@ -1641,101 +1736,6 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
 	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
 	... 40 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL with JaCoCo 0.8.8.202204050719/5dcf34a.
-	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
-	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
-	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
-	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
-	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
-	at java.base/java.lang.Class.forName(Class.java:595)
-	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:755)
-	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
-	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
-	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
-	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:317)
-	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:235)
-	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:211)
-	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:311)
-	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:328)
-	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
-	at java.base/java.security.Security.getProviders(Security.java:533)
-	at java.base/java.security.Security.getAlgorithms(Security.java:1011)
-	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:49)
-	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
-	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:31)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
-	at java.base/java.lang.Thread.run(Thread.java:1447)
-Caused by: java.io.IOException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL with JaCoCo 0.8.8.202204050719/5dcf34a.
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
-	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
-	... 30 more
-Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
-	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
-	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
-	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
-	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
-	... 31 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL$ProviderService with JaCoCo 0.8.8.202204050719/5dcf34a.
-	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
-	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
-	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
-	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
-	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:578)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
-	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3035)
-	at java.base/java.lang.Class.getDeclaredPublicMethods(Class.java:2440)
-	at java.base/java.lang.System$1.getDeclaredPublicMethods(System.java:1977)
-	at java.base/java.util.ServiceLoader.findStaticProviderMethod(ServiceLoader.java:586)
-	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:770)
-	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
-	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
-	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
-	at java.base/sun.security.jca.ProviderConfig$ProviderLoader.load(ProviderConfig.java:317)
-	at java.base/sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:235)
-	at java.base/sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:211)
-	at java.base/sun.security.jca.ProviderList.loadAll(ProviderList.java:311)
-	at java.base/sun.security.jca.ProviderList.removeInvalid(ProviderList.java:328)
-	at java.base/sun.security.jca.Providers.getFullProviderList(Providers.java:186)
-	at java.base/java.security.Security.getProviders(Security.java:533)
-	at java.base/java.security.Security.getAlgorithms(Security.java:1011)
-	at org.apache.catalina.util.SessionIdGeneratorBase.<clinit>(SessionIdGeneratorBase.java:49)
-	at org.apache.catalina.authenticator.AuthenticatorBase.<init>(AuthenticatorBase.java:189)
-	at org.apache.catalina.authenticator.NonLoginAuthenticator.<init>(NonLoginAuthenticator.java:31)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$TomcatInitializer.run(BackgroundPreinitializer.java:202)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.runSafely(BackgroundPreinitializer.java:120)
-	at org.springframework.boot.autoconfigure.BackgroundPreinitializer$1.run(BackgroundPreinitializer.java:113)
-	at java.base/java.lang.Thread.run(Thread.java:1447)
-Caused by: java.io.IOException: Error while instrumenting com/sun/security/sasl/gsskerb/JdkSASL$ProviderService with JaCoCo 0.8.8.202204050719/5dcf34a.
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
-	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
-	... 35 more
-Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
-	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
-	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
-	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
-	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
-	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
-	... 36 more
 java.lang.instrument.IllegalClassFormatException: Error while instrumenting java/sql/SQLException with JaCoCo 0.8.8.202204050719/5dcf34a.
 	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)

@@ -13,7 +13,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * グローバル例外ハンドラー
@@ -131,6 +133,12 @@ public class GlobalExceptionHandler {
             fieldErrors.put(error.getField(), error.getDefaultMessage())
         );
         
+        // リスト形式のエラーメッセージも生成
+        List<String> errorMessages = ex.getBindingResult().getFieldErrors()
+            .stream()
+            .map(error -> error.getField() + ": " + error.getDefaultMessage())
+            .collect(Collectors.toList());
+        
         Map<String, Object> body = createErrorResponse(
             HttpStatus.BAD_REQUEST,
             "TC_003",
@@ -138,8 +146,10 @@ public class GlobalExceptionHandler {
             request.getDescription(false)
         );
         
-        // フィールドエラーを追加
-        body.put("errors", fieldErrors);
+        // フィールドエラーとエラーメッセージリストを追加
+        body.put("fieldErrors", fieldErrors);
+        body.put("errorMessages", errorMessages);
+        body.put("errorCount", errorMessages.size());
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
