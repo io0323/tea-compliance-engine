@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @Service
 public class ComplianceEvaluationEngine {
     
-<span class="nc" id="L28">    private static final Logger log = LoggerFactory.getLogger(ComplianceEvaluationEngine.class);</span>
+<span class="fc" id="L28">    private static final Logger log = LoggerFactory.getLogger(ComplianceEvaluationEngine.class);</span>
     
     private final ComplianceRuleRepository ruleRepository;
     private final ComplianceResultRepository resultRepository;
@@ -35,11 +35,11 @@ public class ComplianceEvaluationEngine {
     
     public ComplianceEvaluationEngine(ComplianceRuleRepository ruleRepository, 
                                    ComplianceResultRepository resultRepository,
-<span class="nc" id="L38">                                   List&lt;RuleEvaluationStrategy&gt; strategies) {</span>
-<span class="nc" id="L39">        this.ruleRepository = ruleRepository;</span>
-<span class="nc" id="L40">        this.resultRepository = resultRepository;</span>
-<span class="nc" id="L41">        this.strategies = strategies;</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L38">                                   List&lt;RuleEvaluationStrategy&gt; strategies) {</span>
+<span class="fc" id="L39">        this.ruleRepository = ruleRepository;</span>
+<span class="fc" id="L40">        this.resultRepository = resultRepository;</span>
+<span class="fc" id="L41">        this.strategies = strategies;</span>
+<span class="fc" id="L42">    }</span>
     
     /**
      * 初期化処理

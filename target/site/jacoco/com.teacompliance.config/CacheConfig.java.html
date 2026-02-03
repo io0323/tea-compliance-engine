@@ -11,18 +11,18 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableCaching
-<span class="nc" id="L14">public class CacheConfig {</span>
+<span class="fc" id="L14">public class CacheConfig {</span>
     
     @Bean
     public CacheManager cacheManager() {
-<span class="nc" id="L18">        ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();</span>
-<span class="nc" id="L19">        cacheManager.setCacheNames(java.util.List.of(</span>
+<span class="fc" id="L18">        ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();</span>
+<span class="fc" id="L19">        cacheManager.setCacheNames(java.util.List.of(</span>
             &quot;teaLots&quot;,
             &quot;complianceRules&quot;, 
             &quot;complianceResults&quot;,
             &quot;shippableStatus&quot;
         ));
-<span class="nc" id="L25">        return cacheManager;</span>
+<span class="fc" id="L25">        return cacheManager;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

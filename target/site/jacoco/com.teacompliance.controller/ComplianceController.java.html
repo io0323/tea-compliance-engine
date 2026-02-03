@@ -24,13 +24,13 @@ import java.util.List;
 @Tag(name = &quot;コンプライアンス評価&quot;, description = &quot;茶葉ロットのコンプライアンスチェックと結果取得API&quot;)
 public class ComplianceController {
     
-<span class="nc" id="L27">    private static final Logger log = LoggerFactory.getLogger(ComplianceController.class);</span>
+<span class="fc" id="L27">    private static final Logger log = LoggerFactory.getLogger(ComplianceController.class);</span>
     
     private final ComplianceService complianceService;
     
-<span class="nc" id="L31">    public ComplianceController(ComplianceService complianceService) {</span>
-<span class="nc" id="L32">        this.complianceService = complianceService;</span>
-<span class="nc" id="L33">    }</span>
+<span class="fc" id="L31">    public ComplianceController(ComplianceService complianceService) {</span>
+<span class="fc" id="L32">        this.complianceService = complianceService;</span>
+<span class="fc" id="L33">    }</span>
     
     @PostMapping(value = &quot;/check/{teaLotId}&quot;, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = &quot;コンプライアンスチェック実行&quot;, description = &quot;指定された茶葉ロットに対して全ルールを評価する&quot;)

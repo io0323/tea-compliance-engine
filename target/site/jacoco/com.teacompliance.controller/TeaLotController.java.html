@@ -26,13 +26,13 @@ import java.util.Optional;
 @Tag(name = &quot;茶葉ロット管理&quot;, description = &quot;茶葉ロットの登録・検索API&quot;)
 public class TeaLotController {
     
-<span class="nc" id="L29">    private static final Logger log = LoggerFactory.getLogger(TeaLotController.class);</span>
+<span class="fc" id="L29">    private static final Logger log = LoggerFactory.getLogger(TeaLotController.class);</span>
     
     private final TeaLotService teaLotService;
     
-<span class="nc" id="L33">    public TeaLotController(TeaLotService teaLotService) {</span>
-<span class="nc" id="L34">        this.teaLotService = teaLotService;</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L33">    public TeaLotController(TeaLotService teaLotService) {</span>
+<span class="fc" id="L34">        this.teaLotService = teaLotService;</span>
+<span class="fc" id="L35">    }</span>
     
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = &quot;茶葉ロット登録&quot;, description = &quot;新しい茶葉ロットを登録する&quot;)

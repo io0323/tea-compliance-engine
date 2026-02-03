@@ -6,21 +6,21 @@ import jakarta.validation.ConstraintValidatorContext;
 /**
  * 農薬レベルバリデーションの実装クラス
  */
-<span class="nc" id="L9">public class PesticideLevelValidator implements ConstraintValidator&lt;ValidPesticideLevel, Double&gt; {</span>
+<span class="fc" id="L9">public class PesticideLevelValidator implements ConstraintValidator&lt;ValidPesticideLevel, Double&gt; {</span>
     
     private double maxValue;
     
     @Override
     public void initialize(ValidPesticideLevel constraintAnnotation) {
-<span class="nc" id="L15">        this.maxValue = constraintAnnotation.max();</span>
-<span class="nc" id="L16">    }</span>
+<span class="fc" id="L15">        this.maxValue = constraintAnnotation.max();</span>
+<span class="fc" id="L16">    }</span>
     
     @Override
     public boolean isValid(Double pesticideLevel, ConstraintValidatorContext context) {
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (pesticideLevel == null) {</span>
-<span class="nc" id="L21">            return false;</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (pesticideLevel == null) {</span>
+<span class="fc" id="L21">            return false;</span>
         }
-<span class="nc bnc" id="L23" title="All 4 branches missed.">        return pesticideLevel &gt;= 0.0 &amp;&amp; pesticideLevel &lt;= maxValue;</span>
+<span class="pc bpc" id="L23" title="2 of 4 branches missed.">        return pesticideLevel &gt;= 0.0 &amp;&amp; pesticideLevel &lt;= maxValue;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

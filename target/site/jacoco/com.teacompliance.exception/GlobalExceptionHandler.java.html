@@ -19,9 +19,9 @@ import java.util.Map;
  * グローバル例外ハンドラー
  */
 @RestControllerAdvice
-<span class="nc" id="L22">public class GlobalExceptionHandler {</span>
+<span class="fc" id="L22">public class GlobalExceptionHandler {</span>
     
-<span class="nc" id="L24">    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);</span>
+<span class="fc" id="L24">    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);</span>
     
     @ExceptionHandler(TeaLotNotFoundException.class)
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleTeaLotNotFoundException(
@@ -123,16 +123,16 @@ import java.util.Map;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleValidationError(
             MethodArgumentNotValidException ex, WebRequest request) {
         
-<span class="nc" id="L126">        log.warn(&quot;バリデーションエラー: {}&quot;, ex.getMessage());</span>
+<span class="fc" id="L126">        log.warn(&quot;バリデーションエラー: {}&quot;, ex.getMessage());</span>
         
-<span class="nc" id="L128">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L128">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.BAD_REQUEST,
             &quot;TC_003&quot;,
-<span class="nc" id="L131">            &quot;Validation failed: &quot; + ex.getMessage(),</span>
-<span class="nc" id="L132">            request.getDescription(false)</span>
+<span class="fc" id="L131">            &quot;Validation failed: &quot; + ex.getMessage(),</span>
+<span class="fc" id="L132">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L135">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
+<span class="fc" id="L135">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
     }
     
     @ExceptionHandler(IllegalArgumentException.class)
@@ -170,15 +170,15 @@ import java.util.Map;
     private Map&lt;String, Object&gt; createErrorResponse(
             HttpStatus status, String errorCode, String message, String path) {
         
-<span class="nc" id="L173">        Map&lt;String, Object&gt; body = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L174">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
-<span class="nc" id="L175">        body.put(&quot;status&quot;, status.value());</span>
-<span class="nc" id="L176">        body.put(&quot;error&quot;, status.getReasonPhrase());</span>
-<span class="nc" id="L177">        body.put(&quot;errorCode&quot;, errorCode);</span>
-<span class="nc" id="L178">        body.put(&quot;message&quot;, message);</span>
-<span class="nc" id="L179">        body.put(&quot;path&quot;, path);</span>
+<span class="fc" id="L173">        Map&lt;String, Object&gt; body = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L174">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
+<span class="fc" id="L175">        body.put(&quot;status&quot;, status.value());</span>
+<span class="fc" id="L176">        body.put(&quot;error&quot;, status.getReasonPhrase());</span>
+<span class="fc" id="L177">        body.put(&quot;errorCode&quot;, errorCode);</span>
+<span class="fc" id="L178">        body.put(&quot;message&quot;, message);</span>
+<span class="fc" id="L179">        body.put(&quot;path&quot;, path);</span>
         
-<span class="nc" id="L181">        return body;</span>
+<span class="fc" id="L181">        return body;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

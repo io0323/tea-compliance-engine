@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class ComplianceService {
     
-<span class="nc" id="L19">    private static final Logger log = LoggerFactory.getLogger(ComplianceService.class);</span>
+<span class="fc" id="L19">    private static final Logger log = LoggerFactory.getLogger(ComplianceService.class);</span>
     
     private final ComplianceEvaluationEngine evaluationEngine;
     private final TeaLotService teaLotService;
@@ -26,12 +26,12 @@ public class ComplianceService {
     public ComplianceService(ComplianceEvaluationEngine evaluationEngine,
                            TeaLotService teaLotService,
                            ComplianceResultRepository resultRepository,
-<span class="nc" id="L29">                           ComplianceRuleRepository ruleRepository) {</span>
-<span class="nc" id="L30">        this.evaluationEngine = evaluationEngine;</span>
-<span class="nc" id="L31">        this.teaLotService = teaLotService;</span>
-<span class="nc" id="L32">        this.resultRepository = resultRepository;</span>
-<span class="nc" id="L33">        this.ruleRepository = ruleRepository;</span>
-<span class="nc" id="L34">    }</span>
+<span class="fc" id="L29">                           ComplianceRuleRepository ruleRepository) {</span>
+<span class="fc" id="L30">        this.evaluationEngine = evaluationEngine;</span>
+<span class="fc" id="L31">        this.teaLotService = teaLotService;</span>
+<span class="fc" id="L32">        this.resultRepository = resultRepository;</span>
+<span class="fc" id="L33">        this.ruleRepository = ruleRepository;</span>
+<span class="fc" id="L34">    }</span>
     
     public ComplianceCheckResponse checkCompliance(Long teaLotId) {
 <span class="nc" id="L37">        TeaLot teaLot = teaLotService.getTeaLotById(teaLotId)</span>

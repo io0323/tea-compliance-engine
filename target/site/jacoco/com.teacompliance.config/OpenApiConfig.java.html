@@ -14,28 +14,28 @@ import java.util.List;
  * OpenAPI設定クラス
  */
 @Configuration
-<span class="nc" id="L17">public class OpenApiConfig {</span>
+<span class="fc" id="L17">public class OpenApiConfig {</span>
     
     @Bean
     public OpenAPI customOpenAPI() {
-<span class="nc" id="L21">        return new OpenAPI()</span>
-<span class="nc" id="L22">            .info(new Info()</span>
-<span class="nc" id="L23">                .title(&quot;TeaCompliance Engine API&quot;)</span>
-<span class="nc" id="L24">                .description(&quot;茶葉ロットのコンプライアンス評価を自動化する業務向けエンジンAPI&quot;)</span>
-<span class="nc" id="L25">                .version(&quot;1.0.0&quot;)</span>
-<span class="nc" id="L26">                .contact(new Contact()</span>
-<span class="nc" id="L27">                    .name(&quot;TeaCompliance Team&quot;)</span>
-<span class="nc" id="L28">                    .email(&quot;support@teacompliance.com&quot;))</span>
-<span class="nc" id="L29">                .license(new License()</span>
-<span class="nc" id="L30">                    .name(&quot;MIT License&quot;)</span>
-<span class="nc" id="L31">                    .url(&quot;https://opensource.org/licenses/MIT&quot;)))</span>
-<span class="nc" id="L32">            .servers(List.of(</span>
+<span class="fc" id="L21">        return new OpenAPI()</span>
+<span class="fc" id="L22">            .info(new Info()</span>
+<span class="fc" id="L23">                .title(&quot;TeaCompliance Engine API&quot;)</span>
+<span class="fc" id="L24">                .description(&quot;茶葉ロットのコンプライアンス評価を自動化する業務向けエンジンAPI&quot;)</span>
+<span class="fc" id="L25">                .version(&quot;1.0.0&quot;)</span>
+<span class="fc" id="L26">                .contact(new Contact()</span>
+<span class="fc" id="L27">                    .name(&quot;TeaCompliance Team&quot;)</span>
+<span class="fc" id="L28">                    .email(&quot;support@teacompliance.com&quot;))</span>
+<span class="fc" id="L29">                .license(new License()</span>
+<span class="fc" id="L30">                    .name(&quot;MIT License&quot;)</span>
+<span class="fc" id="L31">                    .url(&quot;https://opensource.org/licenses/MIT&quot;)))</span>
+<span class="fc" id="L32">            .servers(List.of(</span>
                 new Server()
-<span class="nc" id="L34">                    .url(&quot;http://localhost:8080&quot;)</span>
-<span class="nc" id="L35">                    .description(&quot;開発環境&quot;),</span>
+<span class="fc" id="L34">                    .url(&quot;http://localhost:8080&quot;)</span>
+<span class="fc" id="L35">                    .description(&quot;開発環境&quot;),</span>
                 new Server()
-<span class="nc" id="L37">                    .url(&quot;https://api.teacompliance.com&quot;)</span>
-<span class="nc" id="L38">                    .description(&quot;本番環境&quot;)</span>
+<span class="fc" id="L37">                    .url(&quot;https://api.teacompliance.com&quot;)</span>
+<span class="fc" id="L38">                    .description(&quot;本番環境&quot;)</span>
             ));
     }
 }

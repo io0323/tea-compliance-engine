@@ -7,21 +7,21 @@ import java.util.regex.Pattern;
 /**
  * ロットコードバリデーションの実装クラス
  */
-<span class="nc" id="L10">public class LotCodeValidator implements ConstraintValidator&lt;ValidLotCode, String&gt; {</span>
+<span class="fc" id="L10">public class LotCodeValidator implements ConstraintValidator&lt;ValidLotCode, String&gt; {</span>
     
-<span class="nc" id="L12">    private static final Pattern LOT_CODE_PATTERN = Pattern.compile(&quot;^TL-\\d{4}-\\d{3}$&quot;);</span>
+<span class="fc" id="L12">    private static final Pattern LOT_CODE_PATTERN = Pattern.compile(&quot;^TL-\\d{4}-\\d{3}$&quot;);</span>
     
     @Override
     public void initialize(ValidLotCode constraintAnnotation) {
         // 初期化処理（必要な場合）
-<span class="nc" id="L17">    }</span>
+<span class="fc" id="L17">    }</span>
     
     @Override
     public boolean isValid(String lotCode, ConstraintValidatorContext context) {
-<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (lotCode == null) {</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if (lotCode == null) {</span>
 <span class="nc" id="L22">            return false;</span>
         }
-<span class="nc" id="L24">        return LOT_CODE_PATTERN.matcher(lotCode).matches();</span>
+<span class="fc" id="L24">        return LOT_CODE_PATTERN.matcher(lotCode).matches();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
