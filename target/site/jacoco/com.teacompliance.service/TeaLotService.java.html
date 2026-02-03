@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TeaLotService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TeaCompliance Engine</a> &gt; <a href="index.source.html" class="el_package">com.teacompliance.service</a> &gt; <span class="el_source">TeaLotService.java</span></div><h1>TeaLotService.java</h1><pre class="source lang-java linenums">package com.teacompliance.service;
+
+import com.teacompliance.domain.TeaLot;
+import com.teacompliance.dto.TeaLotRequest;
+import com.teacompliance.exception.DuplicateTeaLotException;
+import com.teacompliance.repository.TeaLotRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * 茶葉ロットサービス
+ */
+@Service
+public class TeaLotService {
+    
+<span class="fc" id="L21">    private static final Logger log = LoggerFactory.getLogger(TeaLotService.class);</span>
+    
+    private final TeaLotRepository teaLotRepository;
+    
+<span class="fc" id="L25">    public TeaLotService(TeaLotRepository teaLotRepository) {</span>
+<span class="fc" id="L26">        this.teaLotRepository = teaLotRepository;</span>
+<span class="fc" id="L27">    }</span>
+    
+    @Transactional
+    public TeaLot registerTeaLot(TeaLotRequest request) {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (teaLotRepository.findByLotCode(request.getLotCode()).isPresent()) {</span>
+<span class="nc" id="L32">            throw new DuplicateTeaLotException(request.getLotCode());</span>
+        }
+        
+<span class="fc" id="L35">        TeaLot teaLot = new TeaLot();</span>
+<span class="fc" id="L36">        teaLot.setLotCode(request.getLotCode());</span>
+<span class="fc" id="L37">        teaLot.setOrigin(request.getOrigin());</span>
+<span class="fc" id="L38">        teaLot.setVariety(request.getVariety());</span>
+<span class="fc" id="L39">        teaLot.setMoisture(request.getMoisture());</span>
+<span class="fc" id="L40">        teaLot.setPesticideLevel(request.getPesticideLevel());</span>
+<span class="fc" id="L41">        teaLot.setAromaScore(request.getAromaScore());</span>
+<span class="fc" id="L42">        teaLot.setProducedAt(request.getProducedAt());</span>
+        
+<span class="fc" id="L44">        TeaLot savedLot = teaLotRepository.save(teaLot);</span>
+<span class="fc" id="L45">        log.info(&quot;茶葉ロットを登録しました: {}&quot;, savedLot.getLotCode());</span>
+        
+<span class="fc" id="L47">        return savedLot;</span>
+    }
+    
+    public List&lt;TeaLot&gt; getAllTeaLots() {
+<span class="fc" id="L51">        return teaLotRepository.findAll();</span>
+    }
+    
+    public Optional&lt;TeaLot&gt; getTeaLotById(Long id) {
+<span class="fc" id="L55">        return teaLotRepository.findById(id);</span>
+    }
+    
+    public Optional&lt;TeaLot&gt; getTeaLotByLotCode(String lotCode) {
+<span class="fc" id="L59">        return teaLotRepository.findByLotCode(lotCode);</span>
+    }
+    
+    public List&lt;TeaLot&gt; getTeaLotsByOrigin(String origin) {
+<span class="fc" id="L63">        return teaLotRepository.findByOrigin(origin);</span>
+    }
+    
+    public List&lt;TeaLot&gt; getTeaLotsByVariety(String variety) {
+<span class="fc" id="L67">        return teaLotRepository.findByVariety(variety);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
