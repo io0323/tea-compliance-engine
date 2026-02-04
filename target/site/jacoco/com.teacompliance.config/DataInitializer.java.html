@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataInitializer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TeaCompliance Engine</a> &gt; <a href="index.source.html" class="el_package">com.teacompliance.config</a> &gt; <span class="el_source">DataInitializer.java</span></div><h1>DataInitializer.java</h1><pre class="source lang-java linenums">package com.teacompliance.config;
+
+import com.teacompliance.domain.ComplianceRule;
+import com.teacompliance.domain.TeaLot;
+import com.teacompliance.repository.ComplianceRuleRepository;
+import com.teacompliance.repository.TeaLotRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+
+@Component
+public class DataInitializer implements CommandLineRunner {
+    
+<span class="fc" id="L18">    private static final Logger log = LoggerFactory.getLogger(DataInitializer.class);</span>
+    
+    private final TeaLotRepository teaLotRepository;
+    private final ComplianceRuleRepository ruleRepository;
+    
+<span class="fc" id="L23">    public DataInitializer(TeaLotRepository teaLotRepository, ComplianceRuleRepository ruleRepository) {</span>
+<span class="fc" id="L24">        this.teaLotRepository = teaLotRepository;</span>
+<span class="fc" id="L25">        this.ruleRepository = ruleRepository;</span>
+<span class="fc" id="L26">    }</span>
+    
+    @Override
+    @Transactional
+    public void run(String... args) throws Exception {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (teaLotRepository.count() == 0) {</span>
+<span class="fc" id="L32">            initializeTeaLots();</span>
+        }
+        
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if (ruleRepository.count() == 0) {</span>
+<span class="fc" id="L36">            initializeComplianceRules();</span>
+        }
+        
+<span class="fc" id="L39">        log.info(&quot;初期データ投入完了 - 茶葉ロット: {}件, ルール: {}件&quot;, </span>
+<span class="fc" id="L40">            teaLotRepository.count(), ruleRepository.count());</span>
+<span class="fc" id="L41">    }</span>
+    
+    private void initializeTeaLots() {
+<span class="fc" id="L44">        log.info(&quot;茶葉ロット初期データ投入開始&quot;);</span>
+        
+<span class="fc" id="L46">        TeaLot[] teaLots = {</span>
+<span class="fc" id="L47">            createTeaLot(&quot;TL-2024-001&quot;, &quot;静岡県&quot;, &quot;やぶきた&quot;, 8.5, 0.3, 75, LocalDate.of(2024, 5, 15)),</span>
+<span class="fc" id="L48">            createTeaLot(&quot;TL-2024-002&quot;, &quot;鹿児島県&quot;, &quot;ゆたかみどり&quot;, 9.2, 0.6, 68, LocalDate.of(2024, 5, 20)),</span>
+<span class="fc" id="L49">            createTeaLot(&quot;TL-2024-003&quot;, &quot;京都府&quot;, &quot;宇治在来&quot;, 7.8, 0.2, 82, LocalDate.of(2024, 5, 10)),</span>
+<span class="fc" id="L50">            createTeaLot(&quot;TL-2024-004&quot;, &quot;三重県&quot;, &quot;かおりわせ&quot;, 10.1, 0.4, 55, LocalDate.of(2024, 5, 25)),</span>
+<span class="fc" id="L51">            createTeaLot(&quot;TL-2024-005&quot;, &quot;奈良県&quot;, &quot;なつみどり&quot;, 8.9, 0.1, 71, LocalDate.of(2024, 5, 18))</span>
+        };
+        
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        for (TeaLot teaLot : teaLots) {</span>
+<span class="fc" id="L55">            teaLotRepository.save(teaLot);</span>
+<span class="fc" id="L56">            log.debug(&quot;茶葉ロット登録: {}&quot;, teaLot.getLotCode());</span>
+        }
+        
+<span class="fc" id="L59">        log.info(&quot;茶葉ロット初期データ投入完了: {}件&quot;, teaLots.length);</span>
+<span class="fc" id="L60">    }</span>
+    
+    private TeaLot createTeaLot(String lotCode, String origin, String variety, 
+                               Double moisture, Double pesticideLevel, Integer aromaScore, LocalDate producedAt) {
+<span class="fc" id="L64">        TeaLot teaLot = new TeaLot();</span>
+<span class="fc" id="L65">        teaLot.setLotCode(lotCode);</span>
+<span class="fc" id="L66">        teaLot.setOrigin(origin);</span>
+<span class="fc" id="L67">        teaLot.setVariety(variety);</span>
+<span class="fc" id="L68">        teaLot.setMoisture(moisture);</span>
+<span class="fc" id="L69">        teaLot.setPesticideLevel(pesticideLevel);</span>
+<span class="fc" id="L70">        teaLot.setAromaScore(aromaScore);</span>
+<span class="fc" id="L71">        teaLot.setProducedAt(producedAt);</span>
+<span class="fc" id="L72">        return teaLot;</span>
+    }
+    
+    private void initializeComplianceRules() {
+<span class="fc" id="L76">        log.info(&quot;コンプライアンスルール初期データ投入開始&quot;);</span>
+        
+<span class="fc" id="L78">        ComplianceRule[] rules = {</span>
+<span class="fc" id="L79">            createComplianceRule(&quot;MOISTURE_001&quot;, &quot;水分量基準（JAS規格）&quot;, </span>
+<span class="fc" id="L80">                                ComplianceRule.RuleType.MOISTURE, 9.0, </span>
+                                ComplianceRule.ComparisonOperator.LESS_THAN_OR_EQUAL, 
+                                ComplianceRule.Severity.BLOCK),
+                                
+<span class="fc" id="L84">            createComplianceRule(&quot;PESTICIDE_001&quot;, &quot;残留農薬基準（簡易モデル）&quot;, </span>
+<span class="fc" id="L85">                                ComplianceRule.RuleType.PESTICIDE, 0.5, </span>
+                                ComplianceRule.ComparisonOperator.LESS_THAN_OR_EQUAL, 
+                                ComplianceRule.Severity.BLOCK),
+                                
+<span class="fc" id="L89">            createComplianceRule(&quot;AROMA_001&quot;, &quot;香りスコア基準（社内品質ルール）&quot;, </span>
+<span class="fc" id="L90">                                ComplianceRule.RuleType.AROMA, 60.0, </span>
+                                ComplianceRule.ComparisonOperator.GREATER_THAN_OR_EQUAL, 
+                                ComplianceRule.Severity.WARNING),
+                                
+<span class="fc" id="L94">            createComplianceRule(&quot;MOISTURE_002&quot;, &quot;水分量警告基準&quot;, </span>
+<span class="fc" id="L95">                                ComplianceRule.RuleType.MOISTURE, 8.5, </span>
+                                ComplianceRule.ComparisonOperator.LESS_THAN_OR_EQUAL, 
+                                ComplianceRule.Severity.WARNING),
+                                
+<span class="fc" id="L99">            createComplianceRule(&quot;AROMA_002&quot;, &quot;香りスコア優良基準&quot;, </span>
+<span class="fc" id="L100">                                ComplianceRule.RuleType.AROMA, 80.0, </span>
+                                ComplianceRule.ComparisonOperator.GREATER_THAN_OR_EQUAL, 
+                                ComplianceRule.Severity.INFO)
+        };
+        
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        for (ComplianceRule rule : rules) {</span>
+<span class="fc" id="L106">            ruleRepository.save(rule);</span>
+<span class="fc" id="L107">            log.debug(&quot;コンプライアンスルール登録: {} - {}&quot;, rule.getRuleCode(), rule.getDescription());</span>
+        }
+        
+<span class="fc" id="L110">        log.info(&quot;コンプライアンスルール初期データ投入完了: {}件&quot;, rules.length);</span>
+<span class="fc" id="L111">    }</span>
+    
+    private ComplianceRule createComplianceRule(String ruleCode, String description, 
+                                               ComplianceRule.RuleType ruleType, Double threshold,
+                                               ComplianceRule.ComparisonOperator operator, 
+                                               ComplianceRule.Severity severity) {
+<span class="fc" id="L117">        ComplianceRule rule = new ComplianceRule();</span>
+<span class="fc" id="L118">        rule.setRuleCode(ruleCode);</span>
+<span class="fc" id="L119">        rule.setDescription(description);</span>
+<span class="fc" id="L120">        rule.setRuleType(ruleType);</span>
+<span class="fc" id="L121">        rule.setThreshold(threshold);</span>
+<span class="fc" id="L122">        rule.setOperator(operator);</span>
+<span class="fc" id="L123">        rule.setSeverity(severity);</span>
+<span class="fc" id="L124">        return rule;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

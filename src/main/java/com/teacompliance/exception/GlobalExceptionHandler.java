@@ -4,13 +4,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * グローバル例外ハンドラー
@@ -44,8 +48,8 @@ public class GlobalExceptionHandler {
         
         Map<String, Object> body = createErrorResponse(
             HttpStatus.CONFLICT,
-            ex.getErrorCode(),
-            ex.getMessage(),
+            "TC_004",
+            "Duplicate tea lot: " + ex.getMessage(),
             request.getDescription(false)
         );
         
@@ -96,6 +100,35 @@ public class GlobalExceptionHandler {
             "不正なリクエスト: " + ex.getMessage(),
             request.getDescription(false)
         );
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handleValidationError(
+            MethodArgumentNotValidException ex, WebRequest request) {
+        
+        log.warn("バリデーションエラー: {}", ex.getMessage());
+        
+        Map<String, String> fieldErrors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> 
+            fieldErrors.put(error.getField(), error.getDefaultMessage()));
+        
+        List<String> errorMessages = ex.getBindingResult().getFieldErrors()
+            .stream()
+            .map(error -> error.getField() + ": " + error.getDefaultMessage())
+            .collect(Collectors.toList());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.BAD_REQUEST,
+            "TC_003",
+            "Validation failed",
+            request.getDescription(false)
+        );
+        
+        body.put("fieldErrors", fieldErrors);
+        body.put("errorMessages", errorMessages);
+        body.put("errorCount", errorMessages.size());
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }

@@ -1,0 +1,8 @@
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/domain/ComplianceResultTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/integration/TeaComplianceIntegrationTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/exception/GlobalExceptionHandlerTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/controller/TeaLotControllerTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/domain/ComplianceRuleTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/service/evaluation/MoistureEvaluationStrategyTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/domain/TeaLotTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/service/TeaLotServiceTest.java
