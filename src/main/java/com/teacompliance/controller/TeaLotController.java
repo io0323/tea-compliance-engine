@@ -2,6 +2,7 @@ package com.teacompliance.controller;
 
 import com.teacompliance.domain.TeaLot;
 import com.teacompliance.dto.TeaLotRequest;
+import com.teacompliance.exception.DuplicateTeaLotException;
 import com.teacompliance.service.TeaLotService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -14,6 +15,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +35,7 @@ public class TeaLotController {
         this.teaLotService = teaLotService;
     }
     
-    @PostMapping
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "茶葉ロット登録", description = "新しい茶葉ロットを登録する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "登録成功", 
@@ -49,6 +51,9 @@ public class TeaLotController {
         try {
             TeaLot teaLot = teaLotService.registerTeaLot(request);
             return ResponseEntity.status(HttpStatus.CREATED).body(teaLot);
+        } catch (DuplicateTeaLotException e) {
+            log.warn("茶葉ロット登録失敗: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } catch (IllegalArgumentException e) {
             log.warn("茶葉ロット登録失敗: {}", e.getMessage());
             return ResponseEntity.badRequest().build();
