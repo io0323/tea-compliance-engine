@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -89,38 +90,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
     
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<Map<String, Object>> handleJsonParseError(
-            HttpMessageNotReadableException ex, WebRequest request) {
-        
-        log.warn("不正なJSON形式: {}", ex.getMessage());
-        
-        Map<String, Object> body = createErrorResponse(
-            HttpStatus.BAD_REQUEST,
-            "TC_001",
-            "Invalid JSON: " + ex.getMessage(),
-            request.getDescription(false)
-        );
-        
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
-    }
-    
-    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-    public ResponseEntity<Map<String, Object>> handleMediaTypeError(
-            HttpMediaTypeNotSupportedException ex, WebRequest request) {
-        
-        log.warn("サポートされていないContent-Type: {}", ex.getMessage());
-        
-        Map<String, Object> body = createErrorResponse(
-            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
-            "TC_002",
-            "Content-Type not supported. Please use application/json",
-            request.getDescription(false)
-        );
-        
-        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);
-    }
-    
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationError(
             MethodArgumentNotValidException ex, WebRequest request) {
@@ -170,33 +139,36 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
     
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, Object>> handleValidationError(
-            MethodArgumentNotValidException ex, WebRequest request) {
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
+            HttpMessageNotReadableException ex, WebRequest request) {
         
-        log.warn("バリデーションエラー: {}", ex.getMessage());
-        
-        Map<String, String> fieldErrors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error -> 
-            fieldErrors.put(error.getField(), error.getDefaultMessage()));
-        
-        List<String> errorMessages = ex.getBindingResult().getFieldErrors()
-            .stream()
-            .map(error -> error.getField() + ": " + error.getDefaultMessage())
-            .collect(Collectors.toList());
+        log.warn("メッセージ読み取り不可能エラー: {}", ex.getMessage());
         
         Map<String, Object> body = createErrorResponse(
             HttpStatus.BAD_REQUEST,
-            "TC_003",
-            "Validation failed",
+            "TC_006",
+            "Malformed JSON request: " + ex.getMessage(),
             request.getDescription(false)
         );
         
-        body.put("fieldErrors", fieldErrors);
-        body.put("errorMessages", errorMessages);
-        body.put("errorCount", errorMessages.size());
-        
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<Map<String, Object>> handleHttpMediaTypeNotSupportedException(
+            HttpMediaTypeNotSupportedException ex, WebRequest request) {
+        
+        log.warn("サポートされていないContent-Type: {}", ex.getMessage());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
+            "TC_002",
+            "Content-Type not supported. Please use application/json",
+            request.getDescription(false)
+        );
+        
+        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);
     }
     
     @ExceptionHandler(Exception.class)

@@ -28,12 +28,6 @@ public class TeaLotService {
     
     @Transactional
     public TeaLot registerTeaLot(TeaLotRequest request) {
-        // 重複チェックを改善
-        if (teaLotRepository.existsByLotCode(request.getLotCode())) {
-            log.warn("茶葉ロットが既に存在します: {}", request.getLotCode());
-            throw new DuplicateTeaLotException(request.getLotCode());
-        }
-        
         TeaLot teaLot = new TeaLot();
         teaLot.setLotCode(request.getLotCode());
         teaLot.setOrigin(request.getOrigin());
@@ -42,6 +36,11 @@ public class TeaLotService {
         teaLot.setPesticideLevel(request.getPesticideLevel());
         teaLot.setAromaScore(request.getAromaScore());
         teaLot.setProducedAt(request.getProducedAt());
+        
+        // Check for duplicate after creating the entity
+        if (teaLotRepository.existsByLotCode(request.getLotCode())) {
+            throw new DuplicateTeaLotException(request.getLotCode());
+        }
         
         TeaLot savedLot = teaLotRepository.save(teaLot);
         log.info("茶葉ロットを登録しました: {}", savedLot.getLotCode());
