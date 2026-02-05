@@ -30,16 +30,16 @@ import java.util.stream.Collectors;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleTeaLotNotFoundException(
             TeaLotNotFoundException ex, WebRequest request) {
         
-<span class="nc" id="L33">        log.warn(&quot;茶葉ロットが見つかりません: {}&quot;, ex.getMessage());</span>
+<span class="fc" id="L33">        log.warn(&quot;茶葉ロットが見つかりません: {}&quot;, ex.getMessage());</span>
         
-<span class="nc" id="L35">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L35">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.NOT_FOUND,
-<span class="nc" id="L37">            ex.getErrorCode(),</span>
-<span class="nc" id="L38">            ex.getMessage(),</span>
-<span class="nc" id="L39">            request.getDescription(false)</span>
+<span class="fc" id="L37">            ex.getErrorCode(),</span>
+<span class="fc" id="L38">            ex.getMessage(),</span>
+<span class="fc" id="L39">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L42">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);</span>
+<span class="fc" id="L42">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);</span>
     }
     
     @ExceptionHandler(DuplicateTeaLotException.class)

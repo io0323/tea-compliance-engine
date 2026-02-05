@@ -9,8 +9,8 @@ TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse.EvaluationSum
 TeaCompliance Engine,com.teacompliance.dto,TeaLotRequest,0,52,0,0,0,15,0,15,0,15
 TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse,0,45,0,0,0,13,0,13,0,13
 TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse.RuleResult,0,52,0,0,0,15,0,15,0,15
-TeaCompliance Engine,com.teacompliance.exception,TeaLotNotFoundException,12,0,0,0,4,0,2,0,2,0
-TeaCompliance Engine,com.teacompliance.exception,GlobalExceptionHandler,125,157,0,0,32,33,6,8,6,8
+TeaCompliance Engine,com.teacompliance.exception,TeaLotNotFoundException,6,6,0,0,2,2,1,1,1,1
+TeaCompliance Engine,com.teacompliance.exception,GlobalExceptionHandler,104,178,0,0,26,39,5,9,5,9
 TeaCompliance Engine,com.teacompliance.exception,TeaComplianceException,23,10,0,0,9,4,3,2,3,2
 TeaCompliance Engine,com.teacompliance.exception,DuplicateTeaLotException,0,6,0,0,0,2,0,1,0,1
 TeaCompliance Engine,com.teacompliance.exception,ComplianceRuleNotFoundException,6,0,0,0,2,0,1,0,1,0
@@ -30,5 +30,5 @@ TeaCompliance Engine,com.teacompliance.service.evaluation,PesticideEvaluationStr
 TeaCompliance Engine,com.teacompliance.service.evaluation,MoistureEvaluationStrategy,10,92,4,11,0,15,4,9,0,4
 TeaCompliance Engine,com.teacompliance.service.evaluation,RuleEvaluationStrategy.EvaluationResult,0,21,0,0,0,8,0,4,0,4
 TeaCompliance Engine,com.teacompliance.service.evaluation,AromaEvaluationStrategy,33,73,10,5,3,12,7,6,0,4
-TeaCompliance Engine,com.teacompliance.controller,TeaLotController,33,74,4,0,8,19,3,8,1,8
+TeaCompliance Engine,com.teacompliance.controller,TeaLotController,29,82,2,0,7,19,2,10,1,10
 TeaCompliance Engine,com.teacompliance.controller,ComplianceController,18,50,0,0,6,14,0,4,0,4
