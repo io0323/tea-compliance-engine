@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -196,6 +198,38 @@ public class GlobalExceptionHandler {
         body.put("errorCount", errorMessages.size());
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
+            HttpMessageNotReadableException ex, WebRequest request) {
+        
+        log.warn("メッセージ読み取り不可能エラー: {}", ex.getMessage());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.BAD_REQUEST,
+            "TC_006",
+            "Malformed JSON request: " + ex.getMessage(),
+            request.getDescription(false)
+        );
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+    
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<Map<String, Object>> handleHttpMediaTypeNotSupportedException(
+            HttpMediaTypeNotSupportedException ex, WebRequest request) {
+        
+        log.warn("サポートされていないContent-Type: {}", ex.getMessage());
+        
+        Map<String, Object> body = createErrorResponse(
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
+            "TC_002",
+            "Content-Type not supported. Please use application/json",
+            request.getDescription(false)
+        );
+        
+        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);
     }
     
     @ExceptionHandler(Exception.class)
