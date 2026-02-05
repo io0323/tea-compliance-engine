@@ -28,45 +28,44 @@ public class TeaLotService {
     
     @Transactional
     public TeaLot registerTeaLot(TeaLotRequest request) {
-        // 重複チェックを改善
-<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (teaLotRepository.existsByLotCode(request.getLotCode())) {</span>
-<span class="fc" id="L33">            log.warn(&quot;茶葉ロットが既に存在します: {}&quot;, request.getLotCode());</span>
-<span class="fc" id="L34">            throw new DuplicateTeaLotException(request.getLotCode());</span>
+<span class="fc" id="L31">        TeaLot teaLot = new TeaLot();</span>
+<span class="fc" id="L32">        teaLot.setLotCode(request.getLotCode());</span>
+<span class="fc" id="L33">        teaLot.setOrigin(request.getOrigin());</span>
+<span class="fc" id="L34">        teaLot.setVariety(request.getVariety());</span>
+<span class="fc" id="L35">        teaLot.setMoisture(request.getMoisture());</span>
+<span class="fc" id="L36">        teaLot.setPesticideLevel(request.getPesticideLevel());</span>
+<span class="fc" id="L37">        teaLot.setAromaScore(request.getAromaScore());</span>
+<span class="fc" id="L38">        teaLot.setProducedAt(request.getProducedAt());</span>
+        
+        // Check for duplicate after creating the entity
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (teaLotRepository.existsByLotCode(request.getLotCode())) {</span>
+<span class="fc" id="L42">            throw new DuplicateTeaLotException(request.getLotCode());</span>
         }
         
-<span class="fc" id="L37">        TeaLot teaLot = new TeaLot();</span>
-<span class="fc" id="L38">        teaLot.setLotCode(request.getLotCode());</span>
-<span class="fc" id="L39">        teaLot.setOrigin(request.getOrigin());</span>
-<span class="fc" id="L40">        teaLot.setVariety(request.getVariety());</span>
-<span class="fc" id="L41">        teaLot.setMoisture(request.getMoisture());</span>
-<span class="fc" id="L42">        teaLot.setPesticideLevel(request.getPesticideLevel());</span>
-<span class="fc" id="L43">        teaLot.setAromaScore(request.getAromaScore());</span>
-<span class="fc" id="L44">        teaLot.setProducedAt(request.getProducedAt());</span>
+<span class="fc" id="L45">        TeaLot savedLot = teaLotRepository.save(teaLot);</span>
+<span class="fc" id="L46">        log.info(&quot;茶葉ロットを登録しました: {}&quot;, savedLot.getLotCode());</span>
         
-<span class="fc" id="L46">        TeaLot savedLot = teaLotRepository.save(teaLot);</span>
-<span class="fc" id="L47">        log.info(&quot;茶葉ロットを登録しました: {}&quot;, savedLot.getLotCode());</span>
-        
-<span class="fc" id="L49">        return savedLot;</span>
+<span class="fc" id="L48">        return savedLot;</span>
     }
     
     public List&lt;TeaLot&gt; getAllTeaLots() {
-<span class="fc" id="L53">        return teaLotRepository.findAll();</span>
+<span class="fc" id="L52">        return teaLotRepository.findAll();</span>
     }
     
     public Optional&lt;TeaLot&gt; getTeaLotById(Long id) {
-<span class="fc" id="L57">        return teaLotRepository.findById(id);</span>
+<span class="fc" id="L56">        return teaLotRepository.findById(id);</span>
     }
     
     public Optional&lt;TeaLot&gt; getTeaLotByLotCode(String lotCode) {
-<span class="fc" id="L61">        return teaLotRepository.findByLotCode(lotCode);</span>
+<span class="fc" id="L60">        return teaLotRepository.findByLotCode(lotCode);</span>
     }
     
     public List&lt;TeaLot&gt; getTeaLotsByOrigin(String origin) {
-<span class="fc" id="L65">        return teaLotRepository.findByOrigin(origin);</span>
+<span class="fc" id="L64">        return teaLotRepository.findByOrigin(origin);</span>
     }
     
     public List&lt;TeaLot&gt; getTeaLotsByVariety(String variety) {
-<span class="fc" id="L69">        return teaLotRepository.findByVariety(variety);</span>
+<span class="fc" id="L68">        return teaLotRepository.findByVariety(variety);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
