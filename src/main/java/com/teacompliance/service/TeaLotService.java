@@ -2,6 +2,7 @@ package com.teacompliance.service;
 
 import com.teacompliance.domain.TeaLot;
 import com.teacompliance.dto.TeaLotRequest;
+import com.teacompliance.exception.DuplicateTeaLotException;
 import com.teacompliance.repository.TeaLotRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class TeaLotService {
     @Transactional
     public TeaLot registerTeaLot(TeaLotRequest request) {
         if (teaLotRepository.findByLotCode(request.getLotCode()).isPresent()) {
-            throw new IllegalArgumentException("ロットコードが既に存在します: " + request.getLotCode());
+            throw new DuplicateTeaLotException(request.getLotCode());
         }
         
         TeaLot teaLot = new TeaLot();
