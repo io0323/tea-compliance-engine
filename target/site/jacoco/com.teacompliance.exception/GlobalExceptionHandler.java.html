@@ -175,16 +175,16 @@ import java.util.stream.Collectors;
     public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleGlobalException(
             Exception ex, WebRequest request) {
         
-<span class="nc" id="L178">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
+<span class="fc" id="L178">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
         
-<span class="nc" id="L180">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+<span class="fc" id="L180">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
             HttpStatus.INTERNAL_SERVER_ERROR,
             &quot;TC_999&quot;,
             &quot;予期せぬエラーが発生しました&quot;,
-<span class="nc" id="L184">            request.getDescription(false)</span>
+<span class="fc" id="L184">            request.getDescription(false)</span>
         );
         
-<span class="nc" id="L187">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
+<span class="fc" id="L187">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
     }
     
     private Map&lt;String, Object&gt; createErrorResponse(

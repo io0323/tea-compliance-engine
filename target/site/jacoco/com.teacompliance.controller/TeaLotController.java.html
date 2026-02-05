@@ -80,7 +80,7 @@ public class TeaLotController {
 <span class="fc" id="L80">                   .orElse(ResponseEntity.notFound().build());</span>
     }
     
-    @GetMapping(value = &quot;/by-code/{lotCode}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = &quot;/by-lot-code/{lotCode}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = &quot;ロットコードで茶葉ロット取得&quot;, description = &quot;指定されたロットコードの茶葉ロットを取得する&quot;)
     @ApiResponses(value = {
         @ApiResponse(responseCode = &quot;200&quot;, description = &quot;取得成功&quot;),
@@ -94,26 +94,26 @@ public class TeaLotController {
 <span class="fc" id="L94">                   .orElse(ResponseEntity.notFound().build());</span>
     }
     
-    @GetMapping(value = &quot;/by-origin&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = &quot;/by-origin/{origin}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = &quot;産地で茶葉ロット検索&quot;, description = &quot;指定された産地の茶葉ロットを検索する&quot;)
     @ApiResponses(value = {
         @ApiResponse(responseCode = &quot;200&quot;, description = &quot;検索成功&quot;)
     })
     public ResponseEntity&lt;List&lt;TeaLot&gt;&gt; getTeaLotsByOrigin(
             @Parameter(description = &quot;産地&quot;, required = true)
-            @RequestParam String origin) {
+            @PathVariable String origin) {
 <span class="fc" id="L105">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByOrigin(origin);</span>
 <span class="fc" id="L106">        return ResponseEntity.ok(teaLots);</span>
     }
     
-    @GetMapping(value = &quot;/by-variety&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = &quot;/by-variety/{variety}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = &quot;品種で茶葉ロット検索&quot;, description = &quot;指定された品種の茶葉ロットを検索する&quot;)
     @ApiResponses(value = {
         @ApiResponse(responseCode = &quot;200&quot;, description = &quot;検索成功&quot;)
     })
     public ResponseEntity&lt;List&lt;TeaLot&gt;&gt; getTeaLotsByVariety(
             @Parameter(description = &quot;品種&quot;, required = true)
-            @RequestParam String variety) {
+            @PathVariable String variety) {
 <span class="fc" id="L117">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByVariety(variety);</span>
 <span class="fc" id="L118">        return ResponseEntity.ok(teaLots);</span>
     }

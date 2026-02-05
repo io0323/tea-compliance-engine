@@ -10,7 +10,7 @@ TeaCompliance Engine,com.teacompliance.dto,TeaLotRequest,0,52,0,0,0,15,0,15,0,15
 TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse,0,45,0,0,0,13,0,13,0,13
 TeaCompliance Engine,com.teacompliance.dto,ComplianceCheckResponse.RuleResult,0,52,0,0,0,15,0,15,0,15
 TeaCompliance Engine,com.teacompliance.exception,TeaLotNotFoundException,12,0,0,0,4,0,2,0,2,0
-TeaCompliance Engine,com.teacompliance.exception,GlobalExceptionHandler,145,137,0,0,36,29,7,7,7,7
+TeaCompliance Engine,com.teacompliance.exception,GlobalExceptionHandler,125,157,0,0,32,33,6,8,6,8
 TeaCompliance Engine,com.teacompliance.exception,TeaComplianceException,23,10,0,0,9,4,3,2,3,2
 TeaCompliance Engine,com.teacompliance.exception,DuplicateTeaLotException,0,6,0,0,0,2,0,1,0,1
 TeaCompliance Engine,com.teacompliance.exception,ComplianceRuleNotFoundException,6,0,0,0,2,0,1,0,1,0
