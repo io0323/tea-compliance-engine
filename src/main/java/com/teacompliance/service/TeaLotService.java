@@ -28,7 +28,9 @@ public class TeaLotService {
     
     @Transactional
     public TeaLot registerTeaLot(TeaLotRequest request) {
-        if (teaLotRepository.findByLotCode(request.getLotCode()).isPresent()) {
+        // 重複チェックを改善
+        if (teaLotRepository.existsByLotCode(request.getLotCode())) {
+            log.warn("茶葉ロットが既に存在します: {}", request.getLotCode());
             throw new DuplicateTeaLotException(request.getLotCode());
         }
         

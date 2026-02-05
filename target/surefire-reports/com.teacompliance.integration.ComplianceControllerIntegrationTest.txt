@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: com.teacompliance.integration.ComplianceControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 16.67 s <<< FAILURE! -- in com.teacompliance.integration.ComplianceControllerIntegrationTest
+com.teacompliance.integration.ComplianceControllerIntegrationTest.testGetComplianceRulesByType_ShouldReturnFilteredRules -- Time elapsed: 1.763 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.teacompliance.integration.ComplianceControllerIntegrationTest.testGetComplianceRulesByType_ShouldReturnFilteredRules(ComplianceControllerIntegrationTest.java:111)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+com.teacompliance.integration.ComplianceControllerIntegrationTest.testGetComplianceRules_ShouldReturnRules -- Time elapsed: 0.013 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<500>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.teacompliance.integration.ComplianceControllerIntegrationTest.testGetComplianceRules_ShouldReturnRules(ComplianceControllerIntegrationTest.java:96)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

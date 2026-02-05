@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GlobalExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TeaCompliance Engine</a> &gt; <a href="index.source.html" class="el_package">com.teacompliance.exception</a> &gt; <span class="el_source">GlobalExceptionHandler.java</span></div><h1>GlobalExceptionHandler.java</h1><pre class="source lang-java linenums">package com.teacompliance.exception;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+/**
+ * グローバル例外ハンドラー
+ */
+@RestControllerAdvice
+<span class="fc" id="L24">public class GlobalExceptionHandler {</span>
+    
+<span class="fc" id="L26">    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);</span>
+    
+    @ExceptionHandler(TeaLotNotFoundException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleTeaLotNotFoundException(
+            TeaLotNotFoundException ex, WebRequest request) {
+        
+<span class="nc" id="L32">        log.warn(&quot;茶葉ロットが見つかりません: {}&quot;, ex.getMessage());</span>
+        
+<span class="nc" id="L34">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.NOT_FOUND,
+<span class="nc" id="L36">            ex.getErrorCode(),</span>
+<span class="nc" id="L37">            ex.getMessage(),</span>
+<span class="nc" id="L38">            request.getDescription(false)</span>
+        );
+        
+<span class="nc" id="L41">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);</span>
+    }
+    
+    @ExceptionHandler(DuplicateTeaLotException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleDuplicateTeaLotException(
+            DuplicateTeaLotException ex, WebRequest request) {
+        
+<span class="fc" id="L48">        log.warn(&quot;茶葉ロット重複エラー: {}&quot;, ex.getMessage());</span>
+        
+<span class="fc" id="L50">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.CONFLICT,
+            &quot;TC_004&quot;,
+<span class="fc" id="L53">            &quot;Duplicate tea lot: &quot; + ex.getMessage(),</span>
+<span class="fc" id="L54">            request.getDescription(false)</span>
+        );
+        
+<span class="fc" id="L57">        return ResponseEntity.status(HttpStatus.CONFLICT).body(body);</span>
+    }
+    
+    @ExceptionHandler(ComplianceRuleNotFoundException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleComplianceRuleNotFoundException(
+            ComplianceRuleNotFoundException ex, WebRequest request) {
+        
+<span class="nc" id="L64">        log.warn(&quot;コンプライアンスルールが見つかりません: {}&quot;, ex.getMessage());</span>
+        
+<span class="nc" id="L66">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.NOT_FOUND,
+<span class="nc" id="L68">            ex.getErrorCode(),</span>
+<span class="nc" id="L69">            ex.getMessage(),</span>
+<span class="nc" id="L70">            request.getDescription(false)</span>
+        );
+        
+<span class="nc" id="L73">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);</span>
+    }
+    
+    @ExceptionHandler(ComplianceEvaluationException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleComplianceEvaluationException(
+            ComplianceEvaluationException ex, WebRequest request) {
+        
+<span class="nc" id="L80">        log.error(&quot;コンプライアンス評価エラー: {}&quot;, ex.getMessage(), ex);</span>
+        
+<span class="nc" id="L82">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.INTERNAL_SERVER_ERROR,
+<span class="nc" id="L84">            ex.getErrorCode(),</span>
+<span class="nc" id="L85">            ex.getMessage(),</span>
+<span class="nc" id="L86">            request.getDescription(false)</span>
+        );
+        
+<span class="nc" id="L89">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
+    }
+    
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleJsonParseError(
+            HttpMessageNotReadableException ex, WebRequest request) {
+        
+<span class="nc" id="L96">        log.warn(&quot;不正なJSON形式: {}&quot;, ex.getMessage());</span>
+        
+<span class="nc" id="L98">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.BAD_REQUEST,
+            &quot;TC_001&quot;,
+<span class="nc" id="L101">            &quot;Invalid JSON: &quot; + ex.getMessage(),</span>
+<span class="nc" id="L102">            request.getDescription(false)</span>
+        );
+        
+<span class="nc" id="L105">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
+    }
+    
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleMediaTypeError(
+            HttpMediaTypeNotSupportedException ex, WebRequest request) {
+        
+<span class="fc" id="L112">        log.warn(&quot;サポートされていないContent-Type: {}&quot;, ex.getMessage());</span>
+        
+<span class="fc" id="L114">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
+            &quot;TC_002&quot;,
+            &quot;Content-Type not supported. Please use application/json&quot;,
+<span class="fc" id="L118">            request.getDescription(false)</span>
+        );
+        
+<span class="fc" id="L121">        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body(body);</span>
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleValidationError(
+            MethodArgumentNotValidException ex, WebRequest request) {
+        
+<span class="fc" id="L128">        log.warn(&quot;バリデーションエラー: {}&quot;, ex.getMessage());</span>
+        
+        // 詳細なフィールドエラーを収集
+<span class="fc" id="L131">        Map&lt;String, String&gt; fieldErrors = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L132">        ex.getBindingResult().getFieldErrors().forEach(error -&gt; </span>
+<span class="fc" id="L133">            fieldErrors.put(error.getField(), error.getDefaultMessage())</span>
+        );
+        
+        // リスト形式のエラーメッセージも生成
+<span class="fc" id="L137">        List&lt;String&gt; errorMessages = ex.getBindingResult().getFieldErrors()</span>
+<span class="fc" id="L138">            .stream()</span>
+<span class="fc" id="L139">            .map(error -&gt; error.getField() + &quot;: &quot; + error.getDefaultMessage())</span>
+<span class="fc" id="L140">            .collect(Collectors.toList());</span>
+        
+<span class="fc" id="L142">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.BAD_REQUEST,
+            &quot;TC_003&quot;,
+            &quot;Validation failed&quot;,
+<span class="fc" id="L146">            request.getDescription(false)</span>
+        );
+        
+        // フィールドエラーとエラーメッセージリストを追加
+<span class="fc" id="L150">        body.put(&quot;fieldErrors&quot;, fieldErrors);</span>
+<span class="fc" id="L151">        body.put(&quot;errorMessages&quot;, errorMessages);</span>
+<span class="fc" id="L152">        body.put(&quot;errorCount&quot;, errorMessages.size());</span>
+        
+<span class="fc" id="L154">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
+    }
+    
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleIllegalArgumentException(
+            IllegalArgumentException ex, WebRequest request) {
+        
+<span class="nc" id="L161">        log.warn(&quot;不正な引数エラー: {}&quot;, ex.getMessage());</span>
+        
+<span class="nc" id="L163">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.BAD_REQUEST,
+            &quot;TC_005&quot;,
+<span class="nc" id="L166">            &quot;不正なリクエスト: &quot; + ex.getMessage(),</span>
+<span class="nc" id="L167">            request.getDescription(false)</span>
+        );
+        
+<span class="nc" id="L170">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);</span>
+    }
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleGlobalException(
+            Exception ex, WebRequest request) {
+        
+<span class="fc" id="L177">        log.error(&quot;予期せぬエラーが発生しました: {}&quot;, ex.getMessage(), ex);</span>
+        
+<span class="fc" id="L179">        Map&lt;String, Object&gt; body = createErrorResponse(</span>
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            &quot;TC_999&quot;,
+            &quot;予期せぬエラーが発生しました&quot;,
+<span class="fc" id="L183">            request.getDescription(false)</span>
+        );
+        
+<span class="fc" id="L186">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);</span>
+    }
+    
+    private Map&lt;String, Object&gt; createErrorResponse(
+            HttpStatus status, String errorCode, String message, String path) {
+        
+<span class="fc" id="L192">        Map&lt;String, Object&gt; body = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L193">        body.put(&quot;timestamp&quot;, LocalDateTime.now());</span>
+<span class="fc" id="L194">        body.put(&quot;status&quot;, status.value());</span>
+<span class="fc" id="L195">        body.put(&quot;error&quot;, status.getReasonPhrase());</span>
+<span class="fc" id="L196">        body.put(&quot;errorCode&quot;, errorCode);</span>
+<span class="fc" id="L197">        body.put(&quot;message&quot;, message);</span>
+<span class="fc" id="L198">        body.put(&quot;path&quot;, path);</span>
+        
+<span class="fc" id="L200">        return body;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

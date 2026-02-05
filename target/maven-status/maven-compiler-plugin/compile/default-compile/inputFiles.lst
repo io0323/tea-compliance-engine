@@ -29,3 +29,4 @@
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/controller/TeaLotController.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/repository/ComplianceRuleRepository.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/exception/TeaLotNotFoundException.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/constants/ComplianceConstants.java

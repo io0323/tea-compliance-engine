@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidLotCode {
     
-    String message() default "ロットコードの形式が正しくありません。形式: TL-YYYY-NNN";
+    String message() default "ロットコードの形式が正しくありません。形式: TL-YYYY-NNN (例: TL-2024-001)";
     
     Class<?>[] groups() default {};
     

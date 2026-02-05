@@ -28,7 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = TeaLotController.class)
 @TestPropertySource(properties = {
     "spring.jpa.hibernate.ddl-auto=none",
-    "spring.cache.type=none"
+    "spring.cache.type=none",
+    "spring.main.allow-bean-definition-overriding=true"
 })
 class TeaLotControllerTest {
     
@@ -228,5 +229,58 @@ class TeaLotControllerTest {
                 .contentType(MediaType.TEXT_PLAIN)
                 .content("some text"))
                 .andExpect(status().isUnsupportedMediaType());
+    }
+    
+    @Test
+    @DisplayName("必須フィールドが欠落している場合に400エラーが返されること")
+    void testRegisterTeaLot_MissingRequiredFields() throws Exception {
+        // Given - 空のリクエスト
+        TeaLotRequest emptyRequest = new TeaLotRequest();
+        
+        // When & Then
+        mockMvc.perform(post("/api/tea-lots")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(emptyRequest)))
+                .andExpect(status().isBadRequest());
+    }
+    
+    @Test
+    @DisplayName("ロットコードが空文字列の場合に400エラーが返されること")
+    void testRegisterTeaLot_EmptyLotCode() throws Exception {
+        // Given
+        TeaLotRequest invalidRequest = new TeaLotRequest();
+        invalidRequest.setLotCode(""); // 空文字列
+        invalidRequest.setOrigin("静岡県");
+        invalidRequest.setVariety("やぶきた");
+        invalidRequest.setMoisture(8.5);
+        invalidRequest.setPesticideLevel(0.3);
+        invalidRequest.setAromaScore(75);
+        invalidRequest.setProducedAt(LocalDate.of(2024, 5, 15));
+        
+        // When & Then
+        mockMvc.perform(post("/api/tea-lots")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(invalidRequest)))
+                .andExpect(status().isBadRequest());
+    }
+    
+    @Test
+    @DisplayName("水分量が範囲外の場合に400エラーが返されること")
+    void testRegisterTeaLot_InvalidMoistureRange() throws Exception {
+        // Given
+        TeaLotRequest invalidRequest = new TeaLotRequest();
+        invalidRequest.setLotCode("TL-2024-999");
+        invalidRequest.setOrigin("静岡県");
+        invalidRequest.setVariety("やぶきた");
+        invalidRequest.setMoisture(150.0); // 範囲外
+        invalidRequest.setPesticideLevel(0.3);
+        invalidRequest.setAromaScore(75);
+        invalidRequest.setProducedAt(LocalDate.of(2024, 5, 15));
+        
+        // When & Then
+        mockMvc.perform(post("/api/tea-lots")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(invalidRequest)))
+                .andExpect(status().isBadRequest());
     }
 }

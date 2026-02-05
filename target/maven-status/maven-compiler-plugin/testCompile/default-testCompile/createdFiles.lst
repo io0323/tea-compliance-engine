@@ -1,0 +1,9 @@
+com/teacompliance/service/evaluation/AromaEvaluationStrategyTest.class
+com/teacompliance/domain/ComplianceResultTest.class
+com/teacompliance/service/evaluation/MoistureEvaluationStrategyTest.class
+com/teacompliance/service/TeaLotServiceTest.class
+com/teacompliance/service/evaluation/PesticideEvaluationStrategyTest.class
+com/teacompliance/domain/ComplianceRuleTest.class
+com/teacompliance/integration/TeaComplianceIntegrationTest.class
+com/teacompliance/controller/TeaLotControllerTest.class
+com/teacompliance/domain/TeaLotTest.class
