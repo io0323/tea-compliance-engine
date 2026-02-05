@@ -171,35 +171,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
     
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, Object>> handleValidationError(
-            MethodArgumentNotValidException ex, WebRequest request) {
-        
-        log.warn("バリデーションエラー: {}", ex.getMessage());
-        
-        Map<String, String> fieldErrors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error -> 
-            fieldErrors.put(error.getField(), error.getDefaultMessage()));
-        
-        List<String> errorMessages = ex.getBindingResult().getFieldErrors()
-            .stream()
-            .map(error -> error.getField() + ": " + error.getDefaultMessage())
-            .collect(Collectors.toList());
-        
-        Map<String, Object> body = createErrorResponse(
-            HttpStatus.BAD_REQUEST,
-            "TC_003",
-            "Validation failed",
-            request.getDescription(false)
-        );
-        
-        body.put("fieldErrors", fieldErrors);
-        body.put("errorMessages", errorMessages);
-        body.put("errorCount", errorMessages.size());
-        
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
-    }
-    
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Map<String, Object>> handleHttpMessageNotReadableException(
             HttpMessageNotReadableException ex, WebRequest request) {
