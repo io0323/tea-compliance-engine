@@ -2,6 +2,7 @@ package com.teacompliance.controller;
 
 import com.teacompliance.domain.TeaLot;
 import com.teacompliance.dto.TeaLotRequest;
+import com.teacompliance.exception.TeaLotNotFoundException;
 import com.teacompliance.service.TeaLotService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -75,12 +76,12 @@ public class TeaLotController {
     public ResponseEntity<TeaLot> getTeaLotById(
             @Parameter(description = "茶葉ロットID", required = true)
             @PathVariable Long id) {
-        Optional<TeaLot> teaLot = teaLotService.getTeaLotById(id);
-        return teaLot.map(ResponseEntity::ok)
-                   .orElse(ResponseEntity.notFound().build());
+        return teaLotService.getTeaLotById(id)
+            .map(ResponseEntity::ok)
+            .orElseThrow(() -> new TeaLotNotFoundException("ID: " + id));
     }
     
-    @GetMapping(value = "/by-code/{lotCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/by-lot-code/{lotCode}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "ロットコードで茶葉ロット取得", description = "指定されたロットコードの茶葉ロットを取得する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "取得成功"),
@@ -89,32 +90,49 @@ public class TeaLotController {
     public ResponseEntity<TeaLot> getTeaLotByLotCode(
             @Parameter(description = "ロットコード", required = true)
             @PathVariable String lotCode) {
-        Optional<TeaLot> teaLot = teaLotService.getTeaLotByLotCode(lotCode);
-        return teaLot.map(ResponseEntity::ok)
-                   .orElse(ResponseEntity.notFound().build());
+        return teaLotService.getTeaLotByLotCode(lotCode)
+            .map(ResponseEntity::ok)
+            .orElseThrow(() -> new TeaLotNotFoundException("ロットコード: " + lotCode));
     }
     
-    @GetMapping(value = "/by-origin", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/by-origin/{origin}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "産地で茶葉ロット検索", description = "指定された産地の茶葉ロットを検索する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "検索成功")
     })
     public ResponseEntity<List<TeaLot>> getTeaLotsByOrigin(
             @Parameter(description = "産地", required = true)
-            @RequestParam String origin) {
+            @PathVariable String origin) {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByOrigin(origin);
         return ResponseEntity.ok(teaLots);
     }
     
-    @GetMapping(value = "/by-variety", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/by-variety/{variety}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "品種で茶葉ロット検索", description = "指定された品種の茶葉ロットを検索する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "検索成功")
     })
     public ResponseEntity<List<TeaLot>> getTeaLotsByVariety(
             @Parameter(description = "品種", required = true)
-            @RequestParam String variety) {
+            @PathVariable String variety) {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByVariety(variety);
         return ResponseEntity.ok(teaLots);
+    }
+    
+    @DeleteMapping(value = "/{id}")
+    @Operation(summary = "茶葉ロット削除", description = "指定されたIDの茶葉ロットを削除する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "204", description = "削除成功"),
+        @ApiResponse(responseCode = "404", description = "茶葉ロットが存在しない")
+    })
+    public ResponseEntity<Void> deleteTeaLot(
+            @Parameter(description = "茶葉ロットID", required = true)
+            @PathVariable Long id) {
+        if (!teaLotService.getTeaLotById(id).isPresent()) {
+            throw new TeaLotNotFoundException("ID: " + id);
+        }
+        
+        teaLotService.deleteTeaLot(id);
+        return ResponseEntity.noContent().build();
     }
 }

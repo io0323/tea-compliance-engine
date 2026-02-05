@@ -67,5 +67,15 @@ public class TeaLotService {
     public List&lt;TeaLot&gt; getTeaLotsByVariety(String variety) {
 <span class="fc" id="L68">        return teaLotRepository.findByVariety(variety);</span>
     }
+    
+    @Transactional
+    public boolean deleteTeaLot(Long id) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (teaLotRepository.existsById(id)) {</span>
+<span class="nc" id="L74">            teaLotRepository.deleteById(id);</span>
+<span class="nc" id="L75">            log.info(&quot;茶葉ロットを削除しました: ID={}&quot;, id);</span>
+<span class="nc" id="L76">            return true;</span>
+        }
+<span class="nc" id="L78">        return false;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -18,10 +18,18 @@ public class CacheConfig {
         ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();
         cacheManager.setCacheNames(java.util.List.of(
             "teaLots",
+            "teaLotById", 
+            "teaLotByLotCode",
+            "teaLotsByOrigin",
+            "teaLotsByVariety",
             "complianceRules", 
             "complianceResults",
             "shippableStatus"
         ));
+        
+        // キャッシュが存在しない場合にnullを許可する
+        cacheManager.setAllowNullValues(false);
+        
         return cacheManager;
     }
 }

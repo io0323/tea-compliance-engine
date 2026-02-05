@@ -1,4 +1,6 @@
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/controller/TeaLotControllerUnitTest.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/domain/ComplianceResultTest.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/service/TeaLotServiceUnitTest.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/integration/TeaComplianceIntegrationTest.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/exception/GlobalExceptionHandlerTest.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/test/java/com/teacompliance/controller/TeaLotControllerTest.java

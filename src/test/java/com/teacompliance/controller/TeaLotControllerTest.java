@@ -29,7 +29,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(properties = {
     "spring.jpa.hibernate.ddl-auto=none",
     "spring.cache.type=none",
-    "spring.main.allow-bean-definition-overriding=true"
+    "spring.main.allow-bean-definition-overriding=true",
+    "spring.datasource.url=jdbc:h2:mem:testdb",
+    "spring.datasource.driver-class-name=org.h2.Driver",
+    "spring.jpa.hibernate.ddl-auto=create-drop",
+    "spring.jpa.show-sql=false",
+    "logging.level.org.springframework.web=ERROR"
 })
 class TeaLotControllerTest {
     
@@ -164,7 +169,7 @@ class TeaLotControllerTest {
         when(teaLotService.getTeaLotByLotCode("TL-2024-001")).thenReturn(Optional.of(validTeaLot));
         
         // When & Then
-        mockMvc.perform(get("/api/tea-lots/by-code/TL-2024-001"))
+        mockMvc.perform(get("/api/tea-lots/by-lot-code/TL-2024-001"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.lotCode").value("TL-2024-001"))
                 .andExpect(jsonPath("$.origin").value("静岡県"));
@@ -177,7 +182,7 @@ class TeaLotControllerTest {
         when(teaLotService.getTeaLotByLotCode("TL-9999-999")).thenReturn(Optional.empty());
         
         // When & Then
-        mockMvc.perform(get("/api/tea-lots/by-code/TL-9999-999"))
+        mockMvc.perform(get("/api/tea-lots/by-lot-code/TL-9999-999"))
                 .andExpect(status().isNotFound());
     }
     
@@ -189,8 +194,7 @@ class TeaLotControllerTest {
         when(teaLotService.getTeaLotsByOrigin("静岡県")).thenReturn(teaLots);
         
         // When & Then
-        mockMvc.perform(get("/api/tea-lots/by-origin")
-                .param("origin", "静岡県"))
+        mockMvc.perform(get("/api/tea-lots/by-origin/静岡県"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$[0].origin").value("静岡県"));
@@ -204,8 +208,7 @@ class TeaLotControllerTest {
         when(teaLotService.getTeaLotsByVariety("やぶきた")).thenReturn(teaLots);
         
         // When & Then
-        mockMvc.perform(get("/api/tea-lots/by-variety")
-                .param("variety", "やぶきた"))
+        mockMvc.perform(get("/api/tea-lots/by-variety/やぶきた"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$[0].variety").value("やぶきた"));
