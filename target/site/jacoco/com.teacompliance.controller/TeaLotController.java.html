@@ -117,5 +117,23 @@ public class TeaLotController {
 <span class="fc" id="L117">        List&lt;TeaLot&gt; teaLots = teaLotService.getTeaLotsByVariety(variety);</span>
 <span class="fc" id="L118">        return ResponseEntity.ok(teaLots);</span>
     }
+    
+    @DeleteMapping(value = &quot;/{id}&quot;)
+    @Operation(summary = &quot;茶葉ロット削除&quot;, description = &quot;指定されたIDの茶葉ロットを削除する&quot;)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;204&quot;, description = &quot;削除成功&quot;),
+        @ApiResponse(responseCode = &quot;404&quot;, description = &quot;茶葉ロットが存在しない&quot;)
+    })
+    public ResponseEntity&lt;Void&gt; deleteTeaLot(
+            @Parameter(description = &quot;茶葉ロットID&quot;, required = true)
+            @PathVariable Long id) {
+<span class="nc" id="L130">        Optional&lt;TeaLot&gt; teaLot = teaLotService.getTeaLotById(id);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (teaLot.isEmpty()) {</span>
+<span class="nc" id="L132">            return ResponseEntity.notFound().build();</span>
+        }
+        
+<span class="nc" id="L135">        boolean deleted = teaLotService.deleteTeaLot(id);</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

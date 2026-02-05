@@ -117,4 +117,22 @@ public class TeaLotController {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByVariety(variety);
         return ResponseEntity.ok(teaLots);
     }
+    
+    @DeleteMapping(value = "/{id}")
+    @Operation(summary = "茶葉ロット削除", description = "指定されたIDの茶葉ロットを削除する")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "204", description = "削除成功"),
+        @ApiResponse(responseCode = "404", description = "茶葉ロットが存在しない")
+    })
+    public ResponseEntity<Void> deleteTeaLot(
+            @Parameter(description = "茶葉ロットID", required = true)
+            @PathVariable Long id) {
+        Optional<TeaLot> teaLot = teaLotService.getTeaLotById(id);
+        if (teaLot.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        boolean deleted = teaLotService.deleteTeaLot(id);
+        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
 }

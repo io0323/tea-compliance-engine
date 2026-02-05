@@ -15,6 +15,7 @@
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/validation/ValidLotCode.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/validation/LotCodeValidator.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/service/evaluation/MoistureEvaluationStrategy.java
+/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/service/TeaLotServiceWithCache.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/exception/ComplianceRuleNotFoundException.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/exception/GlobalExceptionHandler.java
 /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/src/main/java/com/teacompliance/service/ComplianceService.java

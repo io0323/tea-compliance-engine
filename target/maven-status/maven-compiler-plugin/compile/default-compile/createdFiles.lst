@@ -16,6 +16,7 @@ com/teacompliance/service/evaluation/RuleEvaluationStrategy$EvaluationResult.cla
 com/teacompliance/service/ComplianceService.class
 com/teacompliance/service/evaluation/AromaEvaluationStrategy.class
 com/teacompliance/repository/ComplianceResultRepository.class
+com/teacompliance/service/TeaLotServiceWithCache.class
 com/teacompliance/exception/TeaLotNotFoundException.class
 com/teacompliance/validation/LotCodeValidator.class
 com/teacompliance/service/evaluation/MoistureEvaluationStrategy.class

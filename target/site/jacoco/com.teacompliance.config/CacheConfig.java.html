@@ -18,11 +18,19 @@ import org.springframework.context.annotation.Configuration;
 <span class="fc" id="L18">        ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();</span>
 <span class="fc" id="L19">        cacheManager.setCacheNames(java.util.List.of(</span>
             &quot;teaLots&quot;,
+            &quot;teaLotById&quot;, 
+            &quot;teaLotByLotCode&quot;,
+            &quot;teaLotsByOrigin&quot;,
+            &quot;teaLotsByVariety&quot;,
             &quot;complianceRules&quot;, 
             &quot;complianceResults&quot;,
             &quot;shippableStatus&quot;
         ));
-<span class="fc" id="L25">        return cacheManager;</span>
+        
+        // キャッシュが存在しない場合にnullを許可する
+<span class="fc" id="L31">        cacheManager.setAllowNullValues(false);</span>
+        
+<span class="fc" id="L33">        return cacheManager;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
