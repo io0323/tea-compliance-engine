@@ -2,6 +2,7 @@ package com.teacompliance.controller;
 
 import com.teacompliance.domain.TeaLot;
 import com.teacompliance.dto.TeaLotRequest;
+import com.teacompliance.exception.TeaLotNotFoundException;
 import com.teacompliance.service.TeaLotService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -75,9 +76,9 @@ public class TeaLotController {
     public ResponseEntity<TeaLot> getTeaLotById(
             @Parameter(description = "茶葉ロットID", required = true)
             @PathVariable Long id) {
-        Optional<TeaLot> teaLot = teaLotService.getTeaLotById(id);
-        return teaLot.map(ResponseEntity::ok)
-                   .orElse(ResponseEntity.notFound().build());
+        return teaLotService.getTeaLotById(id)
+            .map(ResponseEntity::ok)
+            .orElseThrow(() -> new TeaLotNotFoundException("ID: " + id));
     }
     
     @GetMapping(value = "/by-lot-code/{lotCode}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -89,9 +90,9 @@ public class TeaLotController {
     public ResponseEntity<TeaLot> getTeaLotByLotCode(
             @Parameter(description = "ロットコード", required = true)
             @PathVariable String lotCode) {
-        Optional<TeaLot> teaLot = teaLotService.getTeaLotByLotCode(lotCode);
-        return teaLot.map(ResponseEntity::ok)
-                   .orElse(ResponseEntity.notFound().build());
+        return teaLotService.getTeaLotByLotCode(lotCode)
+            .map(ResponseEntity::ok)
+            .orElseThrow(() -> new TeaLotNotFoundException("ロットコード: " + lotCode));
     }
     
     @GetMapping(value = "/by-origin/{origin}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -127,12 +128,11 @@ public class TeaLotController {
     public ResponseEntity<Void> deleteTeaLot(
             @Parameter(description = "茶葉ロットID", required = true)
             @PathVariable Long id) {
-        Optional<TeaLot> teaLot = teaLotService.getTeaLotById(id);
-        if (teaLot.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        if (!teaLotService.getTeaLotById(id).isPresent()) {
+            throw new TeaLotNotFoundException("ID: " + id);
         }
         
-        boolean deleted = teaLotService.deleteTeaLot(id);
-        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+        teaLotService.deleteTeaLot(id);
+        return ResponseEntity.noContent().build();
     }
 }
