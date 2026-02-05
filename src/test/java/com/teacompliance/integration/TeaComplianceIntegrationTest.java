@@ -83,19 +83,17 @@ class TeaComplianceIntegrationTest {
                 .andExpect(jsonPath("$.lotCode").value("TL-2024-001"));
         
         // 4. ロットコードで茶葉ロット取得確認
-        mockMvc.perform(get("/api/tea-lots/by-code/TL-2024-001"))
+        mockMvc.perform(get("/api/tea-lots/by-lot-code/TL-2024-001"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.lotCode").value("TL-2024-001"));
         
         // 5. 産地で検索確認
-        mockMvc.perform(get("/api/tea-lots/by-origin")
-                .param("origin", "静岡県"))
+        mockMvc.perform(get("/api/tea-lots/by-origin/静岡県"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].origin").value("静岡県"));
         
         // 6. 品種で検索確認
-        mockMvc.perform(get("/api/tea-lots/by-variety")
-                .param("variety", "やぶきた"))
+        mockMvc.perform(get("/api/tea-lots/by-variety/やぶきた"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].variety").value("やぶきた"));
         
@@ -146,22 +144,19 @@ class TeaComplianceIntegrationTest {
                 .andExpect(jsonPath("$.length()").value(3));
         
         // 産地で検索（静岡県：2件）
-        mockMvc.perform(get("/api/tea-lots/by-origin")
-                .param("origin", "静岡県"))
+        mockMvc.perform(get("/api/tea-lots/by-origin/静岡県"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$.length()").value(2));
         
         // 産地で検索（鹿児島県：1件）
-        mockMvc.perform(get("/api/tea-lots/by-origin")
-                .param("origin", "鹿児島県"))
+        mockMvc.perform(get("/api/tea-lots/by-origin/鹿児島県"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$.length()").value(1));
         
         // 品種で検索（やぶきた：1件）
-        mockMvc.perform(get("/api/tea-lots/by-variety")
-                .param("variety", "やぶきた"))
+        mockMvc.perform(get("/api/tea-lots/by-variety/やぶきた"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$.length()").value(1));
@@ -207,7 +202,7 @@ class TeaComplianceIntegrationTest {
                 .andExpect(status().isNotFound());
         
         // 存在しないロットコード
-        mockMvc.perform(get("/api/tea-lots/by-code/TL-9999-999"))
+        mockMvc.perform(get("/api/tea-lots/by-lot-code/TL-9999-999"))
                 .andExpect(status().isNotFound());
         
         // 存在しない茶葉ロットIDでコンプライアンスチェック

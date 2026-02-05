@@ -80,7 +80,7 @@ public class TeaLotController {
                    .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping(value = "/by-code/{lotCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/by-lot-code/{lotCode}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "ロットコードで茶葉ロット取得", description = "指定されたロットコードの茶葉ロットを取得する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "取得成功"),
@@ -94,26 +94,26 @@ public class TeaLotController {
                    .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping(value = "/by-origin", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/by-origin/{origin}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "産地で茶葉ロット検索", description = "指定された産地の茶葉ロットを検索する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "検索成功")
     })
     public ResponseEntity<List<TeaLot>> getTeaLotsByOrigin(
             @Parameter(description = "産地", required = true)
-            @RequestParam String origin) {
+            @PathVariable String origin) {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByOrigin(origin);
         return ResponseEntity.ok(teaLots);
     }
     
-    @GetMapping(value = "/by-variety", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/by-variety/{variety}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "品種で茶葉ロット検索", description = "指定された品種の茶葉ロットを検索する")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "検索成功")
     })
     public ResponseEntity<List<TeaLot>> getTeaLotsByVariety(
             @Parameter(description = "品種", required = true)
-            @RequestParam String variety) {
+            @PathVariable String variety) {
         List<TeaLot> teaLots = teaLotService.getTeaLotsByVariety(variety);
         return ResponseEntity.ok(teaLots);
     }

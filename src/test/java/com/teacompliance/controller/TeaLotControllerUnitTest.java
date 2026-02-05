@@ -131,7 +131,7 @@ class TeaLotControllerUnitTest {
     @DisplayName("茶葉ロット登録 - バリデーションエラー（水分率範囲外）")
     void registerTeaLot_ValidationError_MoistureOutOfRange() throws Exception {
         // Given
-        validRequest.setMoisture(15.0); // 上限超過
+        validRequest.setMoisture(15.0); // 上限超過（10%超過）
 
         // When & Then
         mockMvc.perform(post("/api/tea-lots")
