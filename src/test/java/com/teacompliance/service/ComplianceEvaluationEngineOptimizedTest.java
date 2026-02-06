@@ -60,7 +60,7 @@ class ComplianceEvaluationEngineOptimizedTest {
         testTeaLot.setMoisture(4.5);
         testTeaLot.setPesticideLevel(0.8);
         testTeaLot.setAromaScore(8);
-        testTeaLot.setProducedAt(LocalDateTime.of(2024, 5, 15, 10, 30));
+        testTeaLot.setProducedAt(LocalDate.of(2024, 5, 15));
         
         // テスト用ルール
         ComplianceRule rule1 = new ComplianceRule();

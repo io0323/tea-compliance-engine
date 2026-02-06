@@ -15,6 +15,7 @@ com/teacompliance/domain/ComplianceRule$Severity.class
 com/teacompliance/dto/TeaLotSearchCriteria.class
 com/teacompliance/dto/TeaLotRequest.class
 com/teacompliance/controller/TeaLotController.class
+com/teacompliance/service/ComplianceEvaluationEngineOptimized.class
 com/teacompliance/service/TeaLotService.class
 com/teacompliance/dto/ComplianceCheckResponse$RuleResult.class
 com/teacompliance/dto/ComplianceCheckResponse$EvaluationSummary.class
