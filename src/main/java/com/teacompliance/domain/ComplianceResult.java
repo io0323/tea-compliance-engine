@@ -79,6 +79,7 @@ public class ComplianceResult {
      */
     public enum EvaluationResult {
         PASS,  // 合格
-        FAIL   // 不合格
+        FAIL,   // 不合格
+        ERROR   // エラー
     }
 }

@@ -30,7 +30,7 @@ public class TeaLotRequest {
     
     @NotNull(message = "水分量は必須です")
     @DecimalMin(value = "0.0", message = "水分量は0%以上である必要があります")
-    @DecimalMax(value = "100.0", message = "水分量は100%以下である必要があります")
+    @DecimalMax(value = "10.0", message = "水分量は10%以下である必要があります")
     private Double moisture;
     
     @NotNull(message = "農薬レベルは必須です")

@@ -5,29 +5,47 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+import java.util.Arrays;
 
 /**
- * キャッシュ設定クラス
+ * 高度なキャッシュ設定
+ * 
+ * パフォーマンス最適化のためのキャッシュ戦略を定義
  */
 @Configuration
 @EnableCaching
-public class CacheConfig {
+public class AdvancedCacheConfig {
     
     @Bean
-    public CacheManager cacheManager() {
+    @Primary
+    public CacheManager advancedCacheManager() {
         ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();
-        cacheManager.setCacheNames(java.util.List.of(
+        
+        // キャッシュ名を定義
+        cacheManager.setCacheNames(Arrays.asList(
+            // 茶葉ロット関連
             "teaLots",
             "teaLotById", 
             "teaLotByLotCode",
             "teaLotsByOrigin",
             "teaLotsByVariety",
+            "teaLotSearchResults",
+            
+            // コンプライアンス関連
             "complianceRules", 
             "complianceResults",
-            "shippableStatus"
+            "complianceEvaluation",
+            "shippableStatus",
+            "ruleEvaluationStrategies",
+            
+            // 検索関連
+            "searchResults",
+            "advancedSearchResults"
         ));
         
-        // キャッシュが存在しない場合にnullを許可する
+        // パフォーマンス最適化設定
         cacheManager.setAllowNullValues(false);
         
         return cacheManager;

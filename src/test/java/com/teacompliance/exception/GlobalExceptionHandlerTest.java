@@ -83,7 +83,7 @@ class GlobalExceptionHandlerTest {
     @DisplayName("存在しないロットコードで検索した場合に404が返されること")
     void testHandleTeaLotByCodeNotFound() throws Exception {
         // When & Then
-        mockMvc.perform(get("/api/tea-lots/by-code/TL-9999-999")
+        mockMvc.perform(get("/api/tea-lots/by-lot-code/TL-9999-999")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
