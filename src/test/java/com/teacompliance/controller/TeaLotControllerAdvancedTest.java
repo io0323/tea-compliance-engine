@@ -11,9 +11,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -29,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * TeaLotControllerの高度な機能テスト
  */
-@AutoConfigureWebMvc
+@WebMvcTest(controllers = TeaLotController.class)
 @DisplayName("TeaLotController高度な機能テスト")
 class TeaLotControllerAdvancedTest {
     
@@ -151,9 +153,11 @@ class TeaLotControllerAdvancedTest {
         criteria.setVariety("一番茶");
         
         List<TeaLot> searchResults = Arrays.asList(testTeaLot);
-        Page<TeaLot> pageResult = mock(Page.class);
-        when(pageResult.getNumberOfElements()).thenReturn(1);
-        when(pageResult.getTotalElements()).thenReturn(1L);
+        Page<TeaLot> pageResult = new PageImpl<>(
+                searchResults,
+                PageRequest.of(0, 20),
+                1
+        );
         
         when(teaLotService.searchByCriteria(any(TeaLotSearchCriteria.class), any()))
                 .thenReturn(pageResult);
