@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.stereotype.Service;
+import jakarta.annotation.PostConstruct;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -49,6 +49,11 @@ public class ComplianceEvaluationEngineOptimized {
         this.ruleRepository = ruleRepository;
         this.resultRepository = resultRepository;
         this.strategies = strategies;
+    }
+    
+    @PostConstruct
+    public void init() {
+        initializeStrategies();
     }
     
     /**

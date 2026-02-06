@@ -94,6 +94,9 @@ class ComplianceEvaluationEngineOptimizedTest {
         when(strategy2.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.PESTICIDE);
         when(ruleRepository.findAllOrderedBySeverityAndType()).thenReturn(testRules);
         
+        // 手動で初期化を実行（@PostConstructをテスト）
+        evaluationEngine.init();
+        
         // Then
         List<ComplianceResult> results = evaluationEngine.evaluateTeaLot(testTeaLot);
         
@@ -113,6 +116,9 @@ class ComplianceEvaluationEngineOptimizedTest {
         when(strategy1.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.MOISTURE);
         when(strategy2.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.PESTICIDE);
         when(ruleRepository.findAllOrderedBySeverityAndType()).thenReturn(testRules);
+        
+        // 手動で初期化を実行
+        evaluationEngine.init();
         
         // When - 1回目の呼び出し
         List<ComplianceResult> results1 = evaluationEngine.evaluateTeaLot(testTeaLot);
