@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="4.615" tests="6" errors="1" skipped="0" failures="3">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="3.117" tests="6" errors="0" skipped="0" failures="4">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="JP"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/24.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260207001644762_3.jar /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire 2026-02-07T00-16-44_491-jvmRun1 surefire-20260207001644762_1tmp surefire_0-20260207001644762_2tmp"/>
+    <property name="sun.java.command" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260207001805358_3.jar /Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire 2026-02-07T00-18-05_189-jvmRun1 surefire-20260207001805358_1tmp surefire_0-20260207001805358_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="ComplianceEvaluationEngineOptimizedTest"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260207001644762_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/io/Projects/GitHub/WebProjects/Fullstack/tea-compliance-engine/target/surefire/surefirebooter-20260207001805358_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="24.0.1"/>
@@ -60,9 +60,9 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="testCachingFunctionality" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="4.168">
-    <system-out><![CDATA[00:16:52.467 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
-00:16:52.482 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
+  <testcase name="testCachingFunctionality" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="2.73">
+    <system-out><![CDATA[00:18:10.043 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
+00:18:10.058 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -78,7 +78,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
-00:16:52.482 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
+00:18:10.058 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -96,7 +96,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:264)
 	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:105)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:116)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:118)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -166,25 +166,9 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-00:16:52.538 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
-00:16:52.571 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
-00:16:52.575 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
-java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:960)
-	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:934)
-	at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327)
-	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:759)
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
-00:16:52.575 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
+00:18:10.121 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
+00:18:10.144 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
+00:18:10.146 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -202,7 +186,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:264)
 	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:105)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:122)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:125)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -272,7 +256,23 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-00:16:52.582 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
+00:18:10.147 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
+java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:960)
+	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:934)
+	at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:759)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+00:18:10.149 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
 ]]></system-out>
     <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/sun/tools/attach/VirtualMachine with JaCoCo 0.8.8.202204050719/5dcf34a.
 	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
@@ -418,7 +418,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/
 	at java.base/java.lang.String.format(String.java:4468)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.getEvaluationSummary(ComplianceEvaluationEngineOptimized.java:244)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:115)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:116)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:118)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -541,7 +541,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/
 	at java.base/java.lang.String.format(String.java:4468)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.getEvaluationSummary(ComplianceEvaluationEngineOptimized.java:244)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:115)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:116)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:118)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -662,7 +662,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/
 	at java.base/java.lang.String.format(String.java:4468)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.getEvaluationSummary(ComplianceEvaluationEngineOptimized.java:244)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:115)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:116)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCachingFunctionality(ComplianceEvaluationEngineOptimizedTest.java:118)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -747,9 +747,9 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	... 107 more
 ]]></system-err>
   </testcase>
-  <testcase name="testCacheClear" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.042">
-    <system-out><![CDATA[00:16:52.687 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
-00:16:52.689 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
+  <testcase name="testCacheClear" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.084">
+    <system-out><![CDATA[00:18:10.235 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
+00:18:10.239 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -765,7 +765,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
-00:16:52.689 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
+00:18:10.239 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -783,7 +783,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:264)
 	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:105)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCacheClear(ComplianceEvaluationEngineOptimizedTest.java:175)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCacheClear(ComplianceEvaluationEngineOptimizedTest.java:179)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -853,26 +853,10 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-00:16:52.696 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
-00:16:52.697 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 評価エンジンのキャッシュをクリアしました
-00:16:52.697 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
-00:16:52.698 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
-java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:960)
-	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:934)
-	at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327)
-	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:759)
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
-00:16:52.697 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
+00:18:10.252 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
+00:18:10.252 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 評価エンジンのキャッシュをクリアしました
+00:18:10.257 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
+00:18:10.259 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -890,7 +874,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:264)
 	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateTeaLot(ComplianceEvaluationEngineOptimized.java:105)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCacheClear(ComplianceEvaluationEngineOptimizedTest.java:182)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testCacheClear(ComplianceEvaluationEngineOptimizedTest.java:186)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -960,10 +944,26 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-00:16:52.699 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
+00:18:10.259 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
+java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:960)
+	at java.base/java.util.stream.ReduceOps$ReduceTask.doLeaf(ReduceOps.java:934)
+	at java.base/java.util.stream.AbstractTask.compute(AbstractTask.java:327)
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:759)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+00:18:10.267 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
 ]]></system-out>
   </testcase>
-  <testcase name="testShippableCaching" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.051">
+  <testcase name="testShippableCaching" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.045">
     <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -971,28 +971,25 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
 	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
 	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testShippableCaching(ComplianceEvaluationEngineOptimizedTest.java:154)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testShippableCaching(ComplianceEvaluationEngineOptimizedTest.java:158)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 ]]></failure>
   </testcase>
-  <testcase name="testBlockViolationMakesNotShippable" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.049">
-    <error message="&#10;Unnecessary stubbings detected.&#10;Clean &amp; maintainable test code requires zero unnecessary code.&#10;Following stubbings are unnecessary (click to navigate to relevant line of code):&#10;  1. -&gt; at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:192)&#10;  2. -&gt; at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:193)&#10;  3. -&gt; at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:194)&#10;Please remove unnecessary stubbings or use &apos;lenient&apos; strictness. More info: javadoc for UnnecessaryStubbingException class." type="org.mockito.exceptions.misusing.UnnecessaryStubbingException"><![CDATA[org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+  <testcase name="testBlockViolationMakesNotShippable" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.08">
+    <failure message="&#10;Wanted but not invoked:&#10;strategy1.getSupportedRuleType();&#10;-&gt; at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:215)&#10;Actually, there were zero interactions with this mock.&#10;" type="Wanted but not invoked"><![CDATA[Wanted but not invoked:
+strategy1.getSupportedRuleType();
+-> at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:215)
+Actually, there were zero interactions with this mock.
 
-Unnecessary stubbings detected.
-Clean & maintainable test code requires zero unnecessary code.
-Following stubbings are unnecessary (click to navigate to relevant line of code):
-  1. -> at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:192)
-  2. -> at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:193)
-  3. -> at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:194)
-Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
-	at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:192)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testBlockViolationMakesNotShippable(ComplianceEvaluationEngineOptimizedTest.java:215)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-]]></error>
+]]></failure>
   </testcase>
-  <testcase name="testMissingStrategyReturnsError" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.044">
+  <testcase name="testMissingStrategyReturnsError" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.012">
     <failure message="expected: &lt;1&gt; but was: &lt;0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -1000,17 +997,17 @@ Please remove unnecessary stubbings or use 'lenient' strictness. More info: java
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
-	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testMissingStrategyReturnsError(ComplianceEvaluationEngineOptimizedTest.java:229)
+	at com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest.testMissingStrategyReturnsError(ComplianceEvaluationEngineOptimizedTest.java:239)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 ]]></failure>
-    <system-out><![CDATA[00:16:52.898 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 1
-00:16:52.901 [main] WARN com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルールタイプ AROMA の評価戦略が見つかりません: RULE999
-00:16:52.907 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
+    <system-out><![CDATA[00:18:10.437 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 1
+00:18:10.439 [main] WARN com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルールタイプ AROMA の評価戦略が見つかりません: RULE999
+00:18:10.440 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
 ]]></system-out>
   </testcase>
-  <testcase name="testStrategyMapInitialization" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.019">
+  <testcase name="testStrategyMapInitialization" classname="com.teacompliance.service.ComplianceEvaluationEngineOptimizedTest" time="0.011">
     <failure message="expected: &lt;2&gt; but was: &lt;0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <2> but was: <0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -1023,8 +1020,8 @@ Please remove unnecessary stubbings or use 'lenient' strictness. More info: java
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 ]]></failure>
-    <system-out><![CDATA[00:16:52.930 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
-00:16:52.931 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
+    <system-out><![CDATA[00:18:10.452 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価開 - 適用ルール数: 2
+00:18:10.452 [ForkJoinPool.commonPool-worker-1] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE001
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -1040,7 +1037,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1394)
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1970)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
-00:16:52.931 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
+00:18:10.452 [main] ERROR com.teacompliance.service.ComplianceEvaluationEngineOptimized -- ルール評価中にエラー発生: RULE002
 java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluation.RuleEvaluationStrategy$EvaluationResult.isPassed()" because "evaluationResult" is null
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.evaluateRule(ComplianceEvaluationEngineOptimized.java:141)
 	at com.teacompliance.service.ComplianceEvaluationEngineOptimized.lambda$evaluateTeaLot$0(ComplianceEvaluationEngineOptimized.java:104)
@@ -1128,7 +1125,7 @@ java.lang.NullPointerException: Cannot invoke "com.teacompliance.service.evaluat
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-00:16:52.934 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
+00:18:10.455 [main] INFO com.teacompliance.service.ComplianceEvaluationEngineOptimized -- 茶葉ロット TL-2024-001 の評価完了 - 出荷可能: 合格: 0, 不合格: 0 (BLOCK: 0)
 ]]></system-out>
   </testcase>
 </testsuite>

@@ -61,10 +61,11 @@ class ComplianceResultTest {
     @DisplayName("評価結果の列挙値が正しく定義されていること")
     void testEvaluationResultEnum() {
         ComplianceResult.EvaluationResult[] results = ComplianceResult.EvaluationResult.values();
-        assertThat(results).hasSize(2);
+        assertThat(results).hasSize(3);
         assertThat(results).contains(
-            ComplianceResult.EvaluationResult.PASS,
-            ComplianceResult.EvaluationResult.FAIL
+                ComplianceResult.EvaluationResult.PASS,
+                ComplianceResult.EvaluationResult.FAIL,
+                ComplianceResult.EvaluationResult.ERROR
         );
     }
     
