@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.teacompliance.integration.TeaComplianceIntegrationTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.53 s -- in com.teacompliance.integration.TeaComplianceIntegrationTest
