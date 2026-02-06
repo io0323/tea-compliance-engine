@@ -9,7 +9,16 @@ import java.time.LocalDate;
  * 茶葉の生産ロット情報を管理する
  */
 @Entity
-@Table(name = "tea_lots")
+@Table(name = "tea_lots", indexes = {
+    @Index(name = "idx_tea_lot_lot_code", columnList = "lot_code"),
+    @Index(name = "idx_tea_lot_origin", columnList = "origin"),
+    @Index(name = "idx_tea_lot_variety", columnList = "variety"),
+    @Index(name = "idx_tea_lot_produced_at", columnList = "produced_at"),
+    @Index(name = "idx_tea_lot_moisture", columnList = "moisture"),
+    @Index(name = "idx_tea_lot_pesticide", columnList = "pesticide_level"),
+    @Index(name = "idx_tea_lot_origin_variety", columnList = "origin, variety"),
+    @Index(name = "idx_tea_lot_composite", columnList = "origin, variety, produced_at")
+})
 public class TeaLot {
     
     @Id

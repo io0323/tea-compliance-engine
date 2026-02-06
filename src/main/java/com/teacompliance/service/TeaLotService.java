@@ -2,10 +2,13 @@ package com.teacompliance.service;
 
 import com.teacompliance.domain.TeaLot;
 import com.teacompliance.dto.TeaLotRequest;
+import com.teacompliance.dto.TeaLotSearchCriteria;
 import com.teacompliance.exception.DuplicateTeaLotException;
 import com.teacompliance.repository.TeaLotRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -76,5 +79,32 @@ public class TeaLotService {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * 複合条件で茶葉ロットを検索
+     * 
+     * @param criteria 検索条件
+     * @return 検索結果
+     */
+    public List<TeaLot> searchByCriteria(TeaLotSearchCriteria criteria) {
+        log.info("複合条件検索: {}", criteria);
+        List<TeaLot> results = teaLotRepository.searchByCriteria(criteria);
+        log.info("複合条件検索完了 - {}件", results.size());
+        return results;
+    }
+    
+    /**
+     * 複合条件で茶葉ロットを検索（ページング対応）
+     * 
+     * @param criteria 検索条件
+     * @param pageable ページング情報
+     * @return 検索結果
+     */
+    public Page<TeaLot> searchByCriteria(TeaLotSearchCriteria criteria, Pageable pageable) {
+        log.info("複合条件検索（ページング）: {}, {}", criteria, pageable);
+        Page<TeaLot> results = teaLotRepository.searchByCriteria(criteria, pageable);
+        log.info("複合条件検索完了 - {}件（全{}件）", results.getNumberOfElements(), results.getTotalElements());
+        return results;
     }
 }
