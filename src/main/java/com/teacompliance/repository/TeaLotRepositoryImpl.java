@@ -40,14 +40,19 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
         // ソート処理
         applySorting(cb, query, root, criteria);
         
+        // Countクエリ（全件取得を避ける）
+        CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
+        Root<TeaLot> countRoot = countQuery.from(TeaLot.class);
+        List<Predicate> countPredicates = buildPredicates(criteria, cb, countRoot);
+        countQuery.select(cb.count(countRoot));
+        countQuery.where(countPredicates.toArray(new Predicate[0]));
+        long totalRows = entityManager.createQuery(countQuery).getSingleResult();
+
         TypedQuery<TeaLot> typedQuery = entityManager.createQuery(query);
-        
-        // ページング設定
-        int totalRows = typedQuery.getResultList().size();
         typedQuery.setFirstResult((int) pageable.getOffset());
         typedQuery.setMaxResults(pageable.getPageSize());
-        
         List<TeaLot> results = typedQuery.getResultList();
+
         return new PageImpl<>(results, pageable, totalRows);
     }
     
