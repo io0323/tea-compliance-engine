@@ -110,6 +110,25 @@ class ComplianceEvaluationEngineOptimizedTest {
         verify(ruleRepository, atLeastOnce()).findAllOrderedBySeverityAndType();
         verify(resultRepository, atLeastOnce()).saveAll(any());
     }
+
+    @Test
+    @DisplayName("init()を呼ばなくてもevaluateTeaLotが内部で初期化して動作すること")
+    void testEvaluateTeaLotWithoutInit_Works() {
+        // Given
+        when(strategy1.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.MOISTURE);
+        when(strategy2.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.PESTICIDE);
+        when(ruleRepository.findAllOrderedBySeverityAndType()).thenReturn(testRules);
+
+        when(strategy1.evaluate(any(), any())).thenReturn(new RuleEvaluationStrategy.EvaluationResult(true, "OK", null));
+        when(strategy2.evaluate(any(), any())).thenReturn(new RuleEvaluationStrategy.EvaluationResult(true, "OK", null));
+
+        // When
+        List<ComplianceResult> results = evaluationEngine.evaluateTeaLot(testTeaLot);
+
+        // Then
+        assertNotNull(results);
+        assertEquals(2, results.size());
+    }
     
     @Test
     @DisplayName("キャッシュが機能すること")
