@@ -1,6 +1,9 @@
 package com.teacompliance.repository;
 
 import com.teacompliance.domain.TeaLot;
+import com.teacompliance.dto.TeaLotSearchCriteria;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +16,7 @@ import java.util.Optional;
  * 茶葉ロットリポジトリ
  */
 @Repository
-public interface TeaLotRepository extends JpaRepository<TeaLot, Long> {
+public interface TeaLotRepository extends JpaRepository<TeaLot, Long>, TeaLotRepositoryCustom {
     
     /**
      * ロットコードで検索
@@ -64,4 +67,21 @@ public interface TeaLotRepository extends JpaRepository<TeaLot, Long> {
      */
     @Query("SELECT t FROM TeaLot t WHERE t.pesticideLevel > :pesticideLevel")
     List<TeaLot> findByPesticideLevelGreaterThan(@Param("pesticideLevel") Double pesticideLevel);
+    
+    /**
+     * 複合条件で検索（ページング対応）
+     * 
+     * @param criteria 検索条件
+     * @param pageable ページング情報
+     * @return 検索結果
+     */
+    Page<TeaLot> searchByCriteria(TeaLotSearchCriteria criteria, Pageable pageable);
+    
+    /**
+     * 複合条件で検索
+     * 
+     * @param criteria 検索条件
+     * @return 検索結果
+     */
+    List<TeaLot> searchByCriteria(TeaLotSearchCriteria criteria);
 }

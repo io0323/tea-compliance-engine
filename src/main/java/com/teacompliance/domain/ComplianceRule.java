@@ -28,6 +28,12 @@ public class ComplianceRule {
     @Column(nullable = false)
     private Double threshold;
     
+    @Column(name = "threshold_min")
+    private Double thresholdMin;
+    
+    @Column(name = "threshold_max")
+    private Double thresholdMax;
+    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ComparisonOperator operator;
@@ -66,6 +72,12 @@ public class ComplianceRule {
     
     public Double getThreshold() { return threshold; }
     public void setThreshold(Double threshold) { this.threshold = threshold; }
+    
+    public Double getThresholdMin() { return thresholdMin; }
+    public void setThresholdMin(Double thresholdMin) { this.thresholdMin = thresholdMin; }
+    
+    public Double getThresholdMax() { return thresholdMax; }
+    public void setThresholdMax(Double thresholdMax) { this.thresholdMax = thresholdMax; }
     
     public ComparisonOperator getOperator() { return operator; }
     public void setOperator(ComparisonOperator operator) { this.operator = operator; }
