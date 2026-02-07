@@ -227,12 +227,22 @@ public class TeaLotController {
         
         log.info("茶葉ロット高度検索（ページング）: {}, page: {}, size: {}", criteria, page, size);
         
+        String sortBy = criteria.getSortBy();
+        if (sortBy == null || sortBy.isBlank()) {
+            sortBy = "producedAt";
+        }
+
+        String sortDirection = criteria.getSortDirection();
+        if (sortDirection == null || sortDirection.isBlank()) {
+            sortDirection = "desc";
+        }
+
         // ソート条件を構築
         Sort sort = Sort.by(
-            "asc".equalsIgnoreCase(criteria.getSortDirection()) 
-                ? Sort.Direction.ASC 
+            "asc".equalsIgnoreCase(sortDirection)
+                ? Sort.Direction.ASC
                 : Sort.Direction.DESC,
-            criteria.getSortBy()
+            sortBy
         );
         
         Pageable pageable = PageRequest.of(page, size, sort);

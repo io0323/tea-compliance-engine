@@ -234,6 +234,38 @@ class TeaLotControllerAdvancedTest {
         mockMvc.perform(post("/api/tea-lots/bulk")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(bulkRequest)))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errorCode").value("TC_003"))
+                .andExpect(jsonPath("$.fieldErrors").exists());
+    }
+
+    @Test
+    @DisplayName("ページング検索でsortBy/sortDirectionがnullでも500にならないこと")
+    void testPagedSearch_NullSortFields_UsesDefaults() throws Exception {
+        // Given
+        TeaLotSearchCriteria criteria = new TeaLotSearchCriteria();
+        criteria.setOrigin("静岡県");
+        criteria.setSortBy(null);
+        criteria.setSortDirection(null);
+
+        List<TeaLot> searchResults = Arrays.asList(testTeaLot);
+        Page<TeaLot> pageResult = new PageImpl<>(
+                searchResults,
+                PageRequest.of(0, 20),
+                1
+        );
+
+        when(teaLotService.searchByCriteria(any(TeaLotSearchCriteria.class), any()))
+                .thenReturn(pageResult);
+
+        // When & Then
+        mockMvc.perform(post("/api/tea-lots/search/page")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(criteria))
+                .param("page", "0")
+                .param("size", "20"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.numberOfElements").value(1))
+                .andExpect(jsonPath("$.totalElements").value(1));
     }
 }
