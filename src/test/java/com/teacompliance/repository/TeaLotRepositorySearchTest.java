@@ -65,4 +65,28 @@ class TeaLotRepositorySearchTest {
         assertEquals(1, results.size());
         assertEquals("TL-2024-010", results.get(0).getLotCode());
     }
+
+    @Test
+    @DisplayName("不正なsortByでも例外にならずデフォルトソートにフォールバックすること")
+    void searchByCriteriaInvalidSortBy_FallsBackToDefault() {
+        // Given
+        teaLotRepository.save(new TeaLot(null, "TL-2024-020", "静岡県", "一番茶", 4.5, 0.8, 80, LocalDate.of(2024, 5, 10)));
+        teaLotRepository.save(new TeaLot(null, "TL-2024-021", "静岡県", "一番茶", 4.5, 0.8, 80, LocalDate.of(2024, 5, 12)));
+
+        TeaLotSearchCriteria criteria = new TeaLotSearchCriteria();
+        criteria.setOrigin("静岡県");
+        criteria.setVariety("一番茶");
+        criteria.setSortBy("__invalid__");
+        criteria.setSortDirection("desc");
+
+        PageRequest pageable = PageRequest.of(0, 10);
+
+        // When
+        Page<TeaLot> page = teaLotRepository.searchByCriteria(criteria, pageable);
+
+        // Then
+        assertEquals(2, page.getTotalElements());
+        assertEquals("TL-2024-021", page.getContent().get(0).getLotCode());
+        assertEquals("TL-2024-020", page.getContent().get(1).getLotCode());
+    }
 }

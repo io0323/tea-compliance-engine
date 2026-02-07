@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 茶葉ロットリポジトリのカスタム実装
@@ -22,6 +23,17 @@ import java.util.List;
 public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> implements TeaLotRepositoryCustom {
     
     private final EntityManager entityManager;
+
+    private static final Set<String> ALLOWED_SORT_FIELDS = Set.of(
+            "id",
+            "lotCode",
+            "origin",
+            "variety",
+            "moisture",
+            "pesticideLevel",
+            "aromaScore",
+            "producedAt"
+    );
     
     public TeaLotRepositoryImpl(EntityManager entityManager) {
         super(TeaLot.class, entityManager);
@@ -124,6 +136,10 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
         String sortDirection = criteria.getSortDirection();
         
         if (sortBy == null || sortBy.trim().isEmpty()) {
+            sortBy = "producedAt";
+        }
+
+        if (!ALLOWED_SORT_FIELDS.contains(sortBy)) {
             sortBy = "producedAt";
         }
         
