@@ -21,7 +21,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -231,6 +234,49 @@ class TeaLotControllerAdvancedTest {
         bulkRequest.setTeaLots(Arrays.asList(invalidRequest));
         
         // When & Then
+        mockMvc.perform(post("/api/tea-lots/bulk")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(bulkRequest)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errorCode").value("TC_003"))
+                .andExpect(jsonPath("$.fieldErrors").exists());
+    }
+
+    @Test
+    @DisplayName("一括登録で空リストの場合は400となること")
+    void testBulkRegister_EmptyList_ReturnsBadRequest() throws Exception {
+        TeaLotBulkRequest bulkRequest = new TeaLotBulkRequest();
+        bulkRequest.setTeaLots(Collections.emptyList());
+
+        mockMvc.perform(post("/api/tea-lots/bulk")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(bulkRequest)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.errorCode").value("TC_003"))
+                .andExpect(jsonPath("$.fieldErrors").exists());
+    }
+
+    @Test
+    @DisplayName("一括登録で101件以上の場合は400となること")
+    void testBulkRegister_TooManyItems_ReturnsBadRequest() throws Exception {
+        TeaLotBulkRequest bulkRequest = new TeaLotBulkRequest();
+
+        List<TeaLotRequest> requests = IntStream.range(0, 101)
+                .mapToObj(i -> {
+                    TeaLotRequest req = new TeaLotRequest();
+                    req.setLotCode(String.format("TL-2024-%03d", i + 1));
+                    req.setOrigin("静岡県");
+                    req.setVariety("一番茶");
+                    req.setMoisture(4.5);
+                    req.setPesticideLevel(0.8);
+                    req.setAromaScore(8);
+                    req.setProducedAt(LocalDate.of(2024, 5, 15));
+                    return req;
+                })
+                .collect(Collectors.toList());
+
+        bulkRequest.setTeaLots(requests);
+
         mockMvc.perform(post("/api/tea-lots/bulk")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(bulkRequest)))
