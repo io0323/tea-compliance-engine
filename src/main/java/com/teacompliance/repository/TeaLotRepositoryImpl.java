@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 茶葉ロットリポジトリのカスタム実装
@@ -22,6 +23,17 @@ import java.util.List;
 public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> implements TeaLotRepositoryCustom {
     
     private final EntityManager entityManager;
+
+    private static final Set<String> ALLOWED_SORT_FIELDS = Set.of(
+            "id",
+            "lotCode",
+            "origin",
+            "variety",
+            "moisture",
+            "pesticideLevel",
+            "aromaScore",
+            "producedAt"
+    );
     
     public TeaLotRepositoryImpl(EntityManager entityManager) {
         super(TeaLot.class, entityManager);
@@ -38,16 +50,21 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
         query.where(predicates.toArray(new Predicate[0]));
         
         // ソート処理
-        applySorting(cb, query, root, criteria);
+        applySorting(cb, query, root, criteria, pageable);
         
+        // Countクエリ（全件取得を避ける）
+        CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
+        Root<TeaLot> countRoot = countQuery.from(TeaLot.class);
+        List<Predicate> countPredicates = buildPredicates(criteria, cb, countRoot);
+        countQuery.select(cb.count(countRoot));
+        countQuery.where(countPredicates.toArray(new Predicate[0]));
+        long totalRows = entityManager.createQuery(countQuery).getSingleResult();
+
         TypedQuery<TeaLot> typedQuery = entityManager.createQuery(query);
-        
-        // ページング設定
-        int totalRows = typedQuery.getResultList().size();
         typedQuery.setFirstResult((int) pageable.getOffset());
         typedQuery.setMaxResults(pageable.getPageSize());
-        
         List<TeaLot> results = typedQuery.getResultList();
+
         return new PageImpl<>(results, pageable, totalRows);
     }
     
@@ -61,7 +78,7 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
         query.where(predicates.toArray(new Predicate[0]));
         
         // ソート処理
-        applySorting(cb, query, root, criteria);
+        applySorting(cb, query, root, criteria, null);
         
         return entityManager.createQuery(query).getResultList();
     }
@@ -114,11 +131,25 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
     /**
      * ソート条件を適用
      */
-    private void applySorting(CriteriaBuilder cb, CriteriaQuery<TeaLot> query, Root<TeaLot> root, TeaLotSearchCriteria criteria) {
+    private void applySorting(CriteriaBuilder cb, CriteriaQuery<TeaLot> query, Root<TeaLot> root, TeaLotSearchCriteria criteria, Pageable pageable) {
+        if (pageable != null && pageable.getSort() != null && pageable.getSort().isSorted()) {
+            query.orderBy(pageable.getSort().stream()
+                    .filter(order -> order.getProperty() != null && ALLOWED_SORT_FIELDS.contains(order.getProperty()))
+                    .map(order -> order.isAscending()
+                            ? cb.asc(root.get(order.getProperty()))
+                            : cb.desc(root.get(order.getProperty())))
+                    .toList());
+            return;
+        }
+
         String sortBy = criteria.getSortBy();
         String sortDirection = criteria.getSortDirection();
         
         if (sortBy == null || sortBy.trim().isEmpty()) {
+            sortBy = "producedAt";
+        }
+
+        if (!ALLOWED_SORT_FIELDS.contains(sortBy)) {
             sortBy = "producedAt";
         }
         

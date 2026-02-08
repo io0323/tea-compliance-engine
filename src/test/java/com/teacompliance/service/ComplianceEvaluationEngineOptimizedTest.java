@@ -17,6 +17,10 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
@@ -109,6 +113,25 @@ class ComplianceEvaluationEngineOptimizedTest {
         // Mockitoの検証を緩和
         verify(ruleRepository, atLeastOnce()).findAllOrderedBySeverityAndType();
         verify(resultRepository, atLeastOnce()).saveAll(any());
+    }
+
+    @Test
+    @DisplayName("init()を呼ばなくてもevaluateTeaLotが内部で初期化して動作すること")
+    void testEvaluateTeaLotWithoutInit_Works() {
+        // Given
+        when(strategy1.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.MOISTURE);
+        when(strategy2.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.PESTICIDE);
+        when(ruleRepository.findAllOrderedBySeverityAndType()).thenReturn(testRules);
+
+        when(strategy1.evaluate(any(), any())).thenReturn(new RuleEvaluationStrategy.EvaluationResult(true, "OK", null));
+        when(strategy2.evaluate(any(), any())).thenReturn(new RuleEvaluationStrategy.EvaluationResult(true, "OK", null));
+
+        // When
+        List<ComplianceResult> results = evaluationEngine.evaluateTeaLot(testTeaLot);
+
+        // Then
+        assertNotNull(results);
+        assertEquals(2, results.size());
     }
     
     @Test
@@ -242,5 +265,80 @@ class ComplianceEvaluationEngineOptimizedTest {
         assertEquals(1, results.size());
         assertEquals(ComplianceResult.EvaluationResult.ERROR, results.get(0).getResult());
         assertTrue(results.get(0).getMessage().contains("評価戦略が見つかりません"));
+    }
+
+    @Test
+    @DisplayName("evaluateTeaLotの同時実行でもルール取得が一度だけ実行されること")
+    void testConcurrentEvaluateTeaLot_RuleCacheLoadsOnce() throws Exception {
+        // Given
+        when(strategy1.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.MOISTURE);
+        when(strategy2.getSupportedRuleType()).thenReturn(ComplianceRule.RuleType.PESTICIDE);
+
+        when(ruleRepository.findAllOrderedBySeverityAndType()).thenReturn(testRules);
+        when(strategy1.evaluate(any(), any())).thenReturn(new RuleEvaluationStrategy.EvaluationResult(true, "OK", null));
+        when(strategy2.evaluate(any(), any())).thenReturn(new RuleEvaluationStrategy.EvaluationResult(true, "OK", null));
+
+        int threadCount = 8;
+        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+        CountDownLatch ready = new CountDownLatch(threadCount);
+        CountDownLatch start = new CountDownLatch(1);
+
+        try {
+            List<Future<List<ComplianceResult>>> futures = Arrays.asList(new Future[threadCount]);
+            for (int i = 0; i < threadCount; i++) {
+                futures.set(i, executor.submit(() -> {
+                    ready.countDown();
+                    start.await();
+                    return evaluationEngine.evaluateTeaLot(testTeaLot);
+                }));
+            }
+
+            ready.await();
+            start.countDown();
+
+            for (Future<List<ComplianceResult>> f : futures) {
+                List<ComplianceResult> results = f.get();
+                assertNotNull(results);
+                assertEquals(2, results.size());
+            }
+
+            verify(ruleRepository, times(1)).findAllOrderedBySeverityAndType();
+        } finally {
+            executor.shutdownNow();
+        }
+    }
+
+    @Test
+    @DisplayName("isShippableCachedの同時実行でもDB参照が一度だけ実行されること")
+    void testConcurrentIsShippableCached_ComputesOnce() throws Exception {
+        // Given
+        when(resultRepository.findByTeaLotId(1L)).thenReturn(Collections.emptyList());
+
+        int threadCount = 8;
+        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+        CountDownLatch ready = new CountDownLatch(threadCount);
+        CountDownLatch start = new CountDownLatch(1);
+
+        try {
+            List<Future<Boolean>> futures = Arrays.asList(new Future[threadCount]);
+            for (int i = 0; i < threadCount; i++) {
+                futures.set(i, executor.submit(() -> {
+                    ready.countDown();
+                    start.await();
+                    return evaluationEngine.isShippableCached(1L);
+                }));
+            }
+
+            ready.await();
+            start.countDown();
+
+            for (Future<Boolean> f : futures) {
+                assertTrue(f.get());
+            }
+
+            verify(resultRepository, times(1)).findByTeaLotId(1L);
+        } finally {
+            executor.shutdownNow();
+        }
     }
 }
