@@ -89,4 +89,30 @@ class TeaLotRepositorySearchTest {
         assertEquals("TL-2024-021", page.getContent().get(0).getLotCode());
         assertEquals("TL-2024-020", page.getContent().get(1).getLotCode());
     }
+
+    @Test
+    @DisplayName("PageableのSortがcriteriaより優先されること")
+    void searchByCriteriaPaged_PageableSortTakesPrecedence() {
+        // Given
+        teaLotRepository.save(new TeaLot(null, "TL-2024-030", "静岡県", "一番茶", 5.5, 0.8, 80, LocalDate.of(2024, 5, 10)));
+        teaLotRepository.save(new TeaLot(null, "TL-2024-031", "静岡県", "一番茶", 4.1, 0.8, 80, LocalDate.of(2024, 5, 12)));
+        teaLotRepository.save(new TeaLot(null, "TL-2024-032", "静岡県", "一番茶", 4.9, 0.8, 80, LocalDate.of(2024, 5, 14)));
+
+        TeaLotSearchCriteria criteria = new TeaLotSearchCriteria();
+        criteria.setOrigin("静岡県");
+        criteria.setVariety("一番茶");
+        criteria.setSortBy("producedAt");
+        criteria.setSortDirection("desc");
+
+        PageRequest pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "moisture"));
+
+        // When
+        Page<TeaLot> page = teaLotRepository.searchByCriteria(criteria, pageable);
+
+        // Then
+        assertEquals(3, page.getTotalElements());
+        assertEquals("TL-2024-031", page.getContent().get(0).getLotCode());
+        assertEquals("TL-2024-032", page.getContent().get(1).getLotCode());
+        assertEquals("TL-2024-030", page.getContent().get(2).getLotCode());
+    }
 }

@@ -50,7 +50,7 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
         query.where(predicates.toArray(new Predicate[0]));
         
         // ソート処理
-        applySorting(cb, query, root, criteria);
+        applySorting(cb, query, root, criteria, pageable);
         
         // Countクエリ（全件取得を避ける）
         CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
@@ -78,7 +78,7 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
         query.where(predicates.toArray(new Predicate[0]));
         
         // ソート処理
-        applySorting(cb, query, root, criteria);
+        applySorting(cb, query, root, criteria, null);
         
         return entityManager.createQuery(query).getResultList();
     }
@@ -131,7 +131,17 @@ public class TeaLotRepositoryImpl extends SimpleJpaRepository<TeaLot, Long> impl
     /**
      * ソート条件を適用
      */
-    private void applySorting(CriteriaBuilder cb, CriteriaQuery<TeaLot> query, Root<TeaLot> root, TeaLotSearchCriteria criteria) {
+    private void applySorting(CriteriaBuilder cb, CriteriaQuery<TeaLot> query, Root<TeaLot> root, TeaLotSearchCriteria criteria, Pageable pageable) {
+        if (pageable != null && pageable.getSort() != null && pageable.getSort().isSorted()) {
+            query.orderBy(pageable.getSort().stream()
+                    .filter(order -> order.getProperty() != null && ALLOWED_SORT_FIELDS.contains(order.getProperty()))
+                    .map(order -> order.isAscending()
+                            ? cb.asc(root.get(order.getProperty()))
+                            : cb.desc(root.get(order.getProperty())))
+                    .toList());
+            return;
+        }
+
         String sortBy = criteria.getSortBy();
         String sortDirection = criteria.getSortDirection();
         
